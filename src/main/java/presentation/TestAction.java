@@ -23,6 +23,11 @@ public class TestAction extends ActionSupport {
 		nom = testService.getNom();
 		return "success";
 	}
+	
+	public String ajout() {
+		testService.ajouterPersonne();
+		return "success";
+	}
 
 	public String getNom() {
 		return nom;

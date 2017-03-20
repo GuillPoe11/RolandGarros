@@ -9,7 +9,10 @@
 	<p>${nom}</p>
 	<s:form action="Test">
 		<fieldset>
-			<s:submit method="test" value="test" theme="simple" />
+			<s:submit method="test" value="Test" theme="simple" />
+		</fieldset>
+		<fieldset>
+			<s:submit method="ajout" value="Ajout" theme="simple" />
 		</fieldset>
 	</s:form>
 </body>

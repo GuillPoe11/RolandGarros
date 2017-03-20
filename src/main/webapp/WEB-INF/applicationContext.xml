@@ -16,11 +16,35 @@
 
 	<context:component-scan base-package="metier,dao" />
 
-<!-- 	<bean id="testService" class="metier.TestService" /> -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/testrg?useSSL=false" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
 
-<!-- 	<bean id="testAction" class="presentation.TestAction"> -->
-<!-- 		<property name="testService" ref="testService" /> -->
-<!-- 	</bean> -->
+	<!-- Hibernate 3 Annotation SessionFactory Bean definition -->
+	<bean id="hibernate3AnnotatedSessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>entite.Personne</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl">create-drop</prop>
+			</props>
+		</property>
+	</bean>
 
+	<bean id="personneDAO" class="dao.PersonneDAO">
+		<property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
+	</bean>
 
 </beans>
