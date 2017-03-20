@@ -16,5 +16,11 @@
 
 	<context:component-scan base-package="metier,dao" />
 
+<!-- 	<bean id="testService" class="metier.TestService" /> -->
+
+<!-- 	<bean id="testAction" class="presentation.TestAction"> -->
+<!-- 		<property name="testService" ref="testService" /> -->
+<!-- 	</bean> -->
+
 
 </beans>
