@@ -22,6 +22,11 @@
 		<property name="url" value="jdbc:mysql://localhost:3306/testrg?useSSL=false" />
 		<property name="username" value="root" />
 		<property name="password" value="root" />
+		
+		<!-- <property name="url" value="jdbc:mysql://localhost:3306/rolandGarros" />
+		<property name="username" value="root" />
+		<property name="password" value="root" /> -->
+		
 	</bean>
 
 	<!-- Hibernate 3 Annotation SessionFactory Bean definition -->
