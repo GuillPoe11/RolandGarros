@@ -2,19 +2,9 @@ package dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import entite.SousTournoi;
 
-@Component
-public class SousTournoiDao extends DAO {
-
-	/**
-	 * Constructeur
-	 */
-
-	private SousTournoiDao() {
-	}
+public interface SousTournoiDao {
 
 	/**
 	 * Récupération d'un sousTournoi dans la bdd à partir de son Id
@@ -24,14 +14,7 @@ public class SousTournoiDao extends DAO {
 	 * @return l'equipe
 	 */
 
-	public SousTournoi recupSousTournoiParId(Integer idSousTournoi) {
-		openAll();
-		tx.begin();
-		SousTournoi st = em.find(SousTournoi.class, idSousTournoi);
-		tx.commit();
-		closeAll();
-		return st;
-	}
+	public SousTournoi recupSousTournoiParId(Integer idSousTournoi);
 
 	/**
 	 * insertion d'un ousTournoi dans la bdd
@@ -40,26 +23,10 @@ public class SousTournoiDao extends DAO {
 	 *            le sousTournoi a ajouter
 	 * 
 	 */
-	public void insererSousTournoi(SousTournoi st) {
-		openAll();
-		tx.begin();
-		em.persist(st);
-		tx.commit();
-		closeAll();
-	}
+	public void insererSousTournoi(SousTournoi st);
 
 	/**
 	 * Retourne le contenu de la tableBdd SousTournoi
 	 */
-	public List<SousTournoi> recupTousLesSousTournois() {
-		openAll();
-		tx.begin();
-		@SuppressWarnings("unchecked")
-		List<SousTournoi> lstSousTournois = em
-				.createQuery("SELECT st FROM soustournoi st ORDER BY st.idSousTournoi ASC").getResultList();
-		tx.commit();
-		closeAll();
-		return lstSousTournois;
-	}
-
+	public List<SousTournoi> recupTousLesSousTournois();
 }

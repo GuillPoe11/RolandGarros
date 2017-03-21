@@ -2,19 +2,10 @@ package dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import entite.Arbitre;
 
-@Component
-public class ArbitreDao extends DAO {
+public interface ArbitreDao {
 
-	/**
-	 * Constructeur
-	 */
-	public ArbitreDao() {
-	}
-	
 	/**
 	 * Récupération d'un arbitre de la base de données par son id
 	 * 
@@ -22,29 +13,14 @@ public class ArbitreDao extends DAO {
 	 *            l'identifiant de l'arbitre en base de données
 	 * @return L'Arbitre correspondant
 	 */
-	public Arbitre recupArbitreParId(Integer idArbitre){
-		openAll();
-		tx.begin();
-		Arbitre arbitre = em.find(Arbitre.class, idArbitre);
-		tx.commit();
-		closeAll();
-		return arbitre;
-	}
-	
+	public Arbitre recupArbitreParId(Integer idArbitre);
+
 	/**
 	 * Récupération de la liste des arbitres dans la base de données
 	 * 
 	 * @return La liste des arbitres
 	 */
-	public List<Arbitre> recupTousLesArbitres() {
-		openAll();
-		tx.begin();
-		@SuppressWarnings("unchecked")
-		List<Arbitre> lstArbitres = em.createQuery("SELECT a FROM arbitre a ORDER BY a.nomArbitre ASC").getResultList();
-		tx.commit();
-		closeAll();
-		return lstArbitres;
-	}
+	public List<Arbitre> recupTousLesArbitres();
 
 	/**
 	 * Insertion d'un arbitre en base de données
@@ -52,12 +28,6 @@ public class ArbitreDao extends DAO {
 	 * @param j
 	 *            L'arbitre à insérer
 	 */
-	public void insererArbitre(Arbitre arbitre) {
-		openAll();
-		tx.begin();
-		em.persist(arbitre);
-		tx.commit();
-		closeAll();
-	}
+	public void insererArbitre(Arbitre arbitre);
 
 }

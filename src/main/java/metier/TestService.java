@@ -3,7 +3,7 @@ package metier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import dao.JoueurDao;
+import dao.JoueurDaoImpl;
 import dao.NationaliteDao;
 import entite.Joueur;
 import entite.Nationalite;
@@ -15,7 +15,7 @@ public class TestService {
 //	private PersonneDAO dao;
 
 	@Autowired
-	private JoueurDao jDao;
+	private JoueurDaoImpl jDao;
 	
 	@Autowired
 	private NationaliteDao nDao;

@@ -15,14 +15,14 @@ public abstract class DAO {
 	}
 
 	/**
-	 *  Ouverture factory d'entity manager et ouverture entity manager
+	 * Ouverture factory d'entity manager et ouverture entity manager
 	 */
-	public void openAll(){
+	public void openAll() {
 		emf = Persistence.createEntityManagerFactory("jpa");
 		em = emf.createEntityManager();
 		tx = em.getTransaction();
 	}
-	
+
 	/**
 	 * Fermeture factory d'entity manager et fermeture entity manager
 	 */

@@ -2,19 +2,9 @@ package dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import entite.Match;
 
-@Component
-public class MatchDao extends DAO {
-
-	/**
-	 * Constructeur
-	 */
-	private MatchDao() {
-		super();
-	}
+public interface MatchDao {
 
 	/**
 	 * ajoute un match
@@ -22,13 +12,7 @@ public class MatchDao extends DAO {
 	 * @param m
 	 *            : match
 	 */
-	public void insererMatch(Match m) {
-		openAll();
-		tx.begin();
-		em.persist(m);
-		tx.commit();
-		closeAll();
-	}
+	public void insererMatch(Match m);
 
 	/**
 	 * efface un match
@@ -36,13 +20,7 @@ public class MatchDao extends DAO {
 	 * @param m
 	 *            : match
 	 */
-	public void effacer(Match m) {
-		openAll();
-		tx.begin();
-		em.remove(m);
-		tx.commit();
-		closeAll();
-	}
+	public void effacer(Match m);
 
 	/**
 	 * modifie un match
@@ -50,37 +28,12 @@ public class MatchDao extends DAO {
 	 * @param m
 	 *            : match
 	 */
-	public void modifier(Match m) {
-		openAll();
-		tx.begin();
-		Match matchModifier = recupMatchParId(m.getIdMatch());
-		matchModifier.setArbitre(m.getArbitre());
-		matchModifier.setCourt(m.getCourt());
-		matchModifier.setDate(m.getDate());
-		matchModifier.setDuree(m.getDuree());
-		matchModifier.setEquipe1(m.getEquipe1());
-		matchModifier.setEquipe2(m.getEquipe2());
-		matchModifier.setJoueur1(m.getJoueur1());
-		matchModifier.setJoueur2(m.getJoueur2());
-		matchModifier.setScore1(m.getScore1());
-		matchModifier.setScore2(m.getScore2());
-		matchModifier.setSousTournoi(m.getSousTournoi());
-		em.persist(matchModifier);
-		tx.commit();
-		closeAll();
-	}
+	public void modifier(Match m);
 
 	/**
 	 * Retourne le contenu de la tableBdd match
 	 */
-	@SuppressWarnings("unchecked")
-	public List<Match> recupTout() {
-		openAll();
-		tx.begin();
-		List<Match> lstMatchs = em.createQuery("SELECT m FROM match m ORDER BY m.date DESC").getResultList();
-		closeAll();
-		return lstMatchs;
-	}
+	public List<Match> recupTousMatchs();
 
 	/**
 	 * Retourne un match selectionne par son id
@@ -89,26 +42,6 @@ public class MatchDao extends DAO {
 	 *            : id match recherche
 	 * @return match
 	 */
-	public Match recupMatchParId(int id) {
-		openAll();
-		tx.begin();
-		Match m = em.find(Match.class, id);
-		closeAll();
-		return m;
-	}
+	public Match recupMatchParId(int id);
 
-	/**
-	 * Affiche le contenu de la table
-	 * 
-	 * @return contenu de la table
-	 */
-	public String tableToString() {
-		StringBuffer result = new StringBuffer();
-		result.append("Contenu de la table Match :\n");
-		for (Object p : em.createQuery("SELECT m FROM match m ORDER BY m.date DESC").getResultList()) {
-			result.append(p);
-			result.append("\n");
-		}
-		return result.toString();
-	}
 }

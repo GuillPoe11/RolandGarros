@@ -2,18 +2,9 @@ package dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import entite.Court;
 
-@Component
-public class CourtDao extends DAO {
-
-	/**
-	 * Constructeur
-	 */
-	private CourtDao() {
-	}
+public interface CourtDao {
 
 	/**
 	 * Récupération d'un court dans la bdd à partir de son Id
@@ -23,14 +14,7 @@ public class CourtDao extends DAO {
 	 * @return le court
 	 */
 
-	public Court recupCourtParId(Integer idCourt) {
-		openAll();
-		tx.begin();
-		Court c = em.find(Court.class, idCourt);
-		tx.commit();
-		closeAll();
-		return c;
-	}
+	public Court recupCourtParId(Integer idCourt);
 
 	/**
 	 * insertion d'un court dans la bdd
@@ -40,25 +24,10 @@ public class CourtDao extends DAO {
 	 * 
 	 */
 
-	public void insererCourt(Court c) {
-		openAll();
-		tx.begin();
-		em.persist(c);
-		tx.commit();
-		closeAll();
-	}
+	public void insererCourt(Court c);
 
 	/**
 	 * Retourne le contenu de la tableBdd court
 	 */
-	public List<Court> recupTousLesCourts() {
-		openAll();
-		tx.begin();
-		@SuppressWarnings("unchecked")
-		List<Court> lstCourts = em.createQuery("SELECT c FROM court c ORDER BY c.nomCourt ASC").getResultList();
-		tx.commit();
-		closeAll();
-		return lstCourts;
-	}
-
+	public List<Court> recupTousLesCourts();
 }
