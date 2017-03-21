@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import entite.Nationalite;
+import metier.JoueurService;
+import metier.NationaliteService;
 import metier.TestService;
 
 public class TestAction extends ActionSupport {
@@ -11,7 +14,9 @@ public class TestAction extends ActionSupport {
 	private static final long serialVersionUID = -8917369408257066341L;
 
 	@Autowired
-	private TestService testService;
+	private JoueurService jService;
+	@Autowired
+	private NationaliteService nService;
 
 	private String nom;
 
@@ -19,7 +24,8 @@ public class TestAction extends ActionSupport {
 	}
 	
 	public String testG() {
-		testService.testGuill();
+		Nationalite n = nService.recupNationaliteParId(15);
+		jService.creerJoueur("cretin", "lapin", 'M', n);;
 		return "success";
 	}
 	
