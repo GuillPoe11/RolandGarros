@@ -22,7 +22,6 @@ public class Nationalite {
 	/*
 	 * Constructeurs
 	 */
-
 	public Nationalite() {
 
 	}
