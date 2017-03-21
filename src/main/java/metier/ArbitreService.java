@@ -28,6 +28,6 @@ public interface ArbitreService {
 	 *            prenomArbitre
 	 * @return
 	 */
-	public void insererCourt(String nomArbitre, String prenomArbitre);
+	public void insererArbitre(String nomArbitre, String prenomArbitre);
 
 }

@@ -43,7 +43,7 @@ public class ArbitreServiceImpl implements ArbitreService {
 	 * 
 	 */
 	@Override
-	public void insererCourt(String nomArbitre, String prenomArbitre) {
+	public void insererArbitre(String nomArbitre, String prenomArbitre) {
 		nDao.insererArbitre(new Arbitre(nomArbitre, prenomArbitre));
 	}
 
