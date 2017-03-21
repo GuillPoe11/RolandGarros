@@ -68,9 +68,9 @@ public class OrganisateurDao extends DAO {
 	public Organisateur recupOrganisateurParId(int id) {
 		openAll();
 		tx.begin();
-		Organisateur O = em.find(Organisateur.class, id);
+		Organisateur o = em.find(Organisateur.class, id);
 		closeAll();
-		return O;
+		return o;
 	}
 
 	/**
