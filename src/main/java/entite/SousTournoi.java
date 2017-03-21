@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@SuppressWarnings("unused")
 @Entity
 @Table(name = "soustournoi")
 public class SousTournoi {

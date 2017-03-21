@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@SuppressWarnings("unused")
 @Entity
 @Table(name = "match")
 public class Match {
@@ -66,7 +65,7 @@ public class Match {
 	private int score2;
 
 	/*
-	 * Constructeurs  
+	 * Constructeurs
 	 */
 	public Match() {
 
