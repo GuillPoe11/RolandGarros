@@ -27,7 +27,7 @@ public class Match {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "refIdJoueur1")
-	private Joueur prenomJoueur;
+	private Joueur joueur1;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "refIdJoueur2")
@@ -71,12 +71,12 @@ public class Match {
 
 	}
 
-	public Match(Integer idMatch, Court court, Joueur prenomJoueur, Joueur joueur2, Arbitre arbitre,
-			SousTournoi sousTournoi, Date date, String duree, Equipe equipe1, Equipe equipe2, int score1, int score2) {
+	public Match(Integer idMatch, Court court, Joueur joueur1, Joueur joueur2, Arbitre arbitre, SousTournoi sousTournoi,
+			Date date, String duree, Equipe equipe1, Equipe equipe2, int score1, int score2) {
 		super();
 		this.idMatch = idMatch;
 		this.court = court;
-		this.prenomJoueur = prenomJoueur;
+		this.joueur1 = joueur1;
 		this.joueur2 = joueur2;
 		this.arbitre = arbitre;
 		this.sousTournoi = sousTournoi;
@@ -108,12 +108,12 @@ public class Match {
 		this.court = court;
 	}
 
-	public Joueur getPrenomJoueur() {
-		return prenomJoueur;
+	public Joueur getJoueur1() {
+		return joueur1;
 	}
 
-	public void setPrenomJoueur(Joueur prenomJoueur) {
-		this.prenomJoueur = prenomJoueur;
+	public void setJoueur1(Joueur joueur1) {
+		this.joueur1 = joueur1;
 	}
 
 	public Joueur getJoueur2() {
