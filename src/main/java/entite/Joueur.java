@@ -10,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@SuppressWarnings("unused")
 @Entity
 @Table(name = "joueur")
 public class Joueur {
