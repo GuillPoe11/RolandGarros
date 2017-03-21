@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import entite.Joueur;
 
 @Component
-public class JoueurDao extends Dao {
+public class JoueurDao extends DAO {
 
 	/**
 	 * Constructeur
