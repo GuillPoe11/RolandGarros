@@ -15,6 +15,9 @@ public class TestService {
 
 	@Autowired
 	private JoueurDao jDao;
+	
+	@Autowired
+	private Nationalite nDao;
 
 	private String nom;
 
@@ -47,8 +50,8 @@ public class TestService {
 	public void testGuill() {
 		// creation de Joueurs
 		System.out.println("creation de nationalite");
-		Nationalite n1 = jDao.getNationalite(1);
-		Nationalite n2 = jDao.getNationalite(2);
+		Nationalite n1 = nDao.recupNationaliteParId(1);
+//		Nationalite n2 = jDao.getNationalite(2);
 
 		// creation de Joueurs
 		System.out.println("creation de joueurs");
