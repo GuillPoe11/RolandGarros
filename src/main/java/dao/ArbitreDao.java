@@ -22,7 +22,7 @@ public class ArbitreDao extends DAO {
 	 *            l'identifiant de l'arbitre en base de données
 	 * @return L'Arbitre correspondant
 	 */
-	public Arbitre recupArbitreParID(Integer idArbitre){
+	public Arbitre recupArbitreParId(Integer idArbitre){
 		openAll();
 		tx.begin();
 		Arbitre arbitre = em.find(Arbitre.class, idArbitre);
@@ -47,7 +47,7 @@ public class ArbitreDao extends DAO {
 	}
 
 	/**
-	 * Insertion d'une instance d'arbitre en base de données
+	 * Insertion d'un arbitre en base de données
 	 * 
 	 * @param j
 	 *            L'arbitre à insérer

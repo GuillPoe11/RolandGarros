@@ -48,7 +48,7 @@ public class JoueurDao extends DAO {
 	}
 
 	/**
-	 * Insertion d'une instance de joueur en base de données
+	 * Insertion d'un joueur en base de données
 	 * 
 	 * @param j
 	 *            Le joueur à insérer

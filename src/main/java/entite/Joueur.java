@@ -19,10 +19,10 @@ public class Joueur {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idJoueur;
 
-	@Column(name = "nomJoueur", length = 100, nullable = false, unique = false)
+	@Column(name = "nomJoueur", length = 150, nullable = false, unique = false)
 	private String nomJoueur;
 
-	@Column(name = "prenomJoueur", length = 100, nullable = false, unique = false)
+	@Column(name = "prenomJoueur", length = 150, nullable = false, unique = false)
 	private String prenomJoueur;
 
 	@Column(name = "sexeJoueur", length = 1, nullable = false, unique = false)
@@ -88,6 +88,12 @@ public class Joueur {
 
 	public void setNationalite(Nationalite nationalite) {
 		this.nationalite = nationalite;
+	}
+
+	@Override
+	public String toString() {
+		return "Joueur [idJoueur=" + idJoueur + ", nomJoueur=" + nomJoueur + ", prenomJoueur=" + prenomJoueur
+				+ ", sexeJoueur=" + sexeJoueur + ", nationalite=" + nationalite + "]";
 	}
 
 }

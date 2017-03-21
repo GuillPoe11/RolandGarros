@@ -16,10 +16,10 @@ public class Arbitre {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idArbitre;
 
-	@Column(name = "nomArbitre", length = 100, nullable = false, unique = false)
+	@Column(name = "nomArbitre", length = 150, nullable = false, unique = false)
 	private String nomArbitre;
 
-	@Column(name = "prenomArbitre", length = 100, nullable = false, unique = false)
+	@Column(name = "prenomArbitre", length = 150, nullable = false, unique = false)
 	private String prenomArbitre;
 
 	/*
@@ -59,6 +59,12 @@ public class Arbitre {
 
 	public void setPrenomArbitre(String prenomArbitre) {
 		this.prenomArbitre = prenomArbitre;
+	}
+
+	@Override
+	public String toString() {
+		return "Arbitre [idArbitre=" + idArbitre + ", nomArbitre=" + nomArbitre + ", prenomArbitre=" + prenomArbitre
+				+ "]";
 	}
 
 }
