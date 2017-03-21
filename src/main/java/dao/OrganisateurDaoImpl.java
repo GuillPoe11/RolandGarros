@@ -69,8 +69,8 @@ public class OrganisateurDaoImpl extends DAO implements OrganisateurDao {
 	public List<Organisateur> recupConnexionOrganisateur(String login, String password) {
 		openAll();
 		tx.begin();
-		List<Organisateur> lstOrganisateurs = em.createQuery("SELECT o FROM organisateur o WHERE loginOrganisateur = "
-				+ login + "  AND passwordOrganisateur =" + password).getResultList();
+		List<Organisateur> lstOrganisateurs = em.createQuery("SELECT o FROM organisateur o WHERE loginOrganisateur = '"
+				+ login + "'  AND passwordOrganisateur ='" + password +"'").getResultList();
 		closeAll();
 		return lstOrganisateurs;
 	}

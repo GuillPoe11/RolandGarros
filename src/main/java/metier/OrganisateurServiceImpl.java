@@ -47,16 +47,4 @@ public class OrganisateurServiceImpl implements OrganisateurService {
 		nDao.insererOrganisateur(new Organisateur(loginOrganisateur, passwordOrganisateur));
 	}
 
-	/**
-	 * (fonction pour la connexion de l'organisateur)
-	 * 
-	 */
-	@Override
-	public Boolean recupOrganisateurParLoginPassword(String loginOrganisateur, String passwordOrganisateur) {
-		if (nDao.recupConnexionOrganisateur(loginOrganisateur, passwordOrganisateur).size() == 1) {
-			return true;
-		}
-		return false;
-	}
-
 }
