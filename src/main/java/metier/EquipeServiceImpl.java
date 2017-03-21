@@ -23,9 +23,8 @@ public class EquipeServiceImpl implements EquipeService {
 	}
 
 	@Override
-	public Equipe recupererEquipe() {
-		// TODO Auto-generated method stub
-		return null;
+	public Equipe recupererEquipe(Integer idEquipe) {
+		return equipeDao.recupEquipeParId(idEquipe);
 	}
 
 	@Override

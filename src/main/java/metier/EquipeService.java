@@ -9,12 +9,16 @@ public interface EquipeService {
 
 	/**
 	 * Crée une équipe avec deux joueurs passés en paramètres
-	 * @param joueur1 Le premier joueur
-	 * @param joueur2 Le deuxième joueur
+	 * @param joueur1 Le premier Joueur
+	 * @param joueur2 Le deuxième Joueur
 	 */
 	public void creerEquipe(Joueur joueur1, Joueur joueur2);
 	
-	public Equipe recupererEquipe();
+	/**
+	 * Renvoie une équipe grâce à son identifiant
+	 * @return L'équipe désirée
+	 */
+	public Equipe recupererEquipe(Integer idEquipe);
 	
 	/**
 	 * Récupère la liste des équipes
