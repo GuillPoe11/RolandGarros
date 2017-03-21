@@ -17,17 +17,24 @@ public class TestAction extends ActionSupport {
 
 	public TestAction() {
 	}
-
-	public String test() {
-		testService.setNom("test");
-		nom = testService.getNom();
+	
+	public String testG() {
+		testService.testGuill();
 		return "success";
 	}
 	
-	public String ajout() {
-		testService.ajouterPersonne();
-		return "success";
-	}
+	
+
+//	public String test() {
+//		testService.setNom("test");
+//		nom = testService.getNom();
+//		return "success";
+//	}
+//	
+//	public String ajout() {
+//		testService.ajouterPersonne();
+//		return "success";
+//	}
 
 	public String getNom() {
 		return nom;

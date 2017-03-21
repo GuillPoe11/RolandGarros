@@ -14,6 +14,10 @@
 		<fieldset>
 			<s:submit method="ajout" value="Ajout" theme="simple" />
 		</fieldset>
+		
+		<fieldset>
+			<s:submit method="testG" value="LancerTestG"/>
+		</fieldset>
 	</s:form>
 </body>
 </html>
