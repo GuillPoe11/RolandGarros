@@ -14,13 +14,13 @@ public class CourtServiceImpl implements CourtService {
 	@Autowired
 	private CourtDao nDao;
 
-	/*
+	/**
 	 * Constructeurs
 	 */
 	public CourtServiceImpl() {
 	}
 
-	/*
+	/**
 	 * (fonction pour recupérer toutes les terrains)
 	 * 
 	 */
@@ -29,16 +29,16 @@ public class CourtServiceImpl implements CourtService {
 		return nDao.recupTousLesCourts();
 	}
 
-	/*
+	/**
 	 * (fonction pour recupérer un terrain par l'id)
 	 * 
 	 */
 	@Override
-	public Court recupNationaliteParId(int id) {
+	public Court recupCourtParId(int id) {
 		return nDao.recupCourtParId(id);
 	}
 
-	/*
+	/**
 	 * (fonction pour ajouter un terrain)
 	 * 
 	 */

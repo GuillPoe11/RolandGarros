@@ -8,7 +8,7 @@ public interface CourtService {
 
 	public List<Court> recupTousCourts();
 
-	public Court recupNationaliteParId(int id);
+	public Court recupCourtParId(int id);
 
 	public void insererCourt(String nomCourt, String numeroCourt);
 

@@ -29,9 +29,8 @@ public class Organisateur {
 
 	}
 
-	public Organisateur(Integer idOrganisateur, String loginOrganisateur, String passwordOrganisateur) {
+	public Organisateur(String loginOrganisateur, String passwordOrganisateur) {
 		super();
-		this.idOrganisateur = idOrganisateur;
 		this.loginOrganisateur = loginOrganisateur;
 		this.passwordOrganisateur = passwordOrganisateur;
 	}

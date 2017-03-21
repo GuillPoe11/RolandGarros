@@ -14,13 +14,13 @@ public class NationaliteServiceImpl implements NationaliteService {
 	@Autowired
 	private NationaliteDao nDao;
 
-	/*
+	/**
 	 * Constructeurs
 	 */
 	public NationaliteServiceImpl() {
 	}
 
-	/*
+	/**
 	 * (fonction pour recupérer toutes les nationalités)
 	 * 
 	 */
@@ -29,7 +29,7 @@ public class NationaliteServiceImpl implements NationaliteService {
 		return nDao.recupToutesNationalites();
 	}
 
-	/*
+	/**
 	 * (fonction pour recupérer une nationalité par l'id)
 	 * 
 	 */
