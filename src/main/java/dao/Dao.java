@@ -5,13 +5,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public abstract class DAO {
+public abstract class Dao {
 
 	protected EntityManagerFactory emf;
 	protected EntityManager em;
 	protected EntityTransaction tx;
 
-	public DAO() {
+	public Dao() {
 	}
 
 	/**

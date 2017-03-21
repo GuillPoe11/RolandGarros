@@ -17,7 +17,7 @@ public class TestService {
 	private JoueurDao jDao;
 	
 	@Autowired
-	private Nationalite nDao;
+	private NationaliteDao nDao;
 
 	private String nom;
 
