@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 import entite.Organisateur;
 
 @Component
-public class OrganisateurDAO extends DAO {
+public class OrganisateurDao extends DAO {
 
 	/**
-	 * Constructeur qui initialise le contexte de persistance
+	 * Constructeur
 	 */
-	private OrganisateurDAO() {
+	private OrganisateurDao() {
 		super();
 	}
 

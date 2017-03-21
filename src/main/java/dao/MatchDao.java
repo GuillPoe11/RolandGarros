@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 import entite.Match;
 
 @Component
-public class MatchDAO extends DAO {
+public class MatchDao extends DAO {
 
 	/**
-	 * Constructeur qui initialise le contexte de persistance
+	 * Constructeur
 	 */
-	private MatchDAO() {
+	private MatchDao() {
 		super();
 	}
 
