@@ -23,16 +23,6 @@ public class CourtDao extends DAO {
 	 * @return le Court cree
 	 */
 
-	public Court getCourt(String nomCourt, String numeroCourt) {
-		openAll();
-		tx.begin();
-		Court c = new Court(nomCourt, numeroCourt);
-		em.persist(c);
-		tx.commit();
-		closeAll();
-		return c;
-	}
-
 	public Court recupCourtParId(Integer idCourt) {
 		openAll();
 		tx.begin();
@@ -54,7 +44,13 @@ public class CourtDao extends DAO {
 	 * Retourne le contenu de la tableBdd court
 	 */
 	public List<Court> recupTousLesCourts() {
-		return em.createQuery("SELECT c FROM court c ORDER BY c.nomCourt ASC").getResultList();
+		openAll();
+		tx.begin();
+		@SuppressWarnings("unchecked")
+		List<Court> lstCourts = em.createQuery("SELECT c FROM court c ORDER BY c.nomCourt ASC").getResultList();
+		tx.commit();
+		closeAll();
+		return lstCourts;
 	}
 
 }
