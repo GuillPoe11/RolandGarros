@@ -58,7 +58,7 @@ public interface MatchService {
 	
 	
 	/**
-	 * Récupérer la liste de tous les matchs pour un tournoi
+	 * Récupérer la liste de tous les matchs pour un soustournoi
 	 * 
 	 * @return liste de matchs
 	 */
