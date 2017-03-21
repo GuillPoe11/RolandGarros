@@ -157,12 +157,12 @@ public class Match {
 		this.duree = duree;
 	}
 
-	public String getDuree() {
-		return duree;
+	public String getScore() {
+		return score;
 	}
 
-	public void setDuree(String duree) {
-		this.duree = duree;
+	public void setScore(String score) {
+		this.score = score;
 	}
 
 	public Equipe getEquipe1() {
