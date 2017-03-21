@@ -24,6 +24,7 @@ public class CourtServiceImpl implements CourtService {
 	 * (fonction pour recupérer toutes les terrains)
 	 * 
 	 */
+	@Override
 	public List<Court> recupTousCourts() {
 		return nDao.recupTousLesCourts();
 	}
@@ -32,6 +33,7 @@ public class CourtServiceImpl implements CourtService {
 	 * (fonction pour recupérer un terrain par l'id)
 	 * 
 	 */
+	@Override
 	public Court recupNationaliteParId(int id) {
 		return nDao.recupCourtParId(id);
 	}
@@ -40,6 +42,7 @@ public class CourtServiceImpl implements CourtService {
 	 * (fonction pour ajouter un terrain)
 	 * 
 	 */
+	@Override
 	public void insererCourt(String nomCourt, String numeroCourt) {
 		nDao.insererCourt(new Court(nomCourt, numeroCourt));
 	}

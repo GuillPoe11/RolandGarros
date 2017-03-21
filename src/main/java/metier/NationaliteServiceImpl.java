@@ -24,6 +24,7 @@ public class NationaliteServiceImpl implements NationaliteService {
 	 * (fonction pour recupérer toutes les nationalités)
 	 * 
 	 */
+	@Override
 	public List<Nationalite> recupToutesNationalites() {
 		return nDao.recupToutesNationalites();
 	}
@@ -32,6 +33,7 @@ public class NationaliteServiceImpl implements NationaliteService {
 	 * (fonction pour recupérer une nationalité par l'id)
 	 * 
 	 */
+	@Override
 	public Nationalite recupNationaliteParId(int id) {
 		return nDao.recupNationaliteParId(id);
 	}

@@ -44,4 +44,10 @@ public interface OrganisateurDao {
 	 * @return contenu de la table
 	 */
 	public String tableToString();
+	
+	/**
+	 * Retourne une liste contenant l'organisateur si le login et le password
+	 * sont valides
+	 */
+	public List<Organisateur> recupConnexionOrganisateur(String login,String password);
 }

@@ -61,6 +61,21 @@ public class OrganisateurDaoImpl extends DAO implements OrganisateurDao {
 	}
 
 	/**
+	 * Retourne une liste contenant l'organisateur si le login et le password
+	 * sont valides
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Organisateur> recupConnexionOrganisateur(String login, String password) {
+		openAll();
+		tx.begin();
+		List<Organisateur> lstOrganisateurs = em.createQuery("SELECT o FROM organisateur o WHERE loginOrganisateur = "
+				+ login + "  AND passwordOrganisateur =" + password).getResultList();
+		closeAll();
+		return lstOrganisateurs;
+	}
+
+	/**
 	 * Retourne un organisateur selectionne par son id
 	 * 
 	 * @param id
