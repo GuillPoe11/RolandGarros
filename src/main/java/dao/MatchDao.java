@@ -19,13 +19,13 @@ public class MatchDao extends DAO {
 	/**
 	 * ajoute un match
 	 * 
-	 * @param o
-	 *            : l'organisateur
+	 * @param m
+	 *            : match
 	 */
-	public void insererMatch(Match o) {
+	public void insererMatch(Match m) {
 		openAll();
 		tx.begin();
-		em.persist(o);
+		em.persist(m);
 		tx.commit();
 		closeAll();
 	}
@@ -33,13 +33,13 @@ public class MatchDao extends DAO {
 	/**
 	 * efface un match
 	 * 
-	 * @param o
+	 * @param m
 	 *            : match
 	 */
-	public void effacer(Match o) {
+	public void effacer(Match m) {
 		openAll();
 		tx.begin();
-		em.remove(o);
+		em.remove(m);
 		tx.commit();
 		closeAll();
 	}
@@ -47,24 +47,24 @@ public class MatchDao extends DAO {
 	/**
 	 * modifie un match
 	 * 
-	 * @param o
+	 * @param m
 	 *            : match
 	 */
-	public void modifier(Match o) {
+	public void modifier(Match m) {
 		openAll();
 		tx.begin();
-		Match matchModifier = recupMatchParId(o.getIdMatch());
-		matchModifier.setArbitre(o.getArbitre());
-		matchModifier.setCourt(o.getCourt());
-		matchModifier.setDate(o.getDate());
-		matchModifier.setDuree(o.getDuree());
-		matchModifier.setEquipe1(o.getEquipe1());
-		matchModifier.setEquipe2(o.getEquipe2());
-		matchModifier.setJoueur1(o.getJoueur1());
-		matchModifier.setJoueur2(o.getJoueur2());
-		matchModifier.setScore1(o.getScore1());
-		matchModifier.setScore2(o.getScore2());
-		matchModifier.setSousTournoi(o.getSousTournoi());
+		Match matchModifier = recupMatchParId(m.getIdMatch());
+		matchModifier.setArbitre(m.getArbitre());
+		matchModifier.setCourt(m.getCourt());
+		matchModifier.setDate(m.getDate());
+		matchModifier.setDuree(m.getDuree());
+		matchModifier.setEquipe1(m.getEquipe1());
+		matchModifier.setEquipe2(m.getEquipe2());
+		matchModifier.setJoueur1(m.getJoueur1());
+		matchModifier.setJoueur2(m.getJoueur2());
+		matchModifier.setScore1(m.getScore1());
+		matchModifier.setScore2(m.getScore2());
+		matchModifier.setSousTournoi(m.getSousTournoi());
 		em.persist(matchModifier);
 		tx.commit();
 		closeAll();
