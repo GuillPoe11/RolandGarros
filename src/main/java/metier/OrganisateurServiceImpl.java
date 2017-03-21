@@ -14,34 +14,19 @@ public class OrganisateurServiceImpl implements OrganisateurService {
 	@Autowired
 	private OrganisateurDao nDao;
 
-	/**
-	 * Constructeurs
-	 */
 	public OrganisateurServiceImpl() {
 	}
 
-	/**
-	 * (fonction pour recupérer toutes les Organisateurs)
-	 * 
-	 */
 	@Override
 	public List<Organisateur> recupTousOrganisateur() {
 		return nDao.recupTousOrganisateurs();
 	}
 
-	/**
-	 * (fonction pour recupérer un Organisateur par l'id)
-	 * 
-	 */
 	@Override
 	public Organisateur recupOrganisateurParId(int id) {
 		return nDao.recupOrganisateurParId(id);
 	}
 
-	/**
-	 * (fonction pour ajouter un Organisateur)
-	 * 
-	 */
 	@Override
 	public void insererOrganisateur(String loginOrganisateur, String passwordOrganisateur) {
 		nDao.insererOrganisateur(new Organisateur(loginOrganisateur, passwordOrganisateur));
