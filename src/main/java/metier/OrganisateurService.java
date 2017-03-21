@@ -26,7 +26,7 @@ public interface OrganisateurService {
 	 * 
 	 * @param loginOrganisateur,
 	 * @param passwordOrganisateur
-	 * @return
+	 * 
 	 */
 	public void insererOrganisateur(String loginOrganisateur, String passwordOrganisateur);
 
