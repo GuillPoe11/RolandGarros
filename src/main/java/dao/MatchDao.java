@@ -10,7 +10,7 @@ import entite.Match;
 public class MatchDao extends DAO {
 
 	/**
-	 * Constructeur  
+	 * Constructeur
 	 */
 	private MatchDao() {
 		super();
@@ -70,7 +70,11 @@ public class MatchDao extends DAO {
 	 * Retourne le contenu de la tableBdd match
 	 */
 	public List<Match> recupTout() {
-		return em.createQuery("SELECT j FROM match j ORDER BY j.date DESC").getResultList();
+		openAll();
+		tx.begin();
+		List<Match> result = em.createQuery("SELECT j FROM match j ORDER BY j.date DESC").getResultList();
+		closeAll();
+		return result;
 	}
 
 	/**

@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import entite.Match;
 import entite.Organisateur;
 
 @Component
 public class OrganisateurDao extends DAO {
 
 	/**
-	 * Constructeur  
+	 * Constructeur
 	 */
 	private OrganisateurDao() {
 		super();
@@ -44,7 +45,12 @@ public class OrganisateurDao extends DAO {
 	 * Retourne le contenu de la tableBdd organisateur
 	 */
 	public List<Organisateur> recupTout() {
-		return em.createQuery("SELECT j FROM organisateur j ORDER BY j.loginOrganisateur ASC").getResultList();
+		openAll();
+		tx.begin();
+		List<Organisateur> result = em.createQuery("SELECT j FROM organisateur j ORDER BY j.loginOrganisateur ASC")
+				.getResultList();
+		closeAll();
+		return result;
 	}
 
 	/**
