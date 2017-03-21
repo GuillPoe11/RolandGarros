@@ -30,12 +30,12 @@ public class JoueurServiceImpl implements JoueurService {
 	}
 
 	/*
-	 * Récupération d'un joueur
+	 * Récupération d'un joueur par Id
 	 */
 	@Override
-	public void recupererJoueur(int idJoueur) {
-		jDao.recupJoueurParId(idJoueur);
-
+	public Joueur recupererJoueurParId(int idJoueur) {
+		Joueur j = jDao.recupJoueurParId(idJoueur);
+		return j;
 	}
 
 	/*

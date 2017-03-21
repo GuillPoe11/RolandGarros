@@ -22,7 +22,7 @@ public interface JoueurService {
 	 * Récupère un joueur par l'id
 	 * @param id
 	 */
-	public void recupererJoueur(int id);
+	public Joueur recupererJoueurParId(int id);
 
 	
 	/**
