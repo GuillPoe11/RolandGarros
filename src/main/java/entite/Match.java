@@ -66,7 +66,7 @@ public class Match {
 	private int score2;
 
 	/*
-	 * Constructeurs
+	 * Constructeurs  
 	 */
 	public Match() {
 
