@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import entite.Match;
+import entite.SousTournoi;
 
 @Component
 public class MatchDaoImpl extends DAO implements MatchDao {
@@ -85,6 +86,19 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 		closeAll();
 		return lstMatchs;
 	}
+	
+	/**
+	 * Retourne le contenu de la tableBdd match
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Match> recupTousMatchsPourUnSousTournoi(SousTournoi sousTournoi) {
+		openAll();
+		tx.begin();
+		List<Match> lstMatchs = em.createQuery("SELECT m FROM match m WHERE idTournoi='"+sousTournoi.getIdSousTournoi()+"' ORDER BY m.date DESC").getResultList();
+		closeAll();
+		return lstMatchs;
+	}
 
 	/**
 	 * Retourne un match selectionne par son id
@@ -101,6 +115,8 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 		closeAll();
 		return m;
 	}
+	
+	
 
 	/**
 	 * Affiche le contenu de la table

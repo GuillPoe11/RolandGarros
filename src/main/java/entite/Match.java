@@ -68,21 +68,16 @@ public class Match {
 
 	}
 
-	public Match(Integer idMatch, Court court, Joueur joueur1, Joueur joueur2, Arbitre arbitre, SousTournoi sousTournoi,
-			Date date, int duree, Equipe equipe1, Equipe equipe2, int score1, int score2) {
+	public Match(Court court, Joueur joueur1, Joueur joueur2, Arbitre arbitre, SousTournoi sousTournoi,
+			Date date, Equipe equipe1, Equipe equipe2) {
 		super();
-		this.idMatch = idMatch;
 		this.court = court;
 		this.joueur1 = joueur1;
 		this.joueur2 = joueur2;
 		this.arbitre = arbitre;
 		this.sousTournoi = sousTournoi;
 		this.date = date;
-		this.duree = duree;
-		this.equipe1 = equipe1;
-		this.equipe2 = equipe2;
-		this.score1 = score1;
-		this.score2 = score2;
+				
 	}
 
 	/*
