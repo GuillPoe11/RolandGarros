@@ -10,7 +10,7 @@ import entite.Match;
 public class MatchDao extends DAO {
 
 	/**
-	 * Constructeur
+	 * Constructeur  
 	 */
 	private MatchDao() {
 		super();
