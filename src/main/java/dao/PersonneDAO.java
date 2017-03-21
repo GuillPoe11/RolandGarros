@@ -15,7 +15,7 @@ public class PersonneDAO {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-
+	
 	public void sauvegarderPersonne(Personne p) {
 		Session session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();

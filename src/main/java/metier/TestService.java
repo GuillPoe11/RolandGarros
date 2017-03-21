@@ -49,8 +49,8 @@ public class TestService {
 	public void testGuill() {
 		// creation de Joueurs
 		System.out.println("creation de nationalite");
-		Nationalite n1 = jDao.getNationalite("France");
-		Nationalite n2 = jDao.getNationalite("Canada");
+		Nationalite n1 = jDao.getNationalite(1);
+		Nationalite n2 = jDao.getNationalite(2);
 
 		// creation de Joueurs
 		System.out.println("creation de joueurs");

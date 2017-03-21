@@ -13,43 +13,13 @@ import entite.Joueur;
 import entite.Nationalite;
 
 @Component
-public class JoueurDao {
-
-	EntityManagerFactory emf;
-	EntityManager em;
-	EntityTransaction tx;
-
-	private static JoueurDao instance;
-
-	/**
-	 * Dao en singleton, a degager avec Spring
-	 * 
-	 * @return l'instance unique du Dao
-	 */
-	public static JoueurDao getInstance() {
-		if (instance == null) {
-			instance = new JoueurDao();
-		}
-		return instance;
-	}
+public class JoueurDao extends DAO {
 
 	/**
 	 * Constructeur qui initialise le contexte de persistance
 	 */
-	public JoueurDao() {
-		emf = Persistence.createEntityManagerFactory("jpa");
-		em = emf.createEntityManager();
-		tx = em.getTransaction();
-		tx.begin();
-	}
-
-	/**
-	 * Fermeture factory d'entity manager
-	 * et fermeture entity manager
-	 */
-	public void closeAll() {
-		em.close();
-		emf.close();
+	private JoueurDao() {
+		super();
 	}
 
 	/**
@@ -67,27 +37,18 @@ public class JoueurDao {
 		em.persist(j);
 		return j;
 	}
-	
-	//test nationalite
-	public Nationalite getNationalite(String libelleNationalite) {
-		Nationalite n = new Nationalite(libelleNationalite);
-		em.persist(n);
-		return n;
-	}
 
-	/**
-	 * Synchronise le context de persistance avec la bdd
-	 * puis demarre une nouvelle transaction
-	 */
-	public void commit() {
-		tx.commit();
-		tx.begin();
+	// test nationalite
+	public Nationalite getNationalite(Integer idNationalite) {
+		Nationalite n = em.find(Nationalite.class, idNationalite);
+		return n;
 	}
 
 	/**
 	 * efface un Joueur
 	 * 
-	 * @param j : le Joueur
+	 * @param j
+	 *            : le Joueur
 	 */
 	public void remove(Joueur j) {
 		em.remove(j);
@@ -103,7 +64,8 @@ public class JoueurDao {
 	/**
 	 * Retourne un Joueur selectionne par son id
 	 * 
-	 * @param id : id Joueur recherche
+	 * @param id
+	 *            : id Joueur recherche
 	 * @return le Joueur
 	 */
 	public Joueur getFromId(int id) {

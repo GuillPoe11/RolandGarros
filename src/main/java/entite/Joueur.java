@@ -30,7 +30,7 @@ public class Joueur {
 	private Character sexeJoueur;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idNationalite")
+	@JoinColumn(name = "refIdNationalite")
 	private Nationalite refIdNationalite;
 
 	/*
