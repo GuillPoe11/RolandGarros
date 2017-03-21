@@ -16,11 +16,11 @@ public class CourtDao extends DAO {
 	}
 
 	/**
-	 * Creation d'une instance de Court et ajout au contexte de persistance.
+	 * Récupération d'un court dans la bdd à partir de son Id
 	 * 
-	 * @param nomCourt
-	 * @param numeroCourt
-	 * @return le Court cree
+	 * @param Integer
+	 *            idCourt
+	 * @return le court
 	 */
 
 	public Court recupCourtParId(Integer idCourt) {
@@ -31,6 +31,14 @@ public class CourtDao extends DAO {
 		closeAll();
 		return c;
 	}
+
+	/**
+	 * insertion d'un court dans la bdd
+	 * 
+	 * @param Court
+	 *            le court a ajouter
+	 * 
+	 */
 
 	public void insererCourt(Court c) {
 		openAll();
