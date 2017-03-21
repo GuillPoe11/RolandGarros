@@ -49,7 +49,7 @@ public class Match {
 	private String duree;
 
 	@Column(name = "score", length = 100, nullable = false, unique = false)
-	private String duree;
+	private String score;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idEquipe")
