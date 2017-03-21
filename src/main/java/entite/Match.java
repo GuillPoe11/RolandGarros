@@ -71,8 +71,6 @@ public class Match {
 	public Match() {
 
 	}
-	
-	
 
 	public Match(Integer idMatch, Court court, Joueur prenomJoueur, Joueur joueur2, Arbitre arbitre,
 			SousTournoi sousTournoi, Date date, String duree, Equipe equipe1, Equipe equipe2, int score1, int score2) {
@@ -90,8 +88,6 @@ public class Match {
 		this.score1 = score1;
 		this.score2 = score2;
 	}
-
-
 
 	/*
 	 * Getters/Setters
