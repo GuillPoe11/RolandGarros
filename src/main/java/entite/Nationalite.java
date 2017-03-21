@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@SuppressWarnings("unused")
 @Entity
 @Table(name = "nationalite")
 public class Nationalite {
@@ -17,7 +16,7 @@ public class Nationalite {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idNationalite;
 
-	@Column(name = "libelleNationalite", length = 100, nullable = false, unique = true)
+	@Column(name = "libelleNationalite", length = 150, nullable = false, unique = true)
 	private String libelleNationalite;
 
 	/*
@@ -51,6 +50,13 @@ public class Nationalite {
 
 	public void setLibelleNationalite(String libelleNationalite) {
 		this.libelleNationalite = libelleNationalite;
+	}
+	// fin getters/setters
+
+	
+	@Override
+	public String toString() {
+		return "Nationalite [idNationalite=" + idNationalite + ", libelleNationalite=" + libelleNationalite + "]";
 	}
 
 }

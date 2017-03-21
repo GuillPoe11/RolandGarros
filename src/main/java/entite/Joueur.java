@@ -31,7 +31,7 @@ public class Joueur {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "refIdNationalite")
-	private Nationalite refIdNationalite;
+	private Nationalite nationalite;
 
 	/*
 	 * Constructeurs
@@ -40,12 +40,12 @@ public class Joueur {
 
 	}
 
-	public Joueur(String nomJoueur, String prenomJoueur, Character sexeJoueur, Nationalite refIdNationalite) {
+	public Joueur(String nomJoueur, String prenomJoueur, Character sexeJoueur, Nationalite nationalite) {
 
 		this.nomJoueur = nomJoueur;
 		this.prenomJoueur = prenomJoueur;
 		this.sexeJoueur = sexeJoueur;
-		this.refIdNationalite = refIdNationalite;
+		this.nationalite = nationalite;
 	}
 
 	/*
@@ -83,12 +83,12 @@ public class Joueur {
 		this.sexeJoueur = sexeJoueur;
 	}
 
-	public Nationalite getRefIdNationalite() {
-		return refIdNationalite;
+	public Nationalite getNationalite() {
+		return nationalite;
 	}
 
-	public void setRefIdNationalite(Nationalite refIdNationalite) {
-		this.refIdNationalite = refIdNationalite;
+	public void setNationalite(Nationalite nationalite) {
+		this.nationalite = nationalite;
 	}
 
 }
