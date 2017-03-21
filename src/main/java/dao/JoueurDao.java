@@ -2,90 +2,77 @@ package dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-
 import org.springframework.stereotype.Component;
 
 import entite.Joueur;
-import entite.Nationalite;
 
 @Component
 public class JoueurDao extends DAO {
 
 	/**
-	 * Constructeur qui initialise le contexte de persistance
+	 * Constructeur
 	 */
 	private JoueurDao() {
 		super();
 	}
 
 	/**
-	 * Creation d'une instance de Joueur et ajout au contexte de persistance.
+	 * Récupération d'un joueur de la base de données par son id
 	 * 
-	 * @param nomJoueur
-	 * @param prenomJoueur
-	 * @param sexeJoueur
-	 * @param refIdNationalite
-	 * @return le Joueur cree
+	 * @param idJoueur
+	 *            l'identifiant du joueur en base de données
+	 * @return le Joueur correspondant
 	 */
-
-	public Joueur getJoueur(String nomJoueur, String prenomJoueur, Character sexeJoueur, Nationalite refIdNationalite) {
+	public Joueur recupJoueurParId(Integer idJoueur) {
 		openAll();
 		tx.begin();
-		Joueur j = new Joueur(nomJoueur, prenomJoueur, sexeJoueur, refIdNationalite);
-		em.persist(j);
+		Joueur j = em.find(Joueur.class, idJoueur);
 		tx.commit();
 		closeAll();
 		return j;
 	}
 
-	// test nationalite
-	public Nationalite getNationalite(Integer idNationalite) {
+	/**
+	 * Récupération de la liste des joueurs dans la base de données
+	 * 
+	 * @return La liste des joueurs
+	 */
+	public List<Joueur> recupTousLesJoueurs() {
 		openAll();
 		tx.begin();
-		Nationalite n = em.find(Nationalite.class, idNationalite);
+		@SuppressWarnings("unchecked")
+		List<Joueur> lstJoueurs = em.createQuery("SELECT j FROM joueur j ORDER BY j.nomJoueur ASC").getResultList();
 		tx.commit();
 		closeAll();
-		return n;
+		return lstJoueurs;
 	}
 
-	public void insererJoueur(Joueur j){
+	/**
+	 * Insertion d'une instance de joueur en base de données
+	 * 
+	 * @param j
+	 *            Le joueur à insérer
+	 */
+	public void insererJoueur(Joueur j) {
 		openAll();
 		tx.begin();
 		em.persist(j);
 		tx.commit();
 		closeAll();
 	}
-	
+
 	/**
-	 * efface un Joueur
+	 * Efface un Joueur
 	 * 
 	 * @param j
-	 *            : le Joueur
+	 *            Le Joueur
 	 */
 	public void remove(Joueur j) {
+		openAll();
+		tx.begin();
 		em.remove(j);
-	}
-
-	/**
-	 * Retourne le contenu de la tableBdd joueur
-	 */
-	public List<Joueur> getAll() {
-		return em.createQuery("SELECT j FROM joueur j ORDER BY j.nomJoueur ASC").getResultList();
-	}
-
-	/**
-	 * Retourne un Joueur selectionne par son id
-	 * 
-	 * @param id
-	 *            : id Joueur recherche
-	 * @return le Joueur
-	 */
-	public Joueur getFromId(int id) {
-		return em.find(Joueur.class, id);
+		tx.commit();
+		closeAll();
 	}
 
 	/**
