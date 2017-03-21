@@ -76,5 +76,14 @@ public class SousTournoi {
 	public void setGenreSousTournoi(Character genreSousTournoi) {
 		this.genreSousTournoi = genreSousTournoi;
 	}
+	//fin getters/Setters
+
+	@Override
+	public String toString() {
+		return "SousTournoi [idSousTournoi=" + idSousTournoi + ", nomSousTournoi=" + nomSousTournoi
+				+ ", nbJoueursSousTournoi=" + nbJoueursSousTournoi + ", genreSousTournoi=" + genreSousTournoi + "]";
+	}
+	
+	
 
 }
