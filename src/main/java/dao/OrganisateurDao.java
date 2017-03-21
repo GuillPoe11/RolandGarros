@@ -38,19 +38,24 @@ public class OrganisateurDao extends DAO {
 	 *            : l'organisateur
 	 */
 	public void effacer(Organisateur o) {
+		openAll();
+		tx.begin();
 		em.remove(o);
+		tx.commit();
+		closeAll();
 	}
 
 	/**
 	 * Retourne le contenu de la tableBdd organisateur
 	 */
-	public List<Organisateur> recupTout() {
+	@SuppressWarnings("unchecked")
+	public List<Organisateur> recupTousOrganisateurs() {
 		openAll();
 		tx.begin();
-		List<Organisateur> result = em.createQuery("SELECT j FROM organisateur j ORDER BY j.loginOrganisateur ASC")
-				.getResultList();
+		List<Organisateur> lstOrganisateurs = em
+				.createQuery("SELECT o FROM organisateur o ORDER BY o.loginOrganisateur ASC").getResultList();
 		closeAll();
-		return result;
+		return lstOrganisateurs;
 	}
 
 	/**
@@ -61,7 +66,11 @@ public class OrganisateurDao extends DAO {
 	 * @return l'organisateur
 	 */
 	public Organisateur recupOrganisateurParId(int id) {
-		return em.find(Organisateur.class, id);
+		openAll();
+		tx.begin();
+		Organisateur O = em.find(Organisateur.class, id);
+		closeAll();
+		return O;
 	}
 
 	/**
@@ -72,7 +81,7 @@ public class OrganisateurDao extends DAO {
 	public String tableToString() {
 		StringBuffer result = new StringBuffer();
 		result.append("Contenu de la table organisateur :\n");
-		for (Object p : em.createQuery("SELECT j FROM organisateur j ORDER BY j.loginOrganisateur ASC")
+		for (Object p : em.createQuery("SELECT o FROM organisateur o ORDER BY o.loginOrganisateur ASC")
 				.getResultList()) {
 			result.append(p);
 			result.append("\n");

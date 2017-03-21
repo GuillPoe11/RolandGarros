@@ -44,11 +44,8 @@ public class Match {
 	@Column(name = "date", nullable = false, unique = false)
 	private Date date;
 
-	@Column(name = "duree", length = 100, nullable = false, unique = false)
-	private String duree;
-
-	@Column(name = "score", length = 100, nullable = false, unique = false)
-	private String score;
+	@Column(name = "duree", nullable = true, unique = false)
+	private int duree;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "refIdEquipe1")
@@ -58,10 +55,10 @@ public class Match {
 	@JoinColumn(name = "refIdEquipe2")
 	private Equipe equipe2;
 
-	@Column(name = "score1", nullable = false, unique = false)
+	@Column(name = "score1", nullable = true, unique = false)
 	private int score1;
 
-	@Column(name = "score2", nullable = false, unique = false)
+	@Column(name = "score2", nullable = true, unique = false)
 	private int score2;
 
 	/*
@@ -72,7 +69,7 @@ public class Match {
 	}
 
 	public Match(Integer idMatch, Court court, Joueur joueur1, Joueur joueur2, Arbitre arbitre, SousTournoi sousTournoi,
-			Date date, String duree, Equipe equipe1, Equipe equipe2, int score1, int score2) {
+			Date date, int duree, Equipe equipe1, Equipe equipe2, int score1, int score2) {
 		super();
 		this.idMatch = idMatch;
 		this.court = court;
@@ -148,20 +145,12 @@ public class Match {
 		this.date = date;
 	}
 
-	public String getDuree() {
+	public int getDuree() {
 		return duree;
 	}
 
-	public void setDuree(String duree) {
+	public void setDuree(int duree) {
 		this.duree = duree;
-	}
-
-	public String getScore() {
-		return score;
-	}
-
-	public void setScore(String score) {
-		this.score = score;
 	}
 
 	public Equipe getEquipe1() {
@@ -194,6 +183,17 @@ public class Match {
 
 	public void setScore2(int score2) {
 		this.score2 = score2;
+	}
+
+	/*
+	 * TO string
+	 */
+
+	@Override
+	public String toString() {
+		return "Match [idMatch=" + idMatch + ", court=" + court + ", joueur1=" + joueur1 + ", joueur2=" + joueur2
+				+ ", arbitre=" + arbitre + ", sousTournoi=" + sousTournoi + ", date=" + date + ", duree=" + duree
+				+ ", equipe1=" + equipe1 + ", equipe2=" + equipe2 + ", score1=" + score1 + ", score2=" + score2 + "]";
 	}
 
 }

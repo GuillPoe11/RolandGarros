@@ -37,7 +37,11 @@ public class MatchDao extends DAO {
 	 *            : match
 	 */
 	public void effacer(Match o) {
+		openAll();
+		tx.begin();
 		em.remove(o);
+		tx.commit();
+		closeAll();
 	}
 
 	/**
@@ -58,7 +62,7 @@ public class MatchDao extends DAO {
 		matchModifier.setEquipe2(o.getEquipe2());
 		matchModifier.setJoueur1(o.getJoueur1());
 		matchModifier.setJoueur2(o.getJoueur2());
-		matchModifier.setScore(o.getScore());
+		matchModifier.setScore1(o.getScore1());
 		matchModifier.setScore2(o.getScore2());
 		matchModifier.setSousTournoi(o.getSousTournoi());
 		em.persist(matchModifier);
@@ -69,12 +73,13 @@ public class MatchDao extends DAO {
 	/**
 	 * Retourne le contenu de la tableBdd match
 	 */
+	@SuppressWarnings("unchecked")
 	public List<Match> recupTout() {
 		openAll();
 		tx.begin();
-		List<Match> result = em.createQuery("SELECT j FROM match j ORDER BY j.date DESC").getResultList();
+		List<Match> lstMatchs = em.createQuery("SELECT m FROM match m ORDER BY m.date DESC").getResultList();
 		closeAll();
-		return result;
+		return lstMatchs;
 	}
 
 	/**
@@ -85,7 +90,11 @@ public class MatchDao extends DAO {
 	 * @return match
 	 */
 	public Match recupMatchParId(int id) {
-		return em.find(Match.class, id);
+		openAll();
+		tx.begin();
+		Match m = em.find(Match.class, id);
+		closeAll();
+		return m;
 	}
 
 	/**
@@ -96,7 +105,7 @@ public class MatchDao extends DAO {
 	public String tableToString() {
 		StringBuffer result = new StringBuffer();
 		result.append("Contenu de la table Match :\n");
-		for (Object p : em.createQuery("SELECT j FROM match j ORDER BY j.date DESC").getResultList()) {
+		for (Object p : em.createQuery("SELECT m FROM match m ORDER BY m.date DESC").getResultList()) {
 			result.append(p);
 			result.append("\n");
 		}
