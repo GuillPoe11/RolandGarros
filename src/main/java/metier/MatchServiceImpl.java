@@ -1,7 +1,10 @@
 package metier;
 
 import java.util.Date;
+
 import java.util.List;
+
+import org.springframework.stereotype.Component;
 
 import dao.MatchDao;
 import entite.Arbitre;
@@ -11,6 +14,7 @@ import entite.Joueur;
 import entite.Match;
 import entite.SousTournoi;
 
+@Component
 public class MatchServiceImpl implements MatchService {
 
 	private MatchDao matchDao;
@@ -43,7 +47,7 @@ public class MatchServiceImpl implements MatchService {
 
 	@Override
 	public List<Match> recupererTousLesMatchsPourUnSousTournoi(SousTournoi sousTournoi) {
-		
+
 		return matchDao.recupTousMatchsPourUnSousTournoi(sousTournoi);
 	}
 

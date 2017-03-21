@@ -25,8 +25,8 @@ public interface ArbitreService {
 	 * (fonction pour ajouter un arbitre)
 	 * 
 	 * @param nomArbitre,
-	 *            prenomArbitre
-	 * @return
+	 * @param prenomArbitre
+	 * 
 	 */
 	public void insererArbitre(String nomArbitre, String prenomArbitre);
 

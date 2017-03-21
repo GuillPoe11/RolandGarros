@@ -8,14 +8,14 @@ public interface CourtService {
 
 	/**
 	 * Fonction pour récupérer tout les terrains
-	 * @return
+	 * @return List<Court>
 	 */
 	public List<Court> recupTousCourts();
 
 	/**
 	 * Fonction de récupération du terrain par id
 	 * @param id
-	 * @return
+	 * @return Court
 	 */
 	public Court recupCourtParId(int id);
 

@@ -3,11 +3,13 @@ package metier;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import dao.JoueurDao;
 import entite.Joueur;
 import entite.Nationalite;
 
+@Component
 public class JoueurServiceImpl implements JoueurService {
 
 	@Autowired

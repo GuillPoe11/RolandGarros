@@ -25,8 +25,8 @@ public interface OrganisateurService {
 	 * (fonction pour ajouter un Organisateur)
 	 * 
 	 * @param loginOrganisateur,
-	 *            passwordOrganisateur
-	 * @return
+	 * @param passwordOrganisateur
+	 * 
 	 */
 	public void insererOrganisateur(String loginOrganisateur, String passwordOrganisateur);
 

@@ -6,7 +6,7 @@ public interface LoginService {
 	 * (fonction pour la connexion de l'organisateur)
 	 * 
 	 * @param loginOrganisateur,
-	 *            passwordOrganisateur
+	 * @param passwordOrganisateur
 	 * 
 	 * @return boolean
 	 */
