@@ -33,17 +33,33 @@ public class JoueurDao extends DAO {
 	 */
 
 	public Joueur getJoueur(String nomJoueur, String prenomJoueur, Character sexeJoueur, Nationalite refIdNationalite) {
+		openAll();
+		tx.begin();
 		Joueur j = new Joueur(nomJoueur, prenomJoueur, sexeJoueur, refIdNationalite);
 		em.persist(j);
+		tx.commit();
+		closeAll();
 		return j;
 	}
 
 	// test nationalite
 	public Nationalite getNationalite(Integer idNationalite) {
+		openAll();
+		tx.begin();
 		Nationalite n = em.find(Nationalite.class, idNationalite);
+		tx.commit();
+		closeAll();
 		return n;
 	}
 
+	public void insererJoueur(Joueur j){
+		openAll();
+		tx.begin();
+		em.persist(j);
+		tx.commit();
+		closeAll();
+	}
+	
 	/**
 	 * efface un Joueur
 	 * 

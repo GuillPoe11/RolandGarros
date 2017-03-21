@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import dao.JoueurDao;
-import dao.PersonneDAO;
 import entite.Joueur;
 import entite.Nationalite;
-import entite.Personne;
 
 @Component
 public class TestService {
@@ -54,12 +52,12 @@ public class TestService {
 
 		// creation de Joueurs
 		System.out.println("creation de joueurs");
-		Joueur j1 = jDao.getJoueur("cretin", "lapin", 'M', n1);
-		Joueur j2 = jDao.getJoueur("mario", "super", 'M', n1);
-		Joueur j3 = jDao.getJoueur("moon", "Sailor", 'F', n1);
+		Joueur j1 = new Joueur("lapin", "cretin", 'M', n1);
+//		Joueur j2 = jDao.getJoueur("mario", "super", 'M', n1);
+//		Joueur j3 = jDao.getJoueur("moon", "Sailor", 'F', n1);
+		
+		jDao.insererJoueur(j1);
 
-		jDao.commit();
-		jDao.closeAll();
 	}
 	
 	

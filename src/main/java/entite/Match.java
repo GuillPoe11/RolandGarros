@@ -26,11 +26,11 @@ public class Match {
 	private Court court;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idJoueur")
+	@JoinColumn(name = "refIdJoueur1")
 	private Joueur prenomJoueur;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idJoueur")
+	@JoinColumn(name = "refIdJoueur2")
 	private Joueur joueur2;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -51,11 +51,11 @@ public class Match {
 	private String score;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idEquipe")
+	@JoinColumn(name = "refIdEquipe1")
 	private Equipe equipe1;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idEquipe")
+	@JoinColumn(name = "refIdEquipe2")
 	private Equipe equipe2;
 
 	@Column(name = "score1", nullable = false, unique = false)
