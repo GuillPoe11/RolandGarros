@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import dao.JoueurDao;
+import dao.NationaliteDao;
 import entite.Joueur;
 import entite.Nationalite;
 
