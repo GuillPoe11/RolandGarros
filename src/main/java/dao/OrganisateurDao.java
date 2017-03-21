@@ -10,7 +10,7 @@ import entite.Organisateur;
 public class OrganisateurDao extends DAO {
 
 	/**
-	 * Constructeur
+	 * Constructeur  
 	 */
 	private OrganisateurDao() {
 		super();
