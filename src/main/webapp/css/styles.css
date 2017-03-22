@@ -1,0 +1,186 @@
+@font-face {
+	font-family: "rg_reg";
+	src: url('fonts/ufonts.com_expressway-rg.ttf');
+}
+
+body{
+
+   background: url(img/terrain.jpg) no-repeat center center fixed; 
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+}
+
+.container {
+    width: 90%;
+}
+
+#bs-example-navbar-collapse-1{
+	width: 70%;
+	margin-right: auto;
+	margin-left: auto;
+	font-weight: 700;
+}
+
+.navbar {
+    background-color: none !important;
+    border-color: none !important;
+}
+
+.navbar-fixed-top{
+	position: static;
+}
+
+#logo{
+	float: left;
+	margin-top: 10px;
+}
+
+#headerLogo{
+    color: #FFF;
+    font-family: 'Lato', sans-serif; 
+    float: none;
+    float: left;
+    width: 250px;
+    text-align: center;
+    border-right: 1px solid #FFF;
+    margin-top: 20px;
+}
+
+#title{
+	font-weight: 400;
+    font-size: 30px;
+}
+
+#ariane{
+	color: #155040;
+	margin-left: 20px;
+	float: left;
+	margin-top: 25px;
+	line-height:100px;
+	text-transform: uppercase; 
+}
+
+
+.container-1 input#search{
+  width: 200px;
+  height: 30px;
+  border: 1px solid #FFF;
+  background-color: rgba(255,255,255,0.1);
+  font-size: 10pt;
+  float: right;
+  color: #FFF;
+  padding-left: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.lienNav{
+	width: 100px;
+	height: 50px;
+	background-color: rgba(21,80,64,0.7);
+	margin: 10px;
+	text-align: center;
+	color: #FFF;
+	text-transform: uppercase;
+}
+
+a:hover, a:focus {
+    color: #155040;
+}
+
+.admin{
+	background-color: #C76131;
+}
+
+
+header {
+   
+    text-align: center;
+    color: #fff;
+}
+
+
+header .intro-text {
+    padding-top: 100px;
+    padding-bottom: 200px;
+}
+
+header .intro-text .intro-lead-in {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 25px;
+    font-size: 50px;
+
+}
+
+header .intro-text .intro-heading {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 75px;
+    line-height: 75px;
+    margin-bottom: 50px;
+}
+
+footer{
+	background-color: #155040;
+	color: #FFF;
+	line-height: 40px;
+	bottom: 0px;
+	position: fixed;
+	width: 100%;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+.container {
+    width:600px;
+    border: 1px solid red;
+}
+
+header .intro-text {
+    padding-top: 200px;
+    width: 100%;
+    height: auto;
+}
+
+.collapse{
+	display: block;
+}
+
+}
+
+
+@media screen and (max-width: 600px) {
+.container {
+    width:100%;
+}
+
+
+
+header .intro-text {
+    padding-top: 200px;
+    width: 100%;
+    height: auto;
+    font-size: 30px;
+}
+
+
+
+}
