@@ -24,27 +24,25 @@ public class JoueurAction extends ActionSupport {
 	private NationaliteService nationaliteService;
 
 	private Joueur joueur;
-	
+
 	private Integer idNationalite;
 	private List<Nationalite> lstNationalites;
 	private Map<Integer, String> mapNationalites;
 
+	private String message;
+
 	public JoueurAction(@Autowired NationaliteService nationaliteService) {
 		lstNationalites = nationaliteService.recupToutesNationalites();
-		System.out.println(lstNationalites);
 		mapNationalites = listToMap(nationaliteService.recupToutesNationalites());
-		System.out.println(mapNationalites.get(1));
 	}
 
 	public String creerJoueur() {
-		System.out.println(lstNationalites);
-		System.out.println(idNationalite);
 		Nationalite nationalite = lstNationalites.get(idNationalite);
-		joueurService.creerJoueur(joueur.getNomJoueur(), joueur.getPrenomJoueur(), joueur.getSexeJoueur(),
-				nationalite);
+		joueurService.creerJoueur(joueur.getNomJoueur(), joueur.getPrenomJoueur(), joueur.getSexeJoueur(), nationalite);
+		message = "Le joueur " + joueur.getPrenomJoueur() + " " + joueur.getNomJoueur() + " a été créé"; 
 		return "success";
 	}
-	
+
 	private Map<Integer, String> listToMap(List<Nationalite> list) {
 		Map<Integer, String> map = new HashMap<Integer, String>();
 		Integer i = 0;
@@ -77,6 +75,14 @@ public class JoueurAction extends ActionSupport {
 
 	public void setIdNationalite(Integer idNationalite) {
 		this.idNationalite = idNationalite;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 }

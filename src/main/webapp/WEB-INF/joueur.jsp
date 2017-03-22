@@ -18,6 +18,7 @@
 		<s:form id="contact" action="AjouterJoueur">
 			<h3>Ajouter un joueur</h3>
 			<h4>Remplissez le formulaire pour ajouter un joueur au tournoi</h4>
+			<s:property value="message"/>
 			<fieldset>
 				<s:textfield name="joueur.nomJoueur" label="Nom du joueur" />
 			</fieldset>

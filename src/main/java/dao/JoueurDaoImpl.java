@@ -46,7 +46,7 @@ public class JoueurDaoImpl extends DAO implements JoueurDao {
 		openAll();
 		tx.begin();
 		@SuppressWarnings("unchecked")
-		List<Joueur> lstJoueurs = em.createQuery("SELECT j FROM joueur j ORDER BY j.nomJoueur ASC").getResultList();
+		List<Joueur> lstJoueurs = em.createQuery("SELECT j FROM Joueur j ORDER BY j.nomJoueur ASC").getResultList();
 		tx.commit();
 		closeAll();
 		return lstJoueurs;

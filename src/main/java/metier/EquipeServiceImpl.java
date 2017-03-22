@@ -2,6 +2,7 @@ package metier;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import dao.EquipeDao;
@@ -11,6 +12,7 @@ import entite.Joueur;
 @Component
 public class EquipeServiceImpl implements EquipeService {
 	
+	@Autowired
 	private EquipeDao equipeDao;
 
 	public EquipeServiceImpl() {

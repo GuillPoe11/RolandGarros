@@ -15,20 +15,18 @@
 
 	<!-- Form -->
 	<div class="container_form">
-		<s:form id="contact" action="ArbitreAction">
+		<s:form id="contact" action="AjouterArbitre">
 			<h3>Inscription des arbitres (de chaise)</h3>
 			<fieldset>
-				<s:textfield placeholder="Nom arbitre"
-					value="#{ArbitreAction.nom} type=" text" tabindex="1" required
-					autofocus></s:textfield>
+				<s:textfield 
+					name="arbitre.nomArbitre" label="Nom de l'arbitre" ></s:textfield>
 			</fieldset>
 			<fieldset>
-				<s:textfield placeholder="Prenom arbitre"
-					value="#{ArbitreAction.prenom} type=" text" tabindex="2" required></s:textfield>
+				<s:textfield 
+					name="arbitre.prenomArbitre" label="Prénom de l'arbitre"></s:textfield>
 			</fieldset>
 			<fieldset>
-				<s:submit name="submit" method="submit" type="submit"
-					id="contact-submit">Submit</s:submit>
+				<s:submit method="submite" value="Valider"/>
 			</fieldset>
 		</s:form>
 	</div>
