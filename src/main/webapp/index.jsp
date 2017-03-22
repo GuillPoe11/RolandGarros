@@ -1,23 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Roland Garros</title>
+<meta name="description" content="">
+
+<jsp:include page="WEB-INF/head.jspf" />
+</head>
 <body>
-	<h2>Hello World!</h2>
-	<p>Guigui t'es le meilleur !</p>
-	<p>Nop il pompe sur Arnaud</p>
-	<p>${nom}</p>
-	<s:form action="Test">
-		<fieldset>
-			<s:submit method="test" value="Test" theme="simple" />
-		</fieldset>
-		<fieldset>
-			<s:submit method="ajout" value="Ajout" theme="simple" />
-		</fieldset>
-		
-		<fieldset>
-			<s:submit method="testG" value="LancerTestG"/>
-		</fieldset>
-	</s:form>
+
+	<jsp:include page="WEB-INF/menu.jspf" />
+
+	<!-- Form -->
+	<div class="container_form">
+		<form id="contact" action="" method="post">
+			<h3>Colorlib Contact Form</h3>
+			<h4>Contact us for custom quote</h4>
+			<fieldset>
+				<input placeholder="Your name" type="text" tabindex="1" required
+					autofocus>
+			</fieldset>
+			<fieldset>
+				<input placeholder="Your Email Address" type="email" tabindex="2"
+					required>
+			</fieldset>
+			<fieldset>
+				<input placeholder="Your Phone Number (optional)" type="tel"
+					tabindex="3" required>
+			</fieldset>
+			<fieldset>
+				<input placeholder="Your Web Site (optional)" type="url"
+					tabindex="4" required>
+			</fieldset>
+			<fieldset>
+				<textarea placeholder="Type your message here...." tabindex="5"
+					required></textarea>
+			</fieldset>
+			<fieldset>
+				<button name="submit" type="submit" id="contact-submit"
+					data-submit="...Sending">Submit</button>
+			</fieldset>
+		</form>
+	</div>
+	<!--  @end Form -->
+
+	<jsp:include page="WEB-INF/footer.jspf" />
+
 </body>
 </html>
