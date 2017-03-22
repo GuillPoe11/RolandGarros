@@ -1,13 +1,6 @@
-div {
-	border: 1px solid #000;
-}
-
 .container-form {
-	max-width: 480px;
-	width: 100%;
 	color: #000;
 	float: left;
-	
 }
 
 #contact {
