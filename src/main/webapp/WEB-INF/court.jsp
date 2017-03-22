@@ -1,12 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="/struts-tags" prefix="s"%>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Roland Garros - Court</title>
+<meta name="description" content="">
+
+<jsp:include page="head.jspf" />
 </head>
 <body>
+
+	<jsp:include page="menu.jspf" />
+
+	<!-- Form -->
+	<div class="container_form">
+		<s:form action="AjouterCourt">
+			<s:textfield name="nomCourt" label="Nom du court : " />
+			<br></br>
+			<s:textfield name="numeroCourt" label="Numero du court : " />
+			<br></br>
+			<fieldset>
+				<s:submit method="ajouterCourt" value="Ajouter un court" />
+			</fieldset>
+		</s:form>
+		<a href="<s:url value="../index.jsp"/>">Retour au menu</a>
+	</div>
+	<!--  @end Form -->
+
+	<jsp:include page="footer.jspf" />
 
 </body>
 </html>

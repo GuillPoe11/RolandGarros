@@ -53,8 +53,6 @@ public class CourtAction extends ActionSupport{
 		this.numeroCourt = numeroCourt;
 	}
 	
-	
-	
 	public String ajouterCourt() {
 
 		System.out.println("Essai ajout d'un court");
