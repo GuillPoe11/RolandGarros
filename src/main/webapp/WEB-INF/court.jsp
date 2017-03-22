@@ -14,7 +14,10 @@
 	<jsp:include page="menu.jspf" />
 	<div class="central-main-container">
 		<!-- Form -->
-		<div class="container-form background">
+	<div class="row">
+	
+
+		<div class="container-form background col-md-5 col-md-offset-1">
 			<h1 class="<s:property value="typeMsgForm" />">
 				<s:property value="msgForm" />
 			</h1>
@@ -31,9 +34,10 @@
 			</s:form>
 
 		</div>
+		
 
 		<!--  @end Form -->
-		<div class="container-liste background">
+		<div class="container-liste background col-md-4 col-md-offset-1">
 			<table border="1">
 				<tr>
 					<td>Nom du court</td>
@@ -50,6 +54,7 @@
 				</s:iterator>
 			</table>
 
+		</div>
 		</div>
 	</div>
 	<br class="clear"/>
