@@ -11,7 +11,7 @@ public class ArbitreAction extends ActionSupport {
 
 	@Autowired
 	ArbitreService service;
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 77971771589810L;
 	private String nom;
 	private String prenom;
 
