@@ -22,7 +22,7 @@
 			<li><a class="lienNav" href=<s:url action="ConsulterResultat"></s:url>>Résultats</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a class="lienNav admin" href="#">Admin</a></li>
+			<li><a class="lienNav admin" href=<s:url action="Connexion"></s:url>>Admin</a></li>
 		</ul>
 	</div>
 </nav>
