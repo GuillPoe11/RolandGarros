@@ -85,6 +85,11 @@ public class CourtAction extends ActionSupport {
 	}
 	//fin getters/setters
 		
+	
+	/**
+	 * ajouter un court
+	 * @return success
+	 */
 	public String ajouterCourt() {
 
 		System.out.println("Essai ajout d'un court");
