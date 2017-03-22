@@ -21,7 +21,7 @@
 			<h1 class="<s:property value="typeMsgForm" />">
 				<s:property value="msgForm" />
 			</h1>
-			<s:form action="AjouterCourt" id="contact">
+			<s:form action="AjouterCourt" id="contact" cssClass="form-vertical" theme="simple">
 				<h3>Enregistrer un court</h3>
 				<s:textfield name="nomCourt" label="Nom du court " />
 				<br></br>
@@ -38,7 +38,7 @@
 
 		<!--  @end Form -->
 		<div class="container-liste background col-md-4 col-md-offset-1">
-			<table border="1">
+			<table class="table table-bordered table-hover">
 				<tr>
 					<td>Nom du court</td>
 					<td>Numéro du court</td>
