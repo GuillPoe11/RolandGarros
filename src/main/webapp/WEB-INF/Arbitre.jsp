@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,21 +15,22 @@
 
 	<!-- Form -->
 	<div class="container_form">
-		<form id="contact" action="ArbitreAction" method="post">
-			<h3>Inscription des arbitres (de chaises)</h3>
+		<s:form id="contact" action="ArbitreAction">
+			<h3>Inscription des arbitres (de chaise)</h3>
 			<fieldset>
-				<input placeholder="Nom arbitre" value="#{ArbitreAction.nom} type="text" tabindex="1" required
-					autofocus>
+				<s:textfield placeholder="Nom arbitre"
+					value="#{ArbitreAction.nom} type=" text" tabindex="1" required
+					autofocus></s:textfield>
 			</fieldset>
 			<fieldset>
-				<input placeholder="Prenom arbitre" value="#{ArbitreAction.prenom} type="email" tabindex="2"
-					required>
+				<s:textfield placeholder="Prenom arbitre"
+					value="#{ArbitreAction.prenom} type=" text" tabindex="2" required></s:textfield>
 			</fieldset>
 			<fieldset>
-				<button name="submit" type="submit" id="contact-submit"
-					data-submit="...Sending">Submit</button>
+				<s:submit name="submit" method="submit" type="submit"
+					id="contact-submit">Submit</s:submit>
 			</fieldset>
-		</form>
+		</s:form>
 	</div>
 	<!--  @end Form -->
 
