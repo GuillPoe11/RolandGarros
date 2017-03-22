@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:include page="/WEB-INF/head.jspf" />
+<jsp:include page="head.jspf" />
 <body>
 
-	<jsp:include page="/WEB-INF/menu.jspf" />
+	<jsp:include page="menu.jspf" />
 
 	<!-- Form -->
 	<div class="container_form">
@@ -38,7 +38,7 @@
 	</div>
 	<!--  @end Form -->
 
-	<jsp:include page="/WEB-INF/footer.jspf" />
+	<jsp:include page="footer.jspf" />
 
 </body>
 </html>
