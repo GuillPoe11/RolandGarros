@@ -22,7 +22,7 @@ public interface MatchService {
 	 * @param joueur2
 	 *            : le deuxième Joueur de l'équipe concerné
 	 * @param arbitre
-	 *            : l'Arbitre utilisé
+	 *            : l'AjouterArbitre utilisé
 	 * @param sousTournoi
 	 *            :le SousTournoi concerné
 	 * @param dateMatch

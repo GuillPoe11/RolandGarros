@@ -11,7 +11,7 @@ public interface ArbitreDao {
 	 * 
 	 * @param idArbitre
 	 *            l'identifiant de l'arbitre en base de données
-	 * @return L'Arbitre correspondant
+	 * @return L'AjouterArbitre correspondant
 	 */
 	public Arbitre recupArbitreParId(Integer idArbitre);
 

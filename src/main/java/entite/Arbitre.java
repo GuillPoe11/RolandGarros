@@ -63,7 +63,7 @@ public class Arbitre {
 
 	@Override
 	public String toString() {
-		return "Arbitre [idArbitre=" + idArbitre + ", nomArbitre=" + nomArbitre + ", prenomArbitre=" + prenomArbitre
+		return "AjouterArbitre [idArbitre=" + idArbitre + ", nomArbitre=" + nomArbitre + ", prenomArbitre=" + prenomArbitre
 				+ "]";
 	}
 

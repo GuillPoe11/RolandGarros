@@ -20,7 +20,7 @@ public class ArbitreDaoImpl extends DAO implements ArbitreDao {
 	 * 
 	 * @param idArbitre
 	 *            l'identifiant de l'arbitre en base de données
-	 * @return L'Arbitre correspondant
+	 * @return L'AjouterArbitre correspondant
 	 */
 	@Override
 	public Arbitre recupArbitreParId(Integer idArbitre) {
