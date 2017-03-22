@@ -84,8 +84,7 @@ public class CourtAction extends ActionSupport {
 		this.lstCourts = lstCourts;
 	}
 	//fin getters/setters
-	
-	
+		
 	public String ajouterCourt() {
 
 		System.out.println("Essai ajout d'un court");
@@ -101,7 +100,6 @@ public class CourtAction extends ActionSupport {
 			typeMsgForm = "alert alert-success";
 			System.out.println("Ajout court ok");
 		}
-
 		return "success";
 	}
 
