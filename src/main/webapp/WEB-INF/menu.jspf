@@ -18,11 +18,11 @@
 
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav navbar-left">
-			<li><a class="lienNav" href=<s:url action="Accueil"></s:url>>Home</a></li>
-			<li><a class="lienNav" href=<s:url action="ConsulterResultat"></s:url>>Résultats</a></li>
+			<li><a class="lienNav" href="Accueil.action">Home</a></li>
+			<li><a class="lienNav" href="ConsulterResultat.action">R&eacute;sultats</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a class="lienNav admin" href=<s:url action="Connexion"></s:url>>Admin</a></li>
+			<li><a class="lienNav admin" href="Connexion.action">Admin</a></li>
 		</ul>
 	</div>
 </nav>
