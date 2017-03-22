@@ -9,27 +9,30 @@ import com.opensymphony.xwork2.ActionSupport;
 import entite.Court;
 import metier.CourtService;
 
-public class CourtAction extends ActionSupport{
-	
+public class CourtAction extends ActionSupport {
+
 	private static final long serialVersionUID = 2446885132270963769L;
 
 	@Autowired
 	private CourtService cService;
-	
-	//private Court court;
-	
+
+	// private Court court;
+
 	private String nomCourt;
 	private String numeroCourt;
-	
-	private List<Court> listCourts = cService.recupTousCourts();
-	
+
+	private String msgForm;
+	private String typeMsgForm; // alert alert-success alert-warning
+
+	private List<Court> lstCourts;
+
 	/*
 	 * Constructeur
 	 */
-	public CourtAction()
-	{
-		
+	public CourtAction(@Autowired CourtService cService) {
+		 lstCourts = cService.recupTousCourts();
 	}
+
 	/*
 	 * Getters / Setters
 	 */
@@ -56,38 +59,50 @@ public class CourtAction extends ActionSupport{
 	public void setNumeroCourt(String numeroCourt) {
 		this.numeroCourt = numeroCourt;
 	}
+
+	public String getMsgForm() {
+		return msgForm;
+	}
+
+	public void setMsgForm(String msgForm) {
+		this.msgForm = msgForm;
+	}
+
+	public String getTypeMsgForm() {
+		return typeMsgForm;
+	}
+
+	public void setTypeMsgForm(String typeMsgForm) {
+		this.typeMsgForm = typeMsgForm;
+	}
+
+	public List<Court> getLstCourts() {
+		return lstCourts;
+	}
+
+	public void setLstCourts(List<Court> lstCourts) {
+		this.lstCourts = lstCourts;
+	}
+	//fin getters/setters
+	
 	
 	public String ajouterCourt() {
 
 		System.out.println("Essai ajout d'un court");
+		if ("".equals(nomCourt)) {
+			msgForm = "Le nom du court ne peut-être vide";
+			typeMsgForm = "alert alert-danger";
+		} else if ("".equals(numeroCourt)) {
+			msgForm = "Le numero du court ne peut-être vide";
+			typeMsgForm = "alert alert-danger";
+		} else {
+			cService.insererCourt(nomCourt, numeroCourt);
+			msgForm = "Le court à été ajouté";
+			typeMsgForm = "alert alert-success";
+			System.out.println("Ajout court ok");
+		}
 
-		cService.insererCourt(nomCourt, numeroCourt);
-		
-		return "SUCCESS";
+		return "success";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
