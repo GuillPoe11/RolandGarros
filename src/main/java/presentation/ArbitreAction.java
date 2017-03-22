@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 
 import entite.Arbitre;
+import entite.Joueur;
 import metier.ArbitreService;
 
 public class ArbitreAction extends ActionSupport {
@@ -12,8 +13,8 @@ public class ArbitreAction extends ActionSupport {
 	@Autowired
 	ArbitreService service;
 	private static final long serialVersionUID = 77971771589810L;
-	private String nom;
-	private String prenom;
+	
+	private Arbitre arbitre;
 
 	public ArbitreAction() {
 		super();
@@ -30,27 +31,20 @@ public class ArbitreAction extends ActionSupport {
 	 * @return
 	 */
 	public String submit() {
-		if (nom != null && !"".equals(nom) && prenom != null && !"".equals(prenom) && nom.length() > 3
-				&& prenom.length() > 3 && verifArbitreExistants(nom, prenom)) {
-			service.insererArbitre(nom, prenom);
+		if (arbitre.getNomArbitre() != null && !"".equals(arbitre.getNomArbitre()) && arbitre.getPrenomArbitre() != null && !"".equals(arbitre.getPrenomArbitre()) && arbitre.getNomArbitre().length() > 3
+				&& arbitre.getPrenomArbitre().length() > 3 && verifArbitreExistants(arbitre.getNomArbitre(), arbitre.getPrenomArbitre())) {
+			service.insererArbitre(arbitre.getNomArbitre(), arbitre.getPrenomArbitre());
 		}
 		return "success";
 	}
 
-	public String getNom() {
-		return nom;
+
+	public Arbitre getArbitre() {
+		return arbitre;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public void setArbitre(Arbitre arbitre) {
+		this.arbitre = arbitre;
 	}
 
 	/**
