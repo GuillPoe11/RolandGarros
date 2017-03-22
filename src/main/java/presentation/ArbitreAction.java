@@ -1,25 +1,32 @@
 package presentation;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import metier.ArbitreService;
 
-public class ArbitreAction  extends ActionSupport{
-	
+public class ArbitreAction extends ActionSupport {
+
+	@Autowired
+	ArbitreService service;
 	private static final long serialVersionUID = 1L;
 	private String nom;
 	private String prenom;
-	
+
 	public ArbitreAction() {
 		super();
 	}
-	
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-
-	public String AjoutArbitre() {
+	public String submit() {
+		if (nom != null && !"".equals(nom) && prenom != null && !"".equals(prenom) && nom.length() > 3
+				&& prenom.length() > 3) {
+			service.insererArbitre(nom, prenom);
+		}
 		return "success";
 	}
 
@@ -38,7 +45,5 @@ public class ArbitreAction  extends ActionSupport{
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	
-	
 
 }
