@@ -28,6 +28,7 @@ public interface CourtDao {
 
 	/**
 	 * Retourne le contenu de la tableBdd court
+	 * @return la liste des courts
 	 */
 	public List<Court> recupTousLesCourts();
 }

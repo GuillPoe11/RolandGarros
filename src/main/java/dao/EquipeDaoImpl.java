@@ -51,6 +51,7 @@ public class EquipeDaoImpl extends DAO implements EquipeDao {
 
 	/**
 	 * Retourne le contenu de la tableBdd Equipe
+	 * @return la liste des equipes
 	 */
 	@Override
 	public List<Equipe> recupToutesEquipes() {

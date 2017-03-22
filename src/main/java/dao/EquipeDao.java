@@ -27,6 +27,7 @@ public interface EquipeDao {
 
 	/**
 	 * Retourne le contenu de la tableBdd Equipe
+	 * @return la liste des equipes
 	 */
 	public List<Equipe> recupToutesEquipes();
 }

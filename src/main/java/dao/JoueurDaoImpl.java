@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import entite.Joueur;
-import entite.Match;
-import entite.SousTournoi;
 
 @Component
 public class JoueurDaoImpl extends DAO implements JoueurDao {

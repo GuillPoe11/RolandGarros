@@ -50,6 +50,7 @@ public class CourtDaoImpl extends DAO implements CourtDao {
 
 	/**
 	 * Retourne le contenu de la tableBdd court
+	 * @return la liste des courts
 	 */
 	@Override
 	public List<Court> recupTousLesCourts() {
