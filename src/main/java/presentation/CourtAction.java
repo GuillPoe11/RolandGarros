@@ -1,5 +1,7 @@
 package presentation;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -18,6 +20,8 @@ public class CourtAction extends ActionSupport{
 	
 	private String nomCourt;
 	private String numeroCourt;
+	
+	private List<Court> listCourts = cService.recupTousCourts();
 	
 	/*
 	 * Constructeur

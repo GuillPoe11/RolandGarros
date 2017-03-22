@@ -24,9 +24,25 @@
 				<s:submit method="ajouterCourt" value="Ajouter un court" />
 			</fieldset>
 		</s:form>
-		<a href="<s:url value="../index.jsp"/>">Retour au menu</a>
 	</div>
 	<!--  @end Form -->
+	
+	<table border="1">
+			<tr>
+				<td>Nom du court</td>
+				<td>Numéro du court</td>
+			</tr>
+			<s:iterator status="status" value="lstCourts">
+				<tr>
+					<td>(<s:property value="#status.index" />)-<s:property
+							value="nomCourt" /></td>
+					<td><s:property value="numeroCourt" /></td>
+			
+				</tr>
+
+			</s:iterator>
+		</table>
+		
 
 	<jsp:include page="footer.jspf" />
 
