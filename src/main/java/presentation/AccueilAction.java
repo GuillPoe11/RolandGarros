@@ -4,11 +4,11 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import metier.LoginService;
 
-public class Accueil  extends ActionSupport{
+public class AccueilAction  extends ActionSupport{
 	
 	private static final long serialVersionUID = 1L;
 	
-	public Accueil() {
+	public AccueilAction() {
 		super();
 	}
 	

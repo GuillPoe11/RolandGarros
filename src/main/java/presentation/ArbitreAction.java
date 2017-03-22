@@ -4,13 +4,13 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import metier.ArbitreService;
 
-public class AjouterArbitre  extends ActionSupport{
+public class ArbitreAction  extends ActionSupport{
 	
 	private static final long serialVersionUID = 1L;
 	private String nom;
 	private String prenom;
 	
-	public AjouterArbitre() {
+	public ArbitreAction() {
 		super();
 	}
 	
