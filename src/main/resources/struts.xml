@@ -4,8 +4,32 @@
 
 <struts>
 	<package name="default" extends="struts-default">
-		<action name="Test" class="presentation.TestAction">
+		<action name="Connexion" class="presentation.ConnexionAction">
+			<result name="success">login.jsp</result>
+		</action>
+		<action name="Accueil" class="presentation.AccueilAction">
 			<result name="success">index.jsp</result>
+		</action>
+		<action name="AjouterJoueur" class="presentation.JoueurAction">
+			<result name="success">/WEB-INF/joueur.jsp</result>
+		</action>
+		<action name="AjouterCourt" class="presentation.CourtAction">
+			<result name="success">/WEB-INF/court.jsp</result>
+		</action>
+		<action name="PlanifierMatch" class="presentation.PlanifierMatchAction">
+			<result name="success">/WEB-INF/planifierMatch.jsp</result>
+		</action>
+		<action name="EnregistrerScoreMatch" class="presentation.EnregistrerScoreMatchAction">
+			<result name="success">/WEB-INF/enregistrerScoreMatch.jsp</result>
+		</action>
+		<action name="ConsulterResultat" class="presentation.ResultatAction">
+			<result name="success">/WEB-INF/resultat.jsp</result>
+		</action>
+		<action name="AjouterArbitre" class="presentation.ArbitreAction">
+			<result name="success">/WEB-INF/arbitre.jsp</result>
+		</action>
+		<action name="AjouterEquipe" class="presentation.EquipeAction">
+			<result name="success">/WEB-INF/equipe.jsp</result>
 		</action>
 	</package>
 </struts>
