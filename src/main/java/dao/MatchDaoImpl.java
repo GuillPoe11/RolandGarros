@@ -82,7 +82,7 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 	public List<Match> recupTousMatchs() {
 		openAll();
 		tx.begin();
-		List<Match> lstMatchs = em.createQuery("SELECT m FROM match m ORDER BY m.date DESC").getResultList();
+		List<Match> lstMatchs = em.createQuery("SELECT m FROM Match m ORDER BY m.date DESC").getResultList();
 		closeAll();
 		return lstMatchs;
 	}
@@ -95,7 +95,7 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 	public List<Match> recupTousMatchsPourUnSousTournoi(SousTournoi sousTournoi) {
 		openAll();
 		tx.begin();
-		List<Match> lstMatchs = em.createQuery("SELECT m FROM match m WHERE idTournoi='"+sousTournoi.getIdSousTournoi()+"' ORDER BY m.date DESC").getResultList();
+		List<Match> lstMatchs = em.createQuery("SELECT m FROM Match m WHERE idTournoi='"+sousTournoi.getIdSousTournoi()+"' ORDER BY m.date DESC").getResultList();
 		closeAll();
 		return lstMatchs;
 	}
@@ -127,7 +127,7 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 	public String tableToString() {
 		StringBuffer result = new StringBuffer();
 		result.append("Contenu de la table Match :\n");
-		for (Object p : em.createQuery("SELECT m FROM match m ORDER BY m.date DESC").getResultList()) {
+		for (Object p : em.createQuery("SELECT m FROM Match m ORDER BY m.date DESC").getResultList()) {
 			result.append(p);
 			result.append("\n");
 		}

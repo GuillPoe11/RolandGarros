@@ -57,7 +57,7 @@ public class SousTournoiDaoImpl extends DAO implements SousTournoiDao{
 		tx.begin();
 		@SuppressWarnings("unchecked")
 		List<SousTournoi> lstSousTournois = em
-				.createQuery("SELECT st FROM soustournoi st ORDER BY st.idSousTournoi ASC").getResultList();
+				.createQuery("SELECT st FROM SousTournoi st ORDER BY st.idSousTournoi ASC").getResultList();
 		tx.commit();
 		closeAll();
 		return lstSousTournois;

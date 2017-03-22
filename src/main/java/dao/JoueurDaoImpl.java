@@ -91,7 +91,7 @@ public class JoueurDaoImpl extends DAO implements JoueurDao {
 	public String tableToString() {
 		StringBuffer result = new StringBuffer();
 		result.append("Contenu de la table joueur :\n");
-		for (Object p : em.createQuery("SELECT j FROM joueur j ORDER BY j.nomJoueur ASC").getResultList()) {
+		for (Object p : em.createQuery("SELECT j FROM Joueur j ORDER BY j.nomJoueur ASC").getResultList()) {
 			result.append(p);
 			result.append("\n");
 		}

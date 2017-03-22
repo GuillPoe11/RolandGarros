@@ -59,7 +59,7 @@ public class NationaliteDaoImpl extends DAO implements NationaliteDao {
 		tx.begin();
 		@SuppressWarnings("unchecked")
 		List<Nationalite> lstNationalites = em
-				.createQuery("SELECT n FROM nationalites n ORDER BY n.libelleNationalite ASC").getResultList();
+				.createQuery("SELECT n FROM Nationalite n ORDER BY n.libelleNationalite ASC").getResultList();
 		tx.commit();
 		closeAll();
 		return lstNationalites;

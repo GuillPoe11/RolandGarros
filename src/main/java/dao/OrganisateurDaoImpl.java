@@ -55,7 +55,7 @@ public class OrganisateurDaoImpl extends DAO implements OrganisateurDao {
 		openAll();
 		tx.begin();
 		List<Organisateur> lstOrganisateurs = em
-				.createQuery("SELECT o FROM organisateur o ORDER BY o.loginOrganisateur ASC").getResultList();
+				.createQuery("SELECT o FROM Organisateur o ORDER BY o.loginOrganisateur ASC").getResultList();
 		closeAll();
 		return lstOrganisateurs;
 	}

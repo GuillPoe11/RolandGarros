@@ -57,7 +57,7 @@ public class CourtDaoImpl extends DAO implements CourtDao {
 		openAll();
 		tx.begin();
 		@SuppressWarnings("unchecked")
-		List<Court> lstCourts = em.createQuery("SELECT c FROM court c ORDER BY c.nomCourt ASC").getResultList();
+		List<Court> lstCourts = em.createQuery("SELECT c FROM Court c ORDER BY c.nomCourt ASC").getResultList();
 		tx.commit();
 		closeAll();
 		return lstCourts;
