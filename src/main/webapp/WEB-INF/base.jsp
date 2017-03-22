@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Roland Garros</title>
+<meta name="description" content="">
+
 <jsp:include page="head.jspf" />
+</head>
 <body>
 
 	<jsp:include page="menu.jspf" />
