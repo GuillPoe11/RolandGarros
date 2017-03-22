@@ -12,31 +12,12 @@
 <body>
 
 	<jsp:include page="menu.jspf" />
-	<div class="central-main-container">
+	
 		<!-- Form -->
-	<div class="row">
+	<div class="central-main-container row">
 	
 
-		<div class="container-form background col-md-5 col-md-offset-1">
-			<h1 class="<s:property value="typeMsgForm" />">
-				<s:property value="msgForm" />
-			</h1>
-			<s:form action="AjouterCourt" id="contact" cssClass="form-vertical" theme="simple">
-				<h3>Enregistrer un court</h3>
-				<s:textfield name="nomCourt" label="Nom du court " />
-				<br></br>
-				<s:textfield name="numeroCourt" label="Numero du court " />
-				<br></br>
-				<fieldset>
-					<s:submit method="ajouterCourt" value="Ajouter un court" />
-				</fieldset>
-				<s:property value="msgForm" />
-			</s:form>
-
-		</div>
 		
-
-		<!--  @end Form -->
 		<div class="container-liste background col-md-4 col-md-offset-1">
 			<table class="table table-bordered table-hover">
 				<tr>
@@ -55,8 +36,30 @@
 			</table>
 
 		</div>
+		
+		<div class="container-form background col-md-5 col-md-offset-1">
+			<h1 class="<s:property value="typeMsgForm" />">
+				<s:property value="msgForm" />
+			</h1>
+			<s:form action="AjouterCourt" cssClass="form-vertical" theme="simple">
+				<h3>Enregistrer un court</h3>
+				<s:textfield name="nomCourt" label="Nom du court " />
+				<br></br>
+				<s:textfield name="numeroCourt" label="Numero du court " />
+				<br></br>
+				<fieldset>
+					<s:submit method="ajouterCourt" value="Ajouter un court" />
+				</fieldset>
+				<s:property value="msgForm" />
+			</s:form>
+
 		</div>
-	</div>
+		
+
+		<!--  @end Form -->
+		
+		</div>
+	
 	<br class="clear"/>
 
 	<jsp:include page="footer.jspf" />
