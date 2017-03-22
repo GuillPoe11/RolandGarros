@@ -43,7 +43,11 @@
 		</property>
 	</bean>
 
-<bean id="NationaliteService" class="dao.NationaliteDao">
+<bean id="NationaliteService" class="metier.NationaliteServiceImpl">
+		<!-- <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" /> -->
+	</bean>
+	
+	<bean id="NationaliteDao" class="dao.NationaliteDaoImpl">
 		<!-- <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" /> -->
 	</bean>
 

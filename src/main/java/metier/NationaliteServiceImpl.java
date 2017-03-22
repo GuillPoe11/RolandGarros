@@ -12,6 +12,7 @@ import entite.Nationalite;
 public class NationaliteServiceImpl implements NationaliteService {
 
 	@Autowired
+	
 	private NationaliteDao nDao;
 
 	/**
@@ -22,6 +23,7 @@ public class NationaliteServiceImpl implements NationaliteService {
 
 	/**
 	 * (fonction pour recupérer toutes les nationalités)
+	 * @return liste de nationalites
 	 * 
 	 */
 	@Override
@@ -31,6 +33,7 @@ public class NationaliteServiceImpl implements NationaliteService {
 
 	/**
 	 * (fonction pour recupérer une nationalité par l'id)
+	 * @return une nationalite
 	 * 
 	 */
 	@Override

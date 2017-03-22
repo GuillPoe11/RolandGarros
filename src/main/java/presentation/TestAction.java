@@ -15,6 +15,8 @@ public class TestAction extends ActionSupport {
 
 	@Autowired
 	private JoueurService jService;
+	
+	
 	@Autowired
 	private NationaliteService nService;
 
