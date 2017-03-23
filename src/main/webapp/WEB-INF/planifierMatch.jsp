@@ -64,7 +64,7 @@
 	
 	
 	
-		<s:form id="contact" action="PlanifierMatchAction">
+		<s:form id="contact" action="PlanifierMatch">
 		
 			<fieldset>
 			<s:select label="Sélectionnez une equipe"
@@ -121,7 +121,7 @@
 					name="match.score2" label="Score du deuxième joueur"></s:textfield>
 			</fieldset>
 			<fieldset>
-				<s:submit method="submite" value="Valider"/>
+				<s:submit method="creerMatch" value="Valider"/>
 			</fieldset>
 		</s:form>
 	</div>
