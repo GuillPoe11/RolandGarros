@@ -73,6 +73,26 @@ fieldset {
 	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+.wwFormTable{
+	width:80%;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+.wwFormTable tr{
+	margin-bottom:10px;
+	display:block;
+}
+
+.wwFormTable td{
+	height:50px;
+	width:600px;	
+}
+
+.tdLabel{
+	display:none;
+}
+
 .copyright {
 	text-align: center;
 }
