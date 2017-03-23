@@ -1,6 +1,7 @@
 package metier;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Before;
@@ -34,7 +35,7 @@ public class NationaliteServiceImplTest {
 
 	@Test
 	public void testRecupToutesNationalites() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Test

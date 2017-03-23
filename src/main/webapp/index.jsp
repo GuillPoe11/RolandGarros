@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<jsp:include page="WEB-INF/menu.jspf" />
+	<%@include file="WEB-INF/menu.jspf" %>
 
 	<!-- Form -->
 	<div class="central-main-container row btn-group-home">
@@ -31,7 +31,7 @@
 				<span>Enregistrer un score</span>
 			</button></a> <a class="lienNav" href=<s:url action="AjouterArbitre"></s:url>><button
 				class="btn-home">
-				<span>Ajouter un joueur</span>
+				<span>Ajouter un arbitre</span>
 			</button></a> <a class="lienNav" href=<s:url action="AjouterEquipe"></s:url>><button
 				class="btn-home">
 				<span>Ajouter une équipe</span>

@@ -19,6 +19,8 @@ public class ArbitreAction extends ActionSupport {
 	private Arbitre arbitre;
 	private List<Arbitre> lstArbitres;
 	private Map<Integer, String> lstTypeArbitres;
+	private String msgForm;
+	private String typeMsgForm; // alert alert-success alert-warning
 
 	public ArbitreAction(@Autowired ArbitreService service) {
 		super();
@@ -33,6 +35,21 @@ public class ArbitreAction extends ActionSupport {
 	/*
 	 * Getters/Setters
 	 */
+	public String getMsgForm() {
+		return msgForm;
+	}
+
+	public void setMsgForm(String msgForm) {
+		this.msgForm = msgForm;
+	}
+
+	public String getTypeMsgForm() {
+		return typeMsgForm;
+	}
+
+	public void setTypeMsgForm(String typeMsgForm) {
+		this.typeMsgForm = typeMsgForm;
+	}
 
 	public Arbitre getArbitre() {
 		return arbitre;
@@ -66,16 +83,29 @@ public class ArbitreAction extends ActionSupport {
 	 * return string vers la page arbitre
 	 */
 	public String submite() {
-		if (arbitre.getNomArbitre() != null && !"".equals(arbitre.getNomArbitre()) && arbitre.getPrenomArbitre() != null
-				&& !"".equals(arbitre.getPrenomArbitre()) && arbitre.getNomArbitre().length() > 3
-				&& arbitre.getPrenomArbitre().length() > 3
-				&& verifArbitreExistants(arbitre.getNomArbitre(), arbitre.getPrenomArbitre())) {
+		if (arbitre.getNomArbitre() == null || "".equals(arbitre.getNomArbitre())
+				) {
+			msgForm = "nom incorrect";
+			typeMsgForm = "alert alert-danger";
+			
+		} 
+		else if(verifArbitreExistants(arbitre.getNomArbitre(), arbitre.getPrenomArbitre())){
+		}
+		else if(arbitre.getPrenomArbitre() == null
+				|| "".equals(arbitre.getPrenomArbitre())){
+			msgForm = "prénom incorrect";
+			typeMsgForm = "alert alert-danger";
+		}
+		else if(arbitre.getNomArbitre().length() < 3
+				&& arbitre.getPrenomArbitre().length() < 3){
+			msgForm = "Minimum 3 caractères";
+			typeMsgForm = "alert alert-danger";
+		}
+		else{
 			service.insererArbitre(arbitre.getNomArbitre(), arbitre.getPrenomArbitre());
 			arbitre.setNomArbitre("");
 			arbitre.setPrenomArbitre("");
 			lstArbitres = service.recupTousArbitres();
-		} else {
-
 		}
 		return "success";
 	}
@@ -90,10 +120,12 @@ public class ArbitreAction extends ActionSupport {
 	private boolean verifArbitreExistants(String nom, String prenom) {
 		for (Arbitre arb : service.recupTousArbitres()) {
 			if (arb.getNomArbitre().equals(nom) && arb.getPrenomArbitre().equals(prenom)) {
-				return false;
+				msgForm = "Arbitre déjà existant";
+				typeMsgForm = "alert alert-danger";
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 
 }

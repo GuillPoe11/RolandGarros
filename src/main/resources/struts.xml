@@ -23,6 +23,9 @@
 			<result name="success">/WEB-INF/login.jsp</result>
 			<result name="connecte" type="redirectAction">Accueil</result>
 		</action>
+		<action name="Deconnexion" class="presentation.DeconnexionAction">
+			<result name="success">index.jsp</result>
+		</action>
 		<action name="Accueil" class="presentation.AccueilAction">
 			<result name="success">index.jsp</result>
 		</action>
