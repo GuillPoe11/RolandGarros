@@ -1,6 +1,8 @@
 package presentation;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,11 +17,13 @@ public class ArbitreAction extends ActionSupport {
 	private static final long serialVersionUID = 77971771589810L;
 
 	private Arbitre arbitre;
-	private List<Arbitre> lstArbitre;
+	private List<Arbitre> lstArbitres;
+	private Map<Integer, String> lstTypeArbitres;
 
 	public ArbitreAction(@Autowired ArbitreService service) {
 		super();
-		lstArbitre = service.recupTousArbitres();
+		lstArbitres = service.recupTousArbitres();
+		lstTypeArbitres = new HashMap<Integer, String>();
 	}
 
 	public static long getSerialversionuid() {
@@ -40,6 +44,7 @@ public class ArbitreAction extends ActionSupport {
 			service.insererArbitre(arbitre.getNomArbitre(), arbitre.getPrenomArbitre());
 			arbitre.setNomArbitre("");
 			arbitre.setPrenomArbitre("");
+			lstArbitres = service.recupTousArbitres();
 		}
 		return "success";
 	}
@@ -52,12 +57,20 @@ public class ArbitreAction extends ActionSupport {
 		this.arbitre = arbitre;
 	}
 
-	public List<Arbitre> getLstArbitre() {
-		return lstArbitre;
+	public List<Arbitre> getLstArbitres() {
+		return lstArbitres;
 	}
 
-	public void setLstArbitre(List<Arbitre> lstArbitre) {
-		this.lstArbitre = lstArbitre;
+	public void setLstArbitres(List<Arbitre> lstArbitres) {
+		this.lstArbitres = lstArbitres;
+	}
+
+	public Map<Integer, String> getLstTypeArbitres() {
+		return lstTypeArbitres;
+	}
+
+	public void setLstTypeArbitres(Map<Integer, String> lstTypeArbitres) {
+		this.lstTypeArbitres = lstTypeArbitres;
 	}
 
 	/**
