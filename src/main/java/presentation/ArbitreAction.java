@@ -30,24 +30,9 @@ public class ArbitreAction extends ActionSupport {
 		return serialVersionUID;
 	}
 
-	/**
-	 * Fonction qui ajoute un arbitre lorsque l'organisateur clique sur le
-	 * bouton refuse l'ajout si les conditions ne sont pas respectées
-	 * 
-	 * return string vers la page arbitre
+	/*
+	 * Getters/Setters
 	 */
-	public String submite() {
-		if (arbitre.getNomArbitre() != null && !"".equals(arbitre.getNomArbitre()) && arbitre.getPrenomArbitre() != null
-				&& !"".equals(arbitre.getPrenomArbitre()) && arbitre.getNomArbitre().length() > 3
-				&& arbitre.getPrenomArbitre().length() > 3
-				&& verifArbitreExistants(arbitre.getNomArbitre(), arbitre.getPrenomArbitre())) {
-			service.insererArbitre(arbitre.getNomArbitre(), arbitre.getPrenomArbitre());
-			arbitre.setNomArbitre("");
-			arbitre.setPrenomArbitre("");
-			lstArbitres = service.recupTousArbitres();
-		}
-		return "success";
-	}
 
 	public Arbitre getArbitre() {
 		return arbitre;
@@ -72,6 +57,28 @@ public class ArbitreAction extends ActionSupport {
 	public void setLstTypeArbitres(Map<Integer, String> lstTypeArbitres) {
 		this.lstTypeArbitres = lstTypeArbitres;
 	}
+	// fin getters/setters
+
+	/**
+	 * Fonction qui ajoute un arbitre lorsque l'organisateur clique sur le
+	 * bouton refuse l'ajout si les conditions ne sont pas respectées
+	 * 
+	 * return string vers la page arbitre
+	 */
+	public String submite() {
+		if (arbitre.getNomArbitre() != null && !"".equals(arbitre.getNomArbitre()) && arbitre.getPrenomArbitre() != null
+				&& !"".equals(arbitre.getPrenomArbitre()) && arbitre.getNomArbitre().length() > 3
+				&& arbitre.getPrenomArbitre().length() > 3
+				&& verifArbitreExistants(arbitre.getNomArbitre(), arbitre.getPrenomArbitre())) {
+			service.insererArbitre(arbitre.getNomArbitre(), arbitre.getPrenomArbitre());
+			arbitre.setNomArbitre("");
+			arbitre.setPrenomArbitre("");
+			lstArbitres = service.recupTousArbitres();
+		} else {
+
+		}
+		return "success";
+	}
 
 	/**
 	 * Fonction de vérification si un arbitre existe déjà
@@ -80,7 +87,7 @@ public class ArbitreAction extends ActionSupport {
 	 * @param prenom
 	 * @return true or false
 	 */
-	public boolean verifArbitreExistants(String nom, String prenom) {
+	private boolean verifArbitreExistants(String nom, String prenom) {
 		for (Arbitre arb : service.recupTousArbitres()) {
 			if (arb.getNomArbitre().equals(nom) && arb.getPrenomArbitre().equals(prenom)) {
 				return false;

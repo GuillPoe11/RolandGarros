@@ -10,7 +10,7 @@ body {
 	-o-background-size: cover;
 	background-size: cover;
 }
- 
+
 .container {
 	width: 90%;
 }
@@ -19,7 +19,7 @@ body {
 	text-align: center;
 	margin-right: auto;
 	margin-left: auto;
-	width : 90%;
+	width: 90%;
 }
 
 .background {
@@ -48,6 +48,50 @@ body {
 #logo {
 	float: left;
 	margin-top: 10px;
+}
+
+.btn-home {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #333;
+	border: none;
+	color: #FFF;
+	text-align: center;
+	font-size: 24px;
+	padding: 12px;
+	width: 270px;
+	height: 160px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+}
+
+.btn-home span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+	width: 180px;
+}
+
+.btn-home span:after {
+	content: url('img/balle2.png');
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	left: -70px;
+	transition: 0.5s;
+}
+
+.btn-home:hover span {
+	padding-left: 30px;
+}
+
+.btn-home:hover span:after {
+	opacity: 1;
+	left: 0;
 }
 
 #header-logo {
