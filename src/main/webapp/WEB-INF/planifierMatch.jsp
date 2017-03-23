@@ -69,9 +69,13 @@
 			<fieldset>
 			<s:select label="Sélectionnez une equipe"
 								headerKey="-1" headerValue="--------" list="mapEquipes"
-								listKey="key" listValue="value" name="idEquipe" />
+								listKey="key" listValue="value" name="idEquipe1" />
 			</fieldset>
-			<fieldset>
+			
+			<s:select label="Sélectionnez une equipe"
+								headerKey="-1" headerValue="--------" list="mapEquipes"
+								listKey="key" listValue="value" name="idEquipe2" />
+			</fieldset>
 		
 			<fieldset>
 			<s:select label="Sélectionnez un arbitre"
@@ -79,29 +83,26 @@
 								listKey="key" listValue="value" name="idArbitre" />
 			</fieldset>
 			<fieldset>
-			<fieldset>
 			<s:select label="Sélectionnez un court"
 								headerKey="-1" headerValue="--------" list="mapCourts"
 								listKey="key" listValue="value" name="idCourt" />
 			</fieldset>
 			<fieldset>
-			<fieldset>
 			<s:select label="Sélectionnez un Tournoi"
 								headerKey="-1" headerValue="--------" list="mapSousTournois"
 								listKey="key" listValue="value" name="idSousTournoi" />
 			</fieldset>
-			<fieldset>
 		
 		
 			<fieldset>
 			<s:select label="Sélectionnez un joueur"
 								headerKey="-1" headerValue="--------" list="mapJoueurs"
-								listKey="key" listValue="value" name="idJoueur" />
+								listKey="key" listValue="value" name="idJoueur1" />
 			</fieldset>
 			<fieldset>
 			<s:select label="Sélectionnez un joueur"
 								headerKey="-1" headerValue="--------" list="mapJoueurs"
-								listKey="key" listValue="value" name="idJoueur" />
+								listKey="key" listValue="value" name="idJoueur2" />
 			</fieldset>
 			<fieldset>
 				<s:textfield 
