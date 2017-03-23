@@ -6,27 +6,34 @@
 <head>
 <title>Roland Garros</title>
 <meta name="description" content="">
-
-<jsp:include page="WEB-INF/head.jspf" />
 </head>
 <body>
 
 	<jsp:include page="WEB-INF/menu.jspf" />
 
 	<!-- Form -->
-	<div class="container_form">
-			<table>
-			<tr>
-			<td><li><a class="lienNav" href=<s:url action="AjouterJoueur"></s:url>>Ajouter joueur</a></li></td>
-			<td><li><a class="lienNav" href=<s:url action="AjouterCourt"></s:url>>Ajouter Court</a></li></td>
-			<td><li><a class="lienNav" href=<s:url action="PlanifierMatch"></s:url>>Planifier match</a></li></td>
-			</tr>
-			<tr>
-			<td><li><a class="lienNav" href=<s:url action="EnregistrerScoreMatch"></s:url>>Enregistrer le résultat du match</a></li></td>
-			<td><li><a class="lienNav" href=<s:url action="AjouterArbitre"></s:url>>Ajouter arbitre</a></li></td>
-			<td><li><a class="lienNav" href=<s:url action="AjouterEquipe"></s:url>>Ajouter équipe</a></li></td>
-			</tr>
-			</table>
+	<div class="central-main-container row btn-group-home">
+		<a class="lienNav" href=<s:url action="AjouterJoueur"></s:url>><button
+				class="btn-home">
+				<span>Ajouter un joueur</span>
+			</button></a> <a class="lienNav" href=<s:url action="AjouterCourt"></s:url>><button
+				class="btn-home">
+				<span>Ajouter un Court&nbsp;&nbsp;</span>
+			</button></a> <a class="lienNav" href=<s:url action="PlanifierMatch"></s:url>><button
+				class="btn-home">
+				<span>Planifier un Match</span>
+			</button></a> <br> <a class="lienNav"
+			href=<s:url action="EnregistrerScoreMatch"></s:url>><button
+				class="btn-home">
+				<span>Enregistrer un score</span>
+			</button></a> <a class="lienNav" href=<s:url action="AjouterArbitre"></s:url>><button
+				class="btn-home">
+				<span>Ajouter un joueur</span>
+			</button></a> <a class="lienNav" href=<s:url action="AjouterEquipe"></s:url>><button
+				class="btn-home">
+				<span>Ajouter une équipe</span>
+			</button></a>
+
 	</div>
 	<!--  @end Form -->
 
