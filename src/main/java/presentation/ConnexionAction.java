@@ -1,9 +1,11 @@
 package presentation;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import entite.Organisateur;
@@ -18,8 +20,11 @@ public class ConnexionAction extends ActionSupport {
 	@Autowired
 	private OrganisateurService organisateurService;
 
+	@SuppressWarnings("unchecked")
 	public String seConnecter() {
 		if (loginEtMotDePAsseOk()) {
+			Map<String, Object> session = (Map<String, Object>) ActionContext.getContext().get("session");
+			session.put("estConnecte", true);
 			return "connecte";
 		} else {
 			return "success";

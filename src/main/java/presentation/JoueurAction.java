@@ -73,7 +73,6 @@ public class JoueurAction extends ActionSupport {
 			typeMsgForm = "alert alert-danger";
 			valide = false;
 		} else {
-			System.out.println(joueur);
 			msgForm = "Le joueur " + joueur.getPrenomJoueur() + " " + joueur.getNomJoueur() + " a été créé";
 			typeMsgForm = "alert alert-success";
 		}
