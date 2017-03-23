@@ -11,21 +11,20 @@
 </head>
 <body>
 
-	<jsp:include page="menu.jspf" />
+	<%@include file="menu.jspf" %>
 
 	<!-- Form -->
 	<div class="central-main-container row">
 
-		<div class="container-form background">
+		<div class="container-form background col-md-offset-5 col-md-2 col-md-offset-5">
 			<s:form action="Connexion" cssClass="form-vertical" theme="simple">
 				<h3>Se connecter</h3>
 				<s:textfield name="organisateur.loginOrganisateur" label="Login" />
 				<br></br>
-				<s:textfield name="organisateur.passwordOrganisateur" label="Mot de passe" />
+				<s:password name="organisateur.passwordOrganisateur"
+					label="Mot de passe" />
 				<br></br>
-				<fieldset>
-					<s:submit method="seConnecter" value="Connexion" />
-				</fieldset>
+				<s:submit cssClass="btn btn-primary" method="seConnecter" value="Connexion" />
 			</s:form>
 
 		</div>

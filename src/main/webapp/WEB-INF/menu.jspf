@@ -2,7 +2,7 @@
 	<div class="container">
 
 		<div id="logo">
-			<img src="img/rg-logo-header.png" alt="logo" >
+			<img src="img/rg-logo-header.png" alt="logo">
 		</div>
 		<div id="header-logo">
 			<span id="title">Roland Garros</span>
@@ -11,7 +11,8 @@
 		<div id="ariane">fil d'ariane</div>
 		<div class="box">
 			<div class="container-search">
-				<input type="search" class="fa fa-search" id="search" placeholder="Search..." />
+				<input type="search" class="fa fa-search" id="search"
+					placeholder="Search..." />
 			</div>
 		</div>
 	</div>
@@ -22,7 +23,12 @@
 			<li><a class="lien-nav" href="ConsulterResultat.action">R&eacute;sultats</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a class="lien-nav admin" href="Connexion.action">Admin</a></li>
+			<s:if test="%{#session.estConnecte}">
+				<li><a class="lien-nav admin" href="Deconnexion.action">D&eacute;connexion</a></li>
+			</s:if>
+			<s:else>
+				<li><a class="lien-nav admin" href="Connexion.action">Admin</a></li>
+			</s:else>
 		</ul>
 	</div>
 </nav>
