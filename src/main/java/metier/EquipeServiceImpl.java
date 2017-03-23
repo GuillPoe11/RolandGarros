@@ -25,7 +25,7 @@ public class EquipeServiceImpl implements EquipeService {
 	}
 
 	@Override
-	public Equipe recupererEquipe(Integer idEquipe) {
+	public Equipe recupererEquipeParId(Integer idEquipe) {
 		return equipeDao.recupEquipeParId(idEquipe);
 	}
 

@@ -18,7 +18,7 @@ public interface EquipeService {
 	 * Renvoie une équipe grâce à son identifiant
 	 * @return L'équipe désirée
 	 */
-	public Equipe recupererEquipe(Integer idEquipe);
+	public Equipe recupererEquipeParId(Integer idEquipe);
 	
 	/**
 	 * Récupère la liste des équipes

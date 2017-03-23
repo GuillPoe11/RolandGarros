@@ -1,5 +1,6 @@
 package presentation;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,10 +27,10 @@ public class PlanifierMatchAction extends ActionSupport {
 
 	@Autowired
 	private MatchService service;
-	
+
 	@Autowired
 	private JoueurService joueurService;
-	
+
 	@Autowired
 	private EquipeService equipeService;
 
@@ -41,14 +42,19 @@ public class PlanifierMatchAction extends ActionSupport {
 
 	@Autowired
 	private ArbitreService arbitreService;
+
 	private Map<Integer, String> mapJoueurs;
 	private Map<Integer, String> mapEquipes;
 	private Map<Integer, String> mapArbitres;
 	private Map<Integer, String> mapSousTournois;
 	private Map<Integer, String> mapCourts;
+	
 	private static final long serialVersionUID = 77971771589810L;
+	
 	private Match match;
+	
 	private List<Match> lstMatchs;
+	
 	private Integer idEquipe1;
 	private Integer idEquipe2;
 	private Integer idJoueur1;
@@ -56,11 +62,14 @@ public class PlanifierMatchAction extends ActionSupport {
 	private Integer idSousTournoi;
 	private Integer idArbitre;
 	private Integer idCourt;
-
+	private String dateMatch;
+	
 	public PlanifierMatchAction(@Autowired MatchService service, @Autowired JoueurService joueurService,
 			@Autowired EquipeService equipeService, @Autowired CourtService courtService,
 			@Autowired SousTournoiService sousTournoiService, @Autowired ArbitreService arbitreService) {
+		
 		lstMatchs = service.recupererTousLesMatchs();
+		
 		mapJoueurs = listToMap(new ArrayList<Object>(joueurService.recupererTousLesJoueurs()));
 		mapEquipes = listToMap(new ArrayList<Object>(equipeService.recupererToutesLesEquipes()));
 		mapArbitres = listToMap(new ArrayList<Object>(arbitreService.recupTousArbitres()));
@@ -81,35 +90,57 @@ public class PlanifierMatchAction extends ActionSupport {
 	public String creerMatch() {
 		System.out.println("créér match appelé");
 		System.out.println(match);
+		
+//		System.out.println("date du match" + match.getDateMatch());
+//		SimpleDateFormat formateurDate = new SimpleDateFormat("yyyy-MM-dd");
+//		String dateFormatSql = formateurDate.format(match.getDateMatch());
+//		System.out.println(dateFormatSql);
+		
+		
 		if (verifMatchs()) {
+			System.out.println("créér match appelé et vérifié");
+			System.out.println("ida"+idArbitre);
+			System.out.println("idc"+idCourt);
+			System.out.println("date"+dateMatch);
+			
+			
+			
 			match.setArbitre(arbitreService.recupArbitreParId(idArbitre));
 			match.setCourt(courtService.recupCourtParId(idCourt));
-			match.setEquipe1(equipeService.recupererEquipe(idEquipe1));
-			match.setEquipe2(equipeService.recupererEquipe(idEquipe2));
+			match.setEquipe1(equipeService.recupererEquipeParId(idEquipe1));
+			match.setEquipe2(equipeService.recupererEquipeParId(idEquipe2));
 			match.setJoueur1(joueurService.recupererJoueurParId(idJoueur1));
 			match.setJoueur2(joueurService.recupererJoueurParId(idJoueur2));
 			match.setSousTournoi(sousTournoiService.recupererSousTournoiParId(idSousTournoi));
-//			for (SousTournoi s : sousTournoiService.recupererTousLesSousTournois()) {
-//				if (s.getIdSousTournoi() == idSousTournoi) {
-//					match.setSousTournoi(s);
-//				}
-//			}
+			match.setDateMatch(match.getDateMatch());
+			
 			System.out.println(match);
-			service.creerMatch(match.getCourt(), match.getJoueur1(), match.getJoueur2(), match.getArbitre(),
-					match.getSousTournoi(), match.getDateMatch(), match.getEquipe1(), match.getEquipe2());
-			lstMatchs = service.recupererTousLesMatchs();
+			
+			
+			
+					
+			service.creerMatch(match.getCourt(), match.getJoueur1(),
+			 match.getJoueur2(), match.getArbitre(),
+			 match.getSousTournoi(), match.getDateMatch(), match.getEquipe1(),
+			 match.getEquipe2());
+			// lstMatchs = service.recupererTousLesMatchs();
 		}
 		System.out.println(match);
 		return "success";
 	}
 
-	public Match getArbitre() {
-		return match;
+	/*
+	 * Getters/Setters
+	 */
+	
+	public String getDateMatch() {
+		return dateMatch;
 	}
 
-	public void setArbitre(Match match) {
-		this.match = match;
+	public void setDateMatch(String dateMatch) {
+		this.dateMatch = dateMatch;
 	}
+
 
 	public List<Match> getLstArbitres() {
 		return lstMatchs;
@@ -237,7 +268,7 @@ public class PlanifierMatchAction extends ActionSupport {
 	 * @return true or false
 	 */
 	public boolean verifMatchs() {
-		//TODO
+		// TODO
 		return true;
 	}
 
@@ -259,8 +290,7 @@ public class PlanifierMatchAction extends ActionSupport {
 		for (Object obj : list) {
 			switch (obj.getClass().getName()) {
 			case "entite.Joueur":
-				map.put(((Joueur) obj).getIdJoueur(),
-						((Joueur) obj).getPrenomJoueur() + ((Joueur) obj).getNomJoueur());
+				map.put(((Joueur) obj).getIdJoueur(), ((Joueur) obj).getPrenomJoueur() + ((Joueur) obj).getNomJoueur());
 				break;
 
 			case "entite.Equipe":
@@ -284,7 +314,7 @@ public class PlanifierMatchAction extends ActionSupport {
 			default:
 
 				/* Action */;
-			break;
+				break;
 			}
 		}
 		return map;
