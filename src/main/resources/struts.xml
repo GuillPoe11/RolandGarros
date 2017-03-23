@@ -5,6 +5,20 @@
 
 <struts>
 	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginInterceptor"
+				class="presentation.interceptor.ConnexionInterceptor" />
+
+			<interceptor-stack name="pileDeConnexion">
+				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<global-results>
+			<result name="login" type="redirectAction">Connexion</result>
+		</global-results>
+
 		<action name="Connexion" class="presentation.ConnexionAction">
 			<result name="success">/WEB-INF/login.jsp</result>
 			<result name="connecte" type="redirectAction">Accueil</result>
@@ -13,24 +27,30 @@
 			<result name="success">index.jsp</result>
 		</action>
 		<action name="AjouterJoueur" class="presentation.JoueurAction">
+			<interceptor-ref name="pileDeConnexion" />
 			<result name="success">/WEB-INF/joueur.jsp</result>
 		</action>
 		<action name="AjouterCourt" class="presentation.CourtAction">
+			<interceptor-ref name="pileDeConnexion" />
 			<result name="success">/WEB-INF/court.jsp</result>
 		</action>
 		<action name="PlanifierMatch" class="presentation.PlanifierMatchAction">
+			<interceptor-ref name="pileDeConnexion" />
 			<result name="success">/WEB-INF/planifierMatch.jsp</result>
 		</action>
 		<action name="EnregistrerScoreMatch" class="presentation.EnregistrerScoreMatchAction">
+			<interceptor-ref name="pileDeConnexion" />
 			<result name="success">/WEB-INF/enregistrerScoreMatch.jsp</result>
 		</action>
 		<action name="ConsulterResultat" class="presentation.ResultatAction">
 			<result name="success">/WEB-INF/resultat.jsp</result>
 		</action>
 		<action name="AjouterArbitre" class="presentation.ArbitreAction">
+			<interceptor-ref name="pileDeConnexion" />
 			<result name="success">/WEB-INF/arbitre.jsp</result>
 		</action>
 		<action name="AjouterEquipe" class="presentation.EquipeAction">
+			<interceptor-ref name="pileDeConnexion" />
 			<result name="success">/WEB-INF/equipe.jsp</result>
 		</action>
 	</package>
