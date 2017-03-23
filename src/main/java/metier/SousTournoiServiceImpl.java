@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import dao.SousTournoiDao;
+import entite.Nationalite;
 import entite.SousTournoi;
 
 @Component
@@ -31,6 +32,12 @@ public class SousTournoiServiceImpl implements SousTournoiService {
 	@Override
 	public List<SousTournoi> recupererTousLesSousTournois() {
 		return dao.recupTousLesSousTournois();
+	}
+	
+	
+	@Override
+	public SousTournoi recupererSousTournoiParId(int id) {
+		return dao.recupSousTournoiParId(id);
 	}
 
 }

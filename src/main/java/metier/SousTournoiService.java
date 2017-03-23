@@ -2,6 +2,7 @@ package metier;
 
 import java.util.List;
 
+import entite.Nationalite;
 import entite.SousTournoi;
 
 public interface SousTournoiService {
@@ -21,4 +22,11 @@ public interface SousTournoiService {
 	 * @return La liste des sous-tournoi
 	 */
 	public List<SousTournoi> recupererTousLesSousTournois();
+	
+	/**
+	 * (fonction pour recupérer un soustournoi par l'id)
+	 * @return un soustournoi
+	 * 
+	 */
+	public SousTournoi recupererSousTournoiParId(int id);
 }

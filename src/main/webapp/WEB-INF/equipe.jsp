@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<jsp:include page="menu.jspf" />
+	<%@include file="menu.jspf" %>
 
 	<!-- tableau -->
 	<div class="central-main-container row">
