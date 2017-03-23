@@ -28,7 +28,7 @@ public class Joueur {
 	@Column(name = "sexeJoueur", length = 1, nullable = false, unique = false)
 	private Character sexeJoueur;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "refIdNationalite")
 	private Nationalite nationalite;
 
