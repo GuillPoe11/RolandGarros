@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<title>Roland Garros</title>
+<title>Roland Garros - Arbitre</title>
 <meta name="description" content="">
 
 <jsp:include page="head.jspf" />
@@ -13,48 +13,28 @@
 
 	<jsp:include page="menu.jspf" />
 
-<div class="central-main-container row">
-<h3>Inscription des arbitres (de chaise)</h3>
-	<div class="container-liste background col-md-4 col-md-offset-1">
-			<table class="table table-bordered table-hover">
-				<tr>
-					<td>Nom de l'arbitre</td>
-					<td>prénom de l'arbitre</td>
-				</tr>
-				<s:iterator status="status" value="lstArbitres">
+	<div class="central-main-container row">
+		<!-- Form -->
+		<div class="container-form background col-md-5 col-md-offset-1">
+			<h3 class="<s:property value="typeMsgForm" />">
+				<s:property value="msgForm" />
+			</h3>
+
+			<s:form id="contact" action="AjouterArbitre" theme="simple">
+
+				<table id="form-table" class="table">
 					<tr>
-						<td>
-<%-- 						(<s:property value="#status.index" />) --%>
-						<s:property
-								value="nomArbitre" /></td>
-						<td><s:property value="prenomArbitre" /></td>
-
+						<td><s:label>Nom de l'arbitre : </s:label></td>
+						<td><s:textfield name="arbitre.nomArbitre"
+								label="Nom de l'arbitre"></s:textfield></td>
 					</tr>
-
-				</s:iterator>
-			</table>
-
-		</div>
-		
-		
-	<!-- Form -->
-	<div class="container-form background col-md-5 col-md-offset-1">
-	
-	
-	
-	
-	
-		<s:form id="contact" action="AjouterArbitre">
-			
-			<fieldset>
-				<s:textfield 
-					name="arbitre.nomArbitre" label="Nom de l'arbitre" ></s:textfield>
-			</fieldset>
-			<fieldset>
-				<s:textfield 
-					name="arbitre.prenomArbitre" label="Prénom de l'arbitre"></s:textfield>
-			</fieldset>
-			<fieldset>
+					<tr>
+						<td><s:label>Prénom de l'arbitre : </s:label></td>
+						<td><s:textfield name="arbitre.prenomArbitre"
+								label="Prénom de l'arbitre"></s:textfield></td>
+					</tr>
+					<%-- <tr>
+			<td>
 			<s:select
 			       name="idTypeArbitre"
 			       headerKey="-1" headerValue="Chaise"
@@ -62,15 +42,39 @@
 			       value="Chaise"
 			       label="Type de l'arbitre"
 				/>
-			</fieldset>
-			<fieldset>
-				<s:submit method="submite" value="Valider"/>
-			</fieldset>
-		</s:form>
-	</div>
-	<!--  @end Form -->
-</div>
-	<jsp:include page="footer.jspf" />
+			</td>
+			</tr> --%>
+					<tr>
+						<td colspan="2" class="colspan-center"><s:submit
+								method="submite" value="Valider" /></td>
+					</tr>
+				</table>
+			</s:form>
+		</div>
+		<!--  @end Form -->
+		<div class="container-liste background col-md-4 col-md-offset-1">
+			<table id="liste-table" class="table table-bordered table-hover">
+				<tr>
+					<th>Prénom de l'arbitre</th>
+					<th>Nom de l'arbitre</th>
+				</tr>
+				<s:iterator status="status" value="lstArbitres">
+					<%-- 	(<s:property value="#status.index" />)- --%>
+					<tr>
+						<td><s:property value="prenomArbitre" /></td>
+						<td><s:property value="nomArbitre" /></td>
 
+					</tr>
+
+				</s:iterator>
+			</table>
+
+		</div>
+		<!--  @end Form -->
+
+	</div>
+
+	<br class="clear" />
+	<jsp:include page="footer.jspf" />
 </body>
 </html>

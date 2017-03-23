@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "match")
+@Table(name = "matchtennis")
 public class Match {
 
 	@Id
