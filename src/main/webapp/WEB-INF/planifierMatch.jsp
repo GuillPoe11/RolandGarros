@@ -36,9 +36,18 @@
 						(<s:property value="#status.index" />)
 						<s:property
  								value="court.nomCourt" /></td> 
- 						<td><s:property value="loueur1.nomJoueur" /></td> 
+ 						<td><s:property value="joueur1.nomJoueur" /></td> 
  						<td><s:property value="joueur2.nomJoueur" /></td> 
  						<td><s:property value="arbitre.nomArbitre" /></td> 
+ 						<td><s:property value="sousTournoi.nomTournoi" /></td> 
+ 						<td><s:property value="dateMatch" /></td> 
+ 						<td><s:property value="dureeMatch" /></td> 
+ 						<td><s:property value="equipe1.joueur1.nomJoueur" /></td> 
+ 						<td><s:property value="equipe1.joueur2.nomJoueur" /></td> 
+ 						<td><s:property value="equipe2.joueur1.nomJoueur" /></td> 
+ 						<td><s:property value="equipe2.joueur2.nomJoueur" /></td>
+ 						<td><s:property value="score1" /></td> 
+ 						<td><s:property value="score2" /></td>
 
 					</tr>
 
@@ -56,14 +65,18 @@
 	
 	
 		<s:form id="contact" action="PlanifierMatch">
-			
+<!-- 			<fieldset> -->
+<%-- 			<s:select label="Sélectionnez un joueur" --%>
+<%-- 								headerKey="-1" headerValue="--------" list="mapJoueurs" --%>
+<%-- 								listKey="key" listValue="value" name="idJoueur" /> --%>
+<!-- 			</fieldset> -->
 			<fieldset>
 				<s:textfield 
-					name="match.date" label="Date du match" ></s:textfield>
+					name="match.dateMatch" label="Date du match" ></s:textfield>
 			</fieldset>
 			<fieldset>
 				<s:textfield 
-					name="match.duree" label="Durée du match" ></s:textfield>
+					name="match.dureeMatch" label="Durée du match" ></s:textfield>
 			</fieldset>
 			<fieldset>
 				<s:textfield 
