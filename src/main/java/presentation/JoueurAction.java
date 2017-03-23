@@ -30,9 +30,11 @@ public class JoueurAction extends ActionSupport {
 	private List<Nationalite> lstNationalites;
 	private Map<Integer, String> mapNationalites;
 
-	private String message;
+	private String msgForm;
+	private String typeMsgForm;
 
 	public JoueurAction(@Autowired NationaliteService nationaliteService, @Autowired JoueurService joueurService) {
+		joueur = new Joueur();
 		lstJoueurs = joueurService.recupererTousLesJoueurs();
 		lstNationalites = nationaliteService.recupToutesNationalites();
 		mapNationalites = listToMap(nationaliteService.recupToutesNationalites());
@@ -44,11 +46,57 @@ public class JoueurAction extends ActionSupport {
 	 * @return renvoie "success" qui permet de recharger la page joueur.jsp
 	 */
 	public String creerJoueur() {
-		Nationalite nationalite = lstNationalites.get(idNationalite);
-		joueurService.creerJoueur(joueur.getNomJoueur(), joueur.getPrenomJoueur(), joueur.getSexeJoueur(), nationalite);
-		message = "Le joueur " + joueur.getPrenomJoueur() + " " + joueur.getNomJoueur() + " a été créé";
+		if (validation()) {
+			Nationalite nationalite = lstNationalites.get(idNationalite);
+			joueurService.creerJoueur(joueur.getNomJoueur(), joueur.getPrenomJoueur(), joueur.getSexeJoueur(),
+					nationalite);
+		}
 		return "success";
 	}
+
+	private boolean validation() {
+		boolean valide = true;
+		if (joueur.getNomJoueur() != null && joueur.getNomJoueur().length() == 0) {
+			msgForm = "Le nom est obligatoire";
+			typeMsgForm = "alert alert-danger";
+			valide = false;
+		} else if (joueur.getPrenomJoueur() != null && joueur.getPrenomJoueur().length() == 0) {
+			msgForm = "Le prénom est obligatoire";
+			typeMsgForm = "alert alert-danger";
+			valide = false;
+		} else if (joueur.getSexeJoueur() != null && joueur.getSexeJoueur() < 0) {
+			msgForm = "Le sexe doit être défini";
+			typeMsgForm = "alert alert-danger";
+			valide = false;
+		} else if (idNationalite != null && idNationalite < 0) {
+			msgForm = "La nationalité est obligatoire";
+			typeMsgForm = "alert alert-danger";
+			valide = false;
+		} else {
+			System.out.println(joueur);
+			msgForm = "Le joueur " + joueur.getPrenomJoueur() + " " + joueur.getNomJoueur() + " a été créé";
+			typeMsgForm = "alert alert-success";
+		}
+		return valide;
+	}
+
+	// Ne fonctionne pas à cause du thème simple
+	// public void validate(){
+	// if (joueur.getNomJoueur() != null && joueur.getNomJoueur().length() == 0)
+	// {
+	// addFieldError("joueur.nomJoueur", "Le nom est obligatoire");
+	// }
+	// if (joueur.getPrenomJoueur() != null && joueur.getPrenomJoueur().length()
+	// == 0) {
+	// addFieldError("joueur.prenomJoueur", "Le prénom est obligatoire");
+	// }
+	// if (joueur.getSexeJoueur() == null) {
+	// addFieldError("joueur.sexeJoueur", "Le sexe doit être défini");
+	// }
+	// if (idNationalite != null && idNationalite < 0) {
+	// addFieldError("idNationalite", "La nationalité est obligatoire");
+	// }
+	// }
 
 	/**
 	 * Permet de remplir une Map utilisée pour afficher le select sur la jsp à
@@ -95,20 +143,28 @@ public class JoueurAction extends ActionSupport {
 		this.idNationalite = idNationalite;
 	}
 
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
 	public List<Joueur> getLstJoueurs() {
 		return lstJoueurs;
 	}
 
 	public void setLstJoueurs(List<Joueur> lstJoueurs) {
 		this.lstJoueurs = lstJoueurs;
+	}
+
+	public String getMsgForm() {
+		return msgForm;
+	}
+
+	public void setMsgForm(String msgForm) {
+		this.msgForm = msgForm;
+	}
+
+	public String getTypeMsgForm() {
+		return typeMsgForm;
+	}
+
+	public void setTypeMsgForm(String typeMsgForm) {
+		this.typeMsgForm = typeMsgForm;
 	}
 
 }

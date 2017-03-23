@@ -17,7 +17,7 @@
 	<div class="central-main-container row">
 		<div class="container-form background col-md-5 col-md-offset-1">
 			<h3 class="<s:property value="typeMsgForm" />">
-				<s:property value="message" />
+				<s:property value="msgForm" />
 			</h3>
 			<s:form id="contact" action="AjouterJoueur" theme="simple">
 				<h3>Ajouter un joueur</h3>
@@ -35,8 +35,9 @@
 					</tr>
 					<tr>
 						<td><s:label>Genre du joueur : </s:label></td>
-						<td><s:textfield name="joueur.sexeJoueur"
-								label="Genre du joueur" /></td>
+						<td><s:select label="Genre du joueur"
+								list="#{'M':'Homme', 'F':'Femme'}" listKey="key"
+								listValue="value" name="joueur.sexeJoueur" /></td>
 					</tr>
 					<tr>
 						<td><s:label>Nationalité du joueur : </s:label></td>
