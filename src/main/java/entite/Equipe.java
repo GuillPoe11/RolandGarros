@@ -19,11 +19,11 @@ public class Equipe {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idEquipe;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "refIdJoueur1")
 	private Joueur joueur1;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "refIdJoueur2")
 	private Joueur joueur2;
 
