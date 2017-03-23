@@ -20,7 +20,7 @@
 			<h3 class="<s:property value="typeMsgForm" />">
 				<s:property value="msgForm" />
 			</h3>
-			<s:form action="AjouterCourt" cssClass="form-vertical" theme="simple">
+			<s:form action="AjouterCourt" theme="simple">
 				<h3>Enregistrer un court</h3>
 				<table id="form-table" class="table">
 				<tr><td>
