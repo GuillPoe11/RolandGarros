@@ -31,23 +31,59 @@ public class EquipeAction extends ActionSupport {
 	private List<Joueur> lstJoueur;
 	private Map<Integer, String> mapJoueur;
 
+	private List<Equipe> lstEquipes;
+
+	private String msgForm;
+	private String typeMsgForm; // alert alert-success alert-warning
+
 	/*
 	 * Constructeur
 	 */
-	public EquipeAction(@Autowired JoueurService serviceJ) {
+	public EquipeAction(@Autowired JoueurService serviceJ, @Autowired EquipeService equipeService) {
 		lstJoueur = serviceJ.recupererTousLesJoueurs();
 		mapJoueur = listToMap(serviceJ.recupererTousLesJoueurs());
+		lstEquipes = equipeService.recupererToutesLesEquipes();
 	}
-	
-	
 
+	/**
+	 * ajouter une équipe vérif si select bien pris en compte
+	 * 
+	 * @return success
+	 */
 	public String creerEquipe() {
-		joueur1 = lstJoueur.get(idJoueur1);
-		joueur2 = lstJoueur.get(idJoueur2);
-		equipeService.creerEquipe(joueur1, joueur2);
+		
+		
+		if (-1 == idJoueur1) {
+			msgForm = "Choisissez le joueur1";
+			typeMsgForm = "alert alert-danger";
+		}
+		else if (-1 == idJoueur2) {
+			msgForm = "Choisissez le joueur2";
+			typeMsgForm = "alert alert-danger";
+		}
+		else {
+			joueur1 = lstJoueur.get(idJoueur1);
+			joueur2 = lstJoueur.get(idJoueur2);
+			equipeService.creerEquipe(joueur1, joueur2);
+			msgForm = "L'équipe à été ajoutée";
+			typeMsgForm = "alert alert-success";
+		}
+
 		return "success";
 	}
-
+	
+	
+	/**
+	 * Permet de remplir une Map utilisée pour afficher le select sur la jsp à
+	 * partir d'une liste de joueurs.
+	 * 
+	 * @param list
+	 *            Une liste de Joueurs
+	 * @return La HashMap dont les valeurs sont des chaines de caractères
+	 *         correspondant aux noms et prénoms des joueurs et les clés des
+	 *         entiers correspondant à l'indice des joueurs dans la liste
+	 *         entrée en paramètre.
+	 */
 	private Map<Integer, String> listToMap(List<Joueur> list) {
 		Map<Integer, String> map = new HashMap<Integer, String>();
 		Integer i = 0;
@@ -131,6 +167,30 @@ public class EquipeAction extends ActionSupport {
 
 	public void setIdJoueur2(Integer idJoueur2) {
 		this.idJoueur2 = idJoueur2;
+	}
+
+	public List<Equipe> getLstEquipes() {
+		return lstEquipes;
+	}
+
+	public void setLstEquipes(List<Equipe> lstEquipes) {
+		this.lstEquipes = lstEquipes;
+	}
+	
+	public String getMsgForm() {
+		return msgForm;
+	}
+
+	public void setMsgForm(String msgForm) {
+		this.msgForm = msgForm;
+	}
+
+	public String getTypeMsgForm() {
+		return typeMsgForm;
+	}
+
+	public void setTypeMsgForm(String typeMsgForm) {
+		this.typeMsgForm = typeMsgForm;
 	}
 
 }
