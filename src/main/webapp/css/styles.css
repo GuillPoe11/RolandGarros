@@ -77,7 +77,7 @@ body {
 }
 
 .btn-home span:after {
-	content: url('img/balle2.png');
+	content: url('../img/balle2.png');
 	position: absolute;
 	opacity: 0;
 	top: 0;
