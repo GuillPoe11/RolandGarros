@@ -12,21 +12,52 @@
 <body>
 
 	<jsp:include page="menu.jspf" />
-	
-		<!-- Form -->
-	<div class="central-main-container row">
-	
 
-		
+	<!-- Form -->
+	<div class="central-main-container row">
+
+		<div class="container-form background col-md-5 col-md-offset-1">
+			<h3 class="<s:property value="typeMsgForm" />">
+				<s:property value="msgForm" />
+			</h3>
+			<s:form action="AjouterCourt" cssClass="form-vertical" theme="simple">
+				<h3>Enregistrer un court</h3>
+				<table id="form-table" class="table">
+				<tr><td>
+				<s:label>Nom de court : </s:label>
+			</td>
+			<td>
+				<s:textfield key="myText"  name="nomCourt"/>
+			</td>
+			</tr>
+			<tr>
+				<td>
+				<s:label>Numéro de court : </s:label>
+				</td>
+				<td>
+				<s:textfield name="numeroCourt" label="Numero du court " />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="colspan-center">
+				<fieldset>
+					<s:submit method="ajouterCourt" value="Ajouter un court" cssClass="btn btn-primary"/>
+				</fieldset>
+				</td>
+			</tr>
+			</table>
+			</s:form>
+		</div>
 		<div class="container-liste background col-md-4 col-md-offset-1">
-			<table class="table table-bordered table-hover">
+			<table id="liste-table" class="table table-bordered table-hover">
 				<tr>
-					<td>Nom du court</td>
-					<td>Numéro du court</td>
+					<th>Nom du court</th>
+					<th>Numéro du court</th>
 				</tr>
 				<s:iterator status="status" value="lstCourts">
+			<%-- 	(<s:property value="#status.index" />)- --%>
 					<tr>
-						<td>(<s:property value="#status.index" />)-<s:property
+						<td><s:property
 								value="nomCourt" /></td>
 						<td><s:property value="numeroCourt" /></td>
 
@@ -36,31 +67,11 @@
 			</table>
 
 		</div>
-		
-		<div class="container-form background col-md-5 col-md-offset-1">
-			<h1 class="<s:property value="typeMsgForm" />">
-				<s:property value="msgForm" />
-			</h1>
-			<s:form action="AjouterCourt" cssClass="form-vertical" theme="simple">
-				<h3>Enregistrer un court</h3>
-				<s:textfield name="nomCourt" label="Nom du court " />
-				<br></br>
-				<s:textfield name="numeroCourt" label="Numero du court " />
-				<br></br>
-				<fieldset>
-					<s:submit method="ajouterCourt" value="Ajouter un court" />
-				</fieldset>
-				<s:property value="msgForm" />
-			</s:form>
-
-		</div>
-		
-
 		<!--  @end Form -->
-		
-		</div>
-	
-	<br class="clear"/>
+
+	</div>
+
+	<br class="clear" />
 
 	<jsp:include page="footer.jspf" />
 

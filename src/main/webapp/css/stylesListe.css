@@ -2,3 +2,7 @@
   color:#000;
   float:left;
 } 
+#liste-table th,#liste-table td
+{
+	text-align:center;
+}
