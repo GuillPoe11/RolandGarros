@@ -2,6 +2,14 @@
 	color: #000;
 	float: left;
 }
+#form-table th,#form-table td
+{
+	text-align:left;
+}
+#form-table .colspan-center
+{
+	text-align:center;
+}
 
 #contact {
 	/*  background: #F9F9F9;
