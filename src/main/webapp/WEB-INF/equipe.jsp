@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<title>Joueur Roland Garros</title>
+<title>Equipe Roland Garros</title>
 <meta name="description" content="">
 
 <jsp:include page="head.jspf" />

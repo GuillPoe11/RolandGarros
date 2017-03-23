@@ -89,6 +89,10 @@ fieldset {
 	width:600px;	
 }
 
+.resultat table{
+	width:auto;
+}
+
 .tdLabel{
 	display:none;
 }
