@@ -21,37 +21,37 @@ public class Match {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idMatch;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idCourt")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "refIdCourt")
 	private Court court;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "refIdJoueur1")
 	private Joueur joueur1;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "refIdJoueur2")
 	private Joueur joueur2;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idArbitre")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "refIdArbitre")
 	private Arbitre arbitre;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idSousTournoi")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "refIdTournoi")
 	private SousTournoi sousTournoi;
 
-	@Column(name = "date", nullable = false, unique = false)
+	@Column(name = "dateMatch", nullable = false, unique = false)
 	private Date date;
 
-	@Column(name = "duree", nullable = true, unique = false)
+	@Column(name = "dureeMatch", nullable = true, unique = false)
 	private int duree;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "refIdEquipe1")
 	private Equipe equipe1;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "refIdEquipe2")
 	private Equipe equipe2;
 

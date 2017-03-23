@@ -34,7 +34,6 @@ public class JoueurAction extends ActionSupport {
 
 	public JoueurAction(@Autowired NationaliteService nationaliteService, @Autowired JoueurService joueurService) {
 		lstJoueurs = joueurService.recupererTousLesJoueurs();
-		System.out.println(lstJoueurs.get(0).getNationalite().getLibelleNationalite());
 		lstNationalites = nationaliteService.recupToutesNationalites();
 		mapNationalites = listToMap(nationaliteService.recupToutesNationalites());
 	}

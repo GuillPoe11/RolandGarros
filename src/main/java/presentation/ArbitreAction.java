@@ -34,7 +34,7 @@ public class ArbitreAction extends ActionSupport {
 	 * Fonction qui ajoute un arbitre lorsque l'organisateur clique sur le
 	 * bouton refuse l'ajout si les conditions ne sont pas respectées
 	 * 
-	 * 
+	 * return string vers la page arbitre
 	 */
 	public String submite() {
 		if (arbitre.getNomArbitre() != null && !"".equals(arbitre.getNomArbitre()) && arbitre.getPrenomArbitre() != null
