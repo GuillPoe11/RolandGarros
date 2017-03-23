@@ -6,6 +6,9 @@
 <head>
 <title>Roland Garros</title>
 <meta name="description" content="">
+
+<jsp:include page="WEB-INF/head.jspf" />
+
 </head>
 <body>
 
