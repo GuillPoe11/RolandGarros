@@ -79,7 +79,8 @@ public class PlanifierMatchAction extends ActionSupport {
 	 * 
 	 * return string vers la page match
 	 */
-	public String submite() {
+	public String creerMatch() {
+		System.out.println(match);
 		if (verifMatchs()) {
 			match.setArbitre(arbitreService.recupArbitreParId(idArbitre));
 			match.setCourt(courtService.recupCourtParId(idCourt));
@@ -97,6 +98,7 @@ public class PlanifierMatchAction extends ActionSupport {
 					match.getSousTournoi(), match.getDateMatch(), match.getEquipe1(), match.getEquipe2());
 			lstMatchs = service.recupererTousLesMatchs();
 		}
+		System.out.println(match);
 		return "success";
 	}
 
