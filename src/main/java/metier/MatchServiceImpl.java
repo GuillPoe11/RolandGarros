@@ -37,8 +37,8 @@ public class MatchServiceImpl implements MatchService {
 	public void modifierMatch(Match match, Date dateMatch, Integer dureeMatch, Integer score1Match,
 			Integer score2Match) {
 
-		match.setDate(dateMatch);
-		match.setDuree(dureeMatch);
+		match.setDateMatch(dateMatch);
+		match.setDureeMatch(dureeMatch);
 		match.setScore1(score1Match);
 		match.setScore2(score2Match);
 

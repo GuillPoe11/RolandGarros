@@ -60,8 +60,8 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 		Match matchModifier = recupMatchParId(m.getIdMatch());
 		matchModifier.setArbitre(m.getArbitre());
 		matchModifier.setCourt(m.getCourt());
-		matchModifier.setDate(m.getDate());
-		matchModifier.setDuree(m.getDuree());
+		matchModifier.setDateMatch(m.getDateMatch());
+		matchModifier.setDureeMatch(m.getDureeMatch());
 		matchModifier.setEquipe1(m.getEquipe1());
 		matchModifier.setEquipe2(m.getEquipe2());
 		matchModifier.setJoueur1(m.getJoueur1());

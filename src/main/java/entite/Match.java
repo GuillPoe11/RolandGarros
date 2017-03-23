@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "match")
+@Table(name = "matchtennis")
 public class Match {
 
 	@Id
@@ -38,14 +38,14 @@ public class Match {
 	private Arbitre arbitre;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "refIdTournoi")
+	@JoinColumn(name = "refIdSousTournoi")
 	private SousTournoi sousTournoi;
 
 	@Column(name = "dateMatch", nullable = false, unique = false)
-	private Date date;
+	private Date dateMatch;
 
 	@Column(name = "dureeMatch", nullable = true, unique = false)
-	private int duree;
+	private Integer dureeMatch;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "refIdEquipe1")
@@ -56,10 +56,10 @@ public class Match {
 	private Equipe equipe2;
 
 	@Column(name = "score1", nullable = true, unique = false)
-	private int score1;
+	private Integer score1;
 
 	@Column(name = "score2", nullable = true, unique = false)
-	private int score2;
+	private Integer score2;
 
 	/*
 	 * Constructeurs
@@ -68,16 +68,15 @@ public class Match {
 
 	}
 
-	public Match(Court court, Joueur joueur1, Joueur joueur2, Arbitre arbitre, SousTournoi sousTournoi,
-			Date date, Equipe equipe1, Equipe equipe2) {
+	public Match(Court court, Joueur joueur1, Joueur joueur2, Arbitre arbitre, SousTournoi sousTournoi, Date dateMatch,
+			Equipe equipe1, Equipe equipe2) {
 		super();
 		this.court = court;
 		this.joueur1 = joueur1;
 		this.joueur2 = joueur2;
 		this.arbitre = arbitre;
 		this.sousTournoi = sousTournoi;
-		this.date = date;
-				
+		this.dateMatch = dateMatch;
 	}
 
 	/*
@@ -132,20 +131,20 @@ public class Match {
 		this.sousTournoi = sousTournoi;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDateMatch() {
+		return dateMatch;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDateMatch(Date date) {
+		this.dateMatch = date;
 	}
 
-	public int getDuree() {
-		return duree;
+	public Integer getDureeMatch() {
+		return dureeMatch;
 	}
 
-	public void setDuree(int duree) {
-		this.duree = duree;
+	public void setDureeMatch(Integer duree) {
+		this.dureeMatch = duree;
 	}
 
 	public Equipe getEquipe1() {
@@ -164,19 +163,19 @@ public class Match {
 		this.equipe2 = equipe2;
 	}
 
-	public int getScore1() {
+	public Integer getScore1() {
 		return score1;
 	}
 
-	public void setScore1(int score1) {
+	public void setScore1(Integer score1) {
 		this.score1 = score1;
 	}
 
-	public int getScore2() {
+	public Integer getScore2() {
 		return score2;
 	}
 
-	public void setScore2(int score2) {
+	public void setScore2(Integer score2) {
 		this.score2 = score2;
 	}
 
@@ -187,8 +186,9 @@ public class Match {
 	@Override
 	public String toString() {
 		return "Match [idMatch=" + idMatch + ", court=" + court + ", joueur1=" + joueur1 + ", joueur2=" + joueur2
-				+ ", arbitre=" + arbitre + ", sousTournoi=" + sousTournoi + ", date=" + date + ", duree=" + duree
-				+ ", equipe1=" + equipe1 + ", equipe2=" + equipe2 + ", score1=" + score1 + ", score2=" + score2 + "]";
+				+ ", arbitre=" + arbitre + ", sousTournoi=" + sousTournoi + ", dateMatch=" + dateMatch + ", dureeMatch="
+				+ dureeMatch + ", equipe1=" + equipe1 + ", equipe2=" + equipe2 + ", score1=" + score1 + ", score2="
+				+ score2 + "]";
 	}
 
 }
