@@ -1,18 +1,26 @@
 package presentation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import entite.Arbitre;
+import entite.Court;
+import entite.Equipe;
 import entite.Joueur;
 import entite.Match;
+import entite.SousTournoi;
+import metier.ArbitreService;
+import metier.CourtService;
+import metier.EquipeService;
 import metier.JoueurService;
 import metier.MatchService;
+import metier.SousTournoiService;
 
 public class PlanifierMatchAction extends ActionSupport {
 	@SuppressWarnings("unused")
@@ -21,21 +29,38 @@ public class PlanifierMatchAction extends ActionSupport {
 	@SuppressWarnings("unused")
 	@Autowired
 	private JoueurService joueurService;
-	private List<Joueur> lstJoueurs;
+	@SuppressWarnings("unused")
+	@Autowired
+	private EquipeService equipeService;
+	@SuppressWarnings("unused")
+	@Autowired
+	private CourtService courtService;
+	@SuppressWarnings("unused")
+	@Autowired
+	private SousTournoiService sousTournoiService;
+	@SuppressWarnings("unused")
+	@Autowired
+	private ArbitreService arbitreService;
 	private Map<Integer, String> mapJoueurs;
+	private Map<Integer, String> mapEquipes;
+	private Map<Integer, String> mapArbitres;
+	private Map<Integer, String> mapSousTournois;
+	private Map<Integer, String> mapCourts;
 	private static final long serialVersionUID = 77971771589810L;
 
 	private Match match;
 	private List<Match> lstMatchs;
 
-	public PlanifierMatchAction(@Autowired MatchService service, @Autowired JoueurService joueurService) {
+	public PlanifierMatchAction(@Autowired MatchService service, @Autowired JoueurService joueurService,
+			@Autowired EquipeService equipeService, @Autowired CourtService courtService,
+			@Autowired SousTournoiService sousTournoiService, @Autowired ArbitreService arbitreService) {
 		super();
 		lstMatchs = service.recupererTousLesMatchs();
-		//lstJoueurs = joueurService.recupererTousLesJoueurs();
-		System.out.println("herrre");
-		/*mapJoueurs = listToMap(joueurService.recupererTousLesJoueurs().stream()
-				.map(e -> (Object) e)
-			    .collect(Collectors.toList()));*/
+		mapJoueurs = listToMap(new ArrayList<Object>(joueurService.recupererTousLesJoueurs()));
+		mapEquipes = listToMap(new ArrayList<Object>(equipeService.recupererToutesLesEquipes()));
+		mapArbitres = listToMap(new ArrayList<Object>(arbitreService.recupTousArbitres()));
+		mapSousTournois = listToMap(new ArrayList<Object>(sousTournoiService.recupererTousLesSousTournois()));
+		mapCourts = listToMap(new ArrayList<Object>(courtService.recupTousCourts()));
 	}
 
 	public static long getSerialversionuid() {
@@ -69,13 +94,6 @@ public class PlanifierMatchAction extends ActionSupport {
 		this.lstMatchs = lstArbitres;
 	}
 
-	public List<Joueur> getLstJoueurs() {
-		return lstJoueurs;
-	}
-
-	public void setLstJoueurs(List<Joueur> lstJoueurs) {
-		this.lstJoueurs = lstJoueurs;
-	}
 
 	public Match getMatch() {
 		return match;
@@ -100,6 +118,40 @@ public class PlanifierMatchAction extends ActionSupport {
 	public void setMapJoueurs(Map<Integer, String> mapJoueurs) {
 		this.mapJoueurs = mapJoueurs;
 	}
+
+
+	public Map<Integer, String> getMapEquipes() {
+		return mapEquipes;
+	}
+
+	public void setMapEquipes(Map<Integer, String> mapEquipes) {
+		this.mapEquipes = mapEquipes;
+	}
+
+	public Map<Integer, String> getMapArbitres() {
+		return mapArbitres;
+	}
+
+	public void setMapArbitres(Map<Integer, String> mapArbitres) {
+		this.mapArbitres = mapArbitres;
+	}
+
+	public Map<Integer, String> getMapSousTournois() {
+		return mapSousTournois;
+	}
+
+	public void setMapSousTournois(Map<Integer, String> mapSousTournois) {
+		this.mapSousTournois = mapSousTournois;
+	}
+
+	public Map<Integer, String> getMapCourts() {
+		return mapCourts;
+	}
+
+	public void setMapCourts(Map<Integer, String> mapCourts) {
+		this.mapCourts = mapCourts;
+	}
+
 
 	/**
 	 * Fonction de vérification si un arbitre existe déjà
@@ -128,18 +180,33 @@ public class PlanifierMatchAction extends ActionSupport {
 	 *         correspondant aux libellés des objects et les clés des entiers
 	 *         correspondant à l'indice des objects dans la liste entrée en
 	 *         paramètre.
+	 * @author arnaud.poe11
 	 */
 	private Map<Integer, String> listToMap(List<Object> list) {
 		Map<Integer, String> map = new HashMap<Integer, String>();
 		Integer i = 0;
+
 		for (Object obj : list) {
-			switch (obj.getClass().getName())
+			switch (obj.getClass().getName()) {
+			case "entite.Joueur":
+				map.put(i, ((Joueur) obj).getNomJoueur() + "-" + ((Joueur) obj).getPrenomJoueur());
+				break;
 
-			{
+			case "entite.Equipe":
+				map.put(i,
+						((Equipe) obj).getJoueur1().getNomJoueur() + "-" + ((Equipe) obj).getJoueur1().getNomJoueur());
+				break;
 
-			case "Joueur":
-				map.put(i, ((Joueur) obj).getNomJoueur());
-				System.out.println("Match");
+			case "entite.SousTournoi":
+				map.put(i, ((SousTournoi) obj).getNomSousTournoi());
+				break;
+
+			case "entite.Court":
+				map.put(i, ((Court) obj).getNomCourt());
+				break;
+
+			case "entite.Arbitre":
+				map.put(i, ((Arbitre) obj).getNomArbitre() + "-" + ((Arbitre) obj).getPrenomArbitre());
 				break;
 
 			default:
