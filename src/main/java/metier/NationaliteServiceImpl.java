@@ -8,11 +8,10 @@ import org.springframework.stereotype.Component;
 import dao.NationaliteDao;
 import entite.Nationalite;
 
-@Component
+@Component(value="NationaliteService")
 public class NationaliteServiceImpl implements NationaliteService {
 
 	@Autowired
-	
 	private NationaliteDao nDao;
 
 	/**

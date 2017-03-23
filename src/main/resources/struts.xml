@@ -5,7 +5,8 @@
 <struts>
 	<package name="default" extends="struts-default">
 		<action name="Connexion" class="presentation.ConnexionAction">
-			<result name="success">login.jsp</result>
+			<result name="success">/WEB-INF/login.jsp</result>
+			<result name="connecte" type="redirectAction">Accueil</result>
 		</action>
 		<action name="Accueil" class="presentation.AccueilAction">
 			<result name="success">index.jsp</result>
