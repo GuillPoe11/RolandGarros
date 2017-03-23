@@ -28,7 +28,7 @@ public class ResultatAction extends ActionSupport {
 	private Joueur joueur1;
 	private Joueur joueur2;
 	private SousTournoi sousTournoi;
-	private Date date;
+	private Date dateMatch;
 	private int duree;
 	private Equipe equipe1;
 	private Equipe equipe2;
@@ -113,12 +113,12 @@ public class ResultatAction extends ActionSupport {
 		this.sousTournoi = sousTournoi;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDateMatch() {
+		return dateMatch;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate(Date dateMatch) {
+		this.dateMatch = dateMatch;
 	}
 
 	public int getDuree() {
