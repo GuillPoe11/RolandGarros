@@ -64,14 +64,14 @@
 	
 	
 	
-		<s:form id="contact" action="PlanifierMatch">
+		<s:form id="contact" action="PlanifierMatchAction">
 		
 			<fieldset>
 			<s:select label="Sélectionnez une equipe"
 								headerKey="-1" headerValue="--------" list="mapEquipes"
 								listKey="key" listValue="value" name="idEquipe1" />
 			</fieldset>
-			
+			<fieldset>
 			<s:select label="Sélectionnez une equipe"
 								headerKey="-1" headerValue="--------" list="mapEquipes"
 								listKey="key" listValue="value" name="idEquipe2" />

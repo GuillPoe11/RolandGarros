@@ -47,9 +47,15 @@ public class PlanifierMatchAction extends ActionSupport {
 	private Map<Integer, String> mapSousTournois;
 	private Map<Integer, String> mapCourts;
 	private static final long serialVersionUID = 77971771589810L;
-
 	private Match match;
 	private List<Match> lstMatchs;
+	private Integer idEquipe1;
+	private Integer idEquipe2;
+	private Integer idJoueur1;
+	private Integer idJoueur2;
+	private Integer idSousTournoi;
+	private Integer idArbitre;
+	private Integer idCourt;
 
 	public PlanifierMatchAction(@Autowired MatchService service, @Autowired JoueurService joueurService,
 			@Autowired EquipeService equipeService, @Autowired CourtService courtService,
@@ -68,13 +74,29 @@ public class PlanifierMatchAction extends ActionSupport {
 	}
 
 	/**
-	 * Fonction qui ajoute un latch lorsque l'organisateur clique sur le bouton
+	 * Fonction qui ajoute un match lorsque l'organisateur clique sur le bouton
 	 * refuse l'ajout si les conditions ne sont pas respectées
 	 * 
 	 * return string vers la page match
 	 */
 	public String submite() {
-
+		if (verifMatchs()) {
+			match.setArbitre(arbitreService.recupArbitreParId(idArbitre));
+			match.setCourt(courtService.recupCourtParId(idCourt));
+			match.setEquipe1(equipeService.recupererEquipe(idEquipe1));
+			match.setEquipe2(equipeService.recupererEquipe(idEquipe2));
+			match.setJoueur1(joueurService.recupererJoueurParId(idJoueur1));
+			match.setJoueur2(joueurService.recupererJoueurParId(idJoueur2));
+			for (SousTournoi s : sousTournoiService.recupererTousLesSousTournois()) {
+				if (s.getIdSousTournoi() == idSousTournoi) {
+					match.setSousTournoi(s);
+				}
+			}
+			System.out.println(match);
+			service.creerMatch(match.getCourt(), match.getJoueur1(), match.getJoueur2(), match.getArbitre(),
+					match.getSousTournoi(), match.getDateMatch(), match.getEquipe1(), match.getEquipe2());
+			lstMatchs = service.recupererTousLesMatchs();
+		}
 		return "success";
 	}
 
@@ -93,7 +115,6 @@ public class PlanifierMatchAction extends ActionSupport {
 	public void setLstArbitres(List<Match> lstArbitres) {
 		this.lstMatchs = lstArbitres;
 	}
-
 
 	public Match getMatch() {
 		return match;
@@ -118,7 +139,6 @@ public class PlanifierMatchAction extends ActionSupport {
 	public void setMapJoueurs(Map<Integer, String> mapJoueurs) {
 		this.mapJoueurs = mapJoueurs;
 	}
-
 
 	public Map<Integer, String> getMapEquipes() {
 		return mapEquipes;
@@ -152,21 +172,69 @@ public class PlanifierMatchAction extends ActionSupport {
 		this.mapCourts = mapCourts;
 	}
 
+	public Integer getIdEquipe1() {
+		return idEquipe1;
+	}
+
+	public void setIdEquipe1(Integer idEquipe1) {
+		this.idEquipe1 = idEquipe1;
+	}
+
+	public Integer getIdEquipe2() {
+		return idEquipe2;
+	}
+
+	public void setIdEquipe2(Integer idEquipe2) {
+		this.idEquipe2 = idEquipe2;
+	}
+
+	public Integer getIdJoueur1() {
+		return idJoueur1;
+	}
+
+	public void setIdJoueur1(Integer idJoueur1) {
+		this.idJoueur1 = idJoueur1;
+	}
+
+	public Integer getIdJoueur2() {
+		return idJoueur2;
+	}
+
+	public void setIdJoueur2(Integer idJoueur2) {
+		this.idJoueur2 = idJoueur2;
+	}
+
+	public Integer getIdSousTournoi() {
+		return idSousTournoi;
+	}
+
+	public void setIdSousTournoi(Integer idSousTournoi) {
+		this.idSousTournoi = idSousTournoi;
+	}
+
+	public Integer getIdArbitre() {
+		return idArbitre;
+	}
+
+	public void setIdArbitre(Integer idArbitre) {
+		this.idArbitre = idArbitre;
+	}
+
+	public Integer getIdCourt() {
+		return idCourt;
+	}
+
+	public void setIdCourt(Integer idCourt) {
+		this.idCourt = idCourt;
+	}
 
 	/**
-	 * Fonction de vérification si un arbitre existe déjà
+	 * Fonction de vérification si un match peut être ajouté
 	 * 
-	 * @param nom
-	 * @param prenom
 	 * @return true or false
 	 */
-	public boolean verifArbitreExistants(String nom, String prenom) {
-		// for (Arbitre arb : service.recupTousArbitres()) {
-		// if (arb.getNomArbitre().equals(nom) &&
-		// arb.getPrenomArbitre().equals(prenom)) {
-		// return false;
-		// }
-		// }
+	public boolean verifMatchs() {
+
 		return true;
 	}
 
@@ -184,29 +252,30 @@ public class PlanifierMatchAction extends ActionSupport {
 	 */
 	private Map<Integer, String> listToMap(List<Object> list) {
 		Map<Integer, String> map = new HashMap<Integer, String>();
-		Integer i = 0;
 
 		for (Object obj : list) {
 			switch (obj.getClass().getName()) {
 			case "entite.Joueur":
-				map.put(i, ((Joueur) obj).getNomJoueur() + "-" + ((Joueur) obj).getPrenomJoueur());
+				map.put(((Joueur) obj).getIdJoueur(),
+						((Joueur) obj).getNomJoueur() + "-" + ((Joueur) obj).getPrenomJoueur());
 				break;
 
 			case "entite.Equipe":
-				map.put(i,
-						((Equipe) obj).getJoueur1().getNomJoueur() + "-" + ((Equipe) obj).getJoueur1().getNomJoueur());
+				map.put(((Equipe) obj).getIdEquipe(),
+						((Equipe) obj).getJoueur1().getNomJoueur() + "-" + ((Equipe) obj).getJoueur2().getNomJoueur());
 				break;
 
 			case "entite.SousTournoi":
-				map.put(i, ((SousTournoi) obj).getNomSousTournoi());
+				map.put(((SousTournoi) obj).getIdSousTournoi(), ((SousTournoi) obj).getNomSousTournoi());
 				break;
 
 			case "entite.Court":
-				map.put(i, ((Court) obj).getNomCourt());
+				map.put(((Court) obj).getIdCourt(), ((Court) obj).getNomCourt());
 				break;
 
 			case "entite.Arbitre":
-				map.put(i, ((Arbitre) obj).getNomArbitre() + "-" + ((Arbitre) obj).getPrenomArbitre());
+				map.put(((Arbitre) obj).getIdArbitre(),
+						((Arbitre) obj).getNomArbitre() + "-" + ((Arbitre) obj).getPrenomArbitre());
 				break;
 
 			default:
@@ -214,7 +283,6 @@ public class PlanifierMatchAction extends ActionSupport {
 				/* Action */;
 
 			}
-			i++;
 		}
 		return map;
 	}
