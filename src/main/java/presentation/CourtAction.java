@@ -16,8 +16,6 @@ public class CourtAction extends ActionSupport {
 	@Autowired
 	private CourtService cService;
 
-	// private Court court;
-
 	private String nomCourt;
 	private String numeroCourt;
 
@@ -88,8 +86,11 @@ public class CourtAction extends ActionSupport {
 	
 	/**
 	 * ajouter un court
+	 * vérif nom et numero non vide
+	 * 
 	 * @return success
 	 */
+	//TODO vérif numero court pas déjà existant
 	public String ajouterCourt() {
 
 		System.out.println("Essai ajout d'un court");
