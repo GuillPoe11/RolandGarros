@@ -23,22 +23,22 @@ import metier.MatchService;
 import metier.SousTournoiService;
 
 public class PlanifierMatchAction extends ActionSupport {
-	@SuppressWarnings("unused")
+
 	@Autowired
 	private MatchService service;
-	@SuppressWarnings("unused")
+	
 	@Autowired
 	private JoueurService joueurService;
-	@SuppressWarnings("unused")
+	
 	@Autowired
 	private EquipeService equipeService;
-	@SuppressWarnings("unused")
+
 	@Autowired
 	private CourtService courtService;
-	@SuppressWarnings("unused")
+
 	@Autowired
 	private SousTournoiService sousTournoiService;
-	@SuppressWarnings("unused")
+
 	@Autowired
 	private ArbitreService arbitreService;
 	private Map<Integer, String> mapJoueurs;
@@ -60,7 +60,6 @@ public class PlanifierMatchAction extends ActionSupport {
 	public PlanifierMatchAction(@Autowired MatchService service, @Autowired JoueurService joueurService,
 			@Autowired EquipeService equipeService, @Autowired CourtService courtService,
 			@Autowired SousTournoiService sousTournoiService, @Autowired ArbitreService arbitreService) {
-		super();
 		lstMatchs = service.recupererTousLesMatchs();
 		mapJoueurs = listToMap(new ArrayList<Object>(joueurService.recupererTousLesJoueurs()));
 		mapEquipes = listToMap(new ArrayList<Object>(equipeService.recupererToutesLesEquipes()));
@@ -77,9 +76,10 @@ public class PlanifierMatchAction extends ActionSupport {
 	 * Fonction qui ajoute un match lorsque l'organisateur clique sur le bouton
 	 * refuse l'ajout si les conditions ne sont pas respectées
 	 * 
-	 * return string vers la page match
+	 * @return string vers la page match
 	 */
 	public String creerMatch() {
+		System.out.println("créér match appelé");
 		System.out.println(match);
 		if (verifMatchs()) {
 			match.setArbitre(arbitreService.recupArbitreParId(idArbitre));
@@ -88,11 +88,12 @@ public class PlanifierMatchAction extends ActionSupport {
 			match.setEquipe2(equipeService.recupererEquipe(idEquipe2));
 			match.setJoueur1(joueurService.recupererJoueurParId(idJoueur1));
 			match.setJoueur2(joueurService.recupererJoueurParId(idJoueur2));
-			for (SousTournoi s : sousTournoiService.recupererTousLesSousTournois()) {
-				if (s.getIdSousTournoi() == idSousTournoi) {
-					match.setSousTournoi(s);
-				}
-			}
+			match.setSousTournoi(sousTournoiService.recupererSousTournoiParId(idSousTournoi));
+//			for (SousTournoi s : sousTournoiService.recupererTousLesSousTournois()) {
+//				if (s.getIdSousTournoi() == idSousTournoi) {
+//					match.setSousTournoi(s);
+//				}
+//			}
 			System.out.println(match);
 			service.creerMatch(match.getCourt(), match.getJoueur1(), match.getJoueur2(), match.getArbitre(),
 					match.getSousTournoi(), match.getDateMatch(), match.getEquipe1(), match.getEquipe2());
@@ -236,7 +237,7 @@ public class PlanifierMatchAction extends ActionSupport {
 	 * @return true or false
 	 */
 	public boolean verifMatchs() {
-
+		//TODO
 		return true;
 	}
 
@@ -259,7 +260,7 @@ public class PlanifierMatchAction extends ActionSupport {
 			switch (obj.getClass().getName()) {
 			case "entite.Joueur":
 				map.put(((Joueur) obj).getIdJoueur(),
-						((Joueur) obj).getNomJoueur() + "-" + ((Joueur) obj).getPrenomJoueur());
+						((Joueur) obj).getPrenomJoueur() + ((Joueur) obj).getNomJoueur());
 				break;
 
 			case "entite.Equipe":
@@ -277,13 +278,13 @@ public class PlanifierMatchAction extends ActionSupport {
 
 			case "entite.Arbitre":
 				map.put(((Arbitre) obj).getIdArbitre(),
-						((Arbitre) obj).getNomArbitre() + "-" + ((Arbitre) obj).getPrenomArbitre());
+						((Arbitre) obj).getPrenomArbitre() + ((Arbitre) obj).getNomArbitre());
 				break;
 
 			default:
 
 				/* Action */;
-
+			break;
 			}
 		}
 		return map;
