@@ -48,4 +48,9 @@ public class JoueurServiceImpl implements JoueurService {
 		return jDao.recupTousLesJoueurs();
 	}
 
+	@Override
+	public List<Joueur> recupLesDixDerniersJoueurs() {
+		return jDao.recupLesDixDerniersJoueurs();
+	}
+
 }
