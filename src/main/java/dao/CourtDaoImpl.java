@@ -63,4 +63,19 @@ public class CourtDaoImpl extends DAO implements CourtDao {
 		return lstCourts;
 	}
 
+	/**
+	 * Retourne les 10 derniers courts rentrés dans la tableBdd court
+	 * @return la liste des 10 derniers courts
+	 */
+	@Override
+	public List<Court> recupLesDixDerniersCourts() {
+		openAll();
+		tx.begin();
+		@SuppressWarnings("unchecked")
+		List<Court> lstDixCourts = em.createQuery("SELECT c FROM Court c ORDER BY c.nomCourt ASC").setMaxResults(10).getResultList();
+		tx.commit();
+		closeAll();
+		return lstDixCourts;
+	}
+
 }

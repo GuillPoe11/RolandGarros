@@ -31,4 +31,10 @@ public interface CourtDao {
 	 * @return la liste des courts
 	 */
 	public List<Court> recupTousLesCourts();
+	
+	/**
+	 * Retourne les 10 derniers résultats rentrés dans la tableBdd court
+	 * @return la liste des 10 derniers courts
+	 */
+	public List<Court> recupLesDixDerniersCourts();
 }
