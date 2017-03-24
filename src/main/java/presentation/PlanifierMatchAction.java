@@ -280,7 +280,7 @@ public class PlanifierMatchAction extends ActionSupport {
 	public void setLstDixDerniersMatchs(List<Match> lstDixDerniersMatchs) {
 		this.lstDixDerniersMatchs = lstDixDerniersMatchs;
 	}
-	
+
 	// fin getters setters
 
 	/**
@@ -309,9 +309,7 @@ public class PlanifierMatchAction extends ActionSupport {
 						joueurService.recupererJoueurParId(idJoueur2), arbitreService.recupArbitreParId(idArbitre),
 						sousTournoiService.recupererSousTournoiParId(idSousTournoi), dateMatchFormat,
 						equipeService.recupererEquipeParId(idEquipe1), equipeService.recupererEquipeParId(idEquipe2));
-				System.out.println("ok");
-				msgForm = "Le match a été créé";
-				typeMsgForm = "alert alert-success";
+
 			} catch (MatchException e) {
 				msgForm = e.getMessage();
 				typeMsgForm = "alert alert-danger";
@@ -330,18 +328,25 @@ public class PlanifierMatchAction extends ActionSupport {
 	 */
 	public boolean verifMatchs() {
 		if (idCourt == -1) {
-			msgForm += "Vous n'avez pas choisi le court";
+			msgForm = "Vous n'avez pas choisi le court";
 			typeMsgForm = "alert alert-danger";
 			return false;
 		} else if (idSousTournoi == -1) {
-			msgForm += "Vous n'avez pas choisi le sous-tournoi";
+			msgForm = "Vous n'avez pas choisi le sous-tournoi";
 			typeMsgForm = "alert alert-danger";
 			return false;
 		} else if (idArbitre == -1) {
-			msgForm += "Vous n'avez pas choisi l'arbitre";
+			msgForm = "Vous n'avez pas choisi l'arbitre";
+			typeMsgForm = "alert alert-danger";
+			return false;
+		} else if ((idEquipe1 == idEquipe2) && (idEquipe1 > 0))
+		{
+			msgForm = "La même equipe ne peut-etre sélectionnée deux fois";
 			typeMsgForm = "alert alert-danger";
 			return false;
 		} else {
+			msgForm = "Le match a été créé";
+			typeMsgForm = "alert alert-success";
 			return true;
 		}
 
