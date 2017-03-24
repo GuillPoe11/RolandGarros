@@ -34,4 +34,9 @@ public class EquipeServiceImpl implements EquipeService {
 		return equipeDao.recupToutesEquipes();
 	}
 
+	@Override
+	public List<Equipe> recupererLesDixDernieresEquipes() {
+		return equipeDao.recupLes10DernieresEquipes();
+	}
+
 }

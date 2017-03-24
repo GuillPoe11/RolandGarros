@@ -64,7 +64,7 @@
 					<th>Sexe</th>
 					<th>Nationalité</th>
 				</tr>
-				<s:iterator status="status" value="lstJoueurs">
+				<s:iterator status="status" value="lstDixDerniersJoueurs">
 					<tr>
 						<td>(<s:property value="#status.index" />)-<s:property
 								value="prenomJoueur" /></td>

@@ -30,4 +30,10 @@ public interface EquipeDao {
 	 * @return la liste des equipes
 	 */
 	public List<Equipe> recupToutesEquipes();
+	
+	/**
+	 * Retourne le contenu des 10 dernières Equipes enregistrées
+	 * @return la liste des 10 dernières équipes enregistrées
+	 */
+	public List<Equipe> recupLes10DernieresEquipes();
 }

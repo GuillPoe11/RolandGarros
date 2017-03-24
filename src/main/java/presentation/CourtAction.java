@@ -23,12 +23,14 @@ public class CourtAction extends ActionSupport {
 	private String typeMsgForm; // alert alert-success alert-warning
 
 	private List<Court> lstCourts;
+	private List<Court> lstDixCourts;
 
 	/*
 	 * Constructeur
 	 */
 	public CourtAction(@Autowired CourtService cService) {
 		 lstCourts = cService.recupTousCourts();
+		 lstDixCourts = cService.recupLesDixDerniersCourts();
 	}
 
 	/*
@@ -81,9 +83,18 @@ public class CourtAction extends ActionSupport {
 	public void setLstCourts(List<Court> lstCourts) {
 		this.lstCourts = lstCourts;
 	}
-	//fin getters/setters
-		
 	
+	public List<Court> getLstDixCourts() {
+		return lstDixCourts;
+	}
+
+	public void setLstDixCourts(List<Court> lstDixCourts) {
+		this.lstDixCourts = lstDixCourts;
+	}
+	
+	//fin getters/setters
+	
+
 	/**
 	 * ajouter un court
 	 * vérif nom et numero non vide

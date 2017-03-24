@@ -32,6 +32,8 @@ public class EquipeAction extends ActionSupport {
 	private Map<Integer, String> mapJoueur;
 
 	private List<Equipe> lstEquipes;
+	private List<Equipe> lstDixDernieresEquipes;
+	
 
 	private String msgForm;
 	private String typeMsgForm; // alert alert-success alert-warning
@@ -43,6 +45,7 @@ public class EquipeAction extends ActionSupport {
 		lstJoueur = serviceJ.recupererTousLesJoueurs();
 		mapJoueur = listToMap(serviceJ.recupererTousLesJoueurs());
 		lstEquipes = equipeService.recupererToutesLesEquipes();
+		lstDixDernieresEquipes = equipeService.recupererLesDixDernieresEquipes();
 	}
 
 	/**
@@ -191,6 +194,14 @@ public class EquipeAction extends ActionSupport {
 
 	public void setTypeMsgForm(String typeMsgForm) {
 		this.typeMsgForm = typeMsgForm;
+	}
+
+	public List<Equipe> getLstDixDernieresEquipes() {
+		return lstDixDernieresEquipes;
+	}
+
+	public void setLstDixDernieresEquipes(List<Equipe> lstDixDernieresEquipes) {
+		this.lstDixDernieresEquipes = lstDixDernieresEquipes;
 	}
 
 }

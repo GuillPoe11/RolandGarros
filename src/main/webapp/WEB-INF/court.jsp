@@ -45,7 +45,7 @@
 					<th>Nom du court</th>
 					<th>Numéro du court</th>
 				</tr>
-				<s:iterator status="status" value="lstCourts">
+				<s:iterator status="status" value="lstDixCourts">
 					<%-- 	(<s:property value="#status.index" />)- --%>
 					<tr>
 						<td><s:property value="nomCourt" /></td>
