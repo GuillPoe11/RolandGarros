@@ -24,6 +24,7 @@ import metier.EquipeService;
 import metier.JoueurService;
 import metier.MatchService;
 import metier.SousTournoiService;
+import metier.exception.MatchException;
 
 public class PlanifierMatchAction extends ActionSupport {
 
@@ -292,10 +293,15 @@ public class PlanifierMatchAction extends ActionSupport {
 		}
 
 		if (verifMatchs()) {
-			service.creerMatch(courtService.recupCourtParId(idCourt), joueurService.recupererJoueurParId(idJoueur1),
-					joueurService.recupererJoueurParId(idJoueur2), arbitreService.recupArbitreParId(idArbitre),
-					sousTournoiService.recupererSousTournoiParId(idSousTournoi), dateMatchFormat,
-					equipeService.recupererEquipeParId(idEquipe1), equipeService.recupererEquipeParId(idEquipe2));
+			try {
+				service.creerMatch(courtService.recupCourtParId(idCourt), joueurService.recupererJoueurParId(idJoueur1),
+						joueurService.recupererJoueurParId(idJoueur2), arbitreService.recupArbitreParId(idArbitre),
+						sousTournoiService.recupererSousTournoiParId(idSousTournoi), dateMatchFormat,
+						equipeService.recupererEquipeParId(idEquipe1), equipeService.recupererEquipeParId(idEquipe2));
+			} catch (MatchException e) {
+				msgForm += e.getMessage();
+				
+			}
 
 		}
 
