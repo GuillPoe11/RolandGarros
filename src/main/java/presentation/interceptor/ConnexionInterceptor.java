@@ -2,6 +2,11 @@ package presentation.interceptor;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 
@@ -30,14 +35,19 @@ public class ConnexionInterceptor implements Interceptor {
 		@SuppressWarnings("unchecked")
 		Map<String, Object> session = inv.getInvocationContext().getSession();
 		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String url = request.getServletPath().substring(1);
+		
 		Object estConnecte = session.get("estConnecte");
 		if (estConnecte != null) {
 			if((boolean) estConnecte){
 				return inv.invoke();
 			} else {
+				session.put("url", url);
 				return "login";
 			}
 		} else {
+			session.put("url", url);
 			return "login";
 		}
 	}
