@@ -1,5 +1,6 @@
 package presentation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import entite.Match;
 import metier.MatchService;
+import metier.exception.MatchException;
 
 public class EnregistrerScoreMatchAction extends ActionSupport {
 
@@ -20,11 +22,10 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 
 	private List<Match> lstMatchs;
 
-	private Integer idMatch;
+	private Integer idMatchDansLst;
 
 	public EnregistrerScoreMatchAction(@Autowired MatchService service) {
 		lstMatchs = service.recupererTousLesMatchs();
-
 	}
 
 	public static long getSerialversionuid() {
@@ -33,10 +34,10 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 
 	public String recupMatch() {
 
-		System.out.println("HERRE" + idMatch);
+		System.out.println("HERRE" + idMatchDansLst);
 		for (Match temp : lstMatchs) {
-			if (temp.getIdMatch() == idMatch) {
-				match.setIdMatch(idMatch);
+			if (temp.getIdMatch() == idMatchDansLst) {
+				match.setIdMatch(idMatchDansLst);
 				match.setArbitre(temp.getArbitre());
 				match.setCourt(temp.getCourt());
 				match.setEquipe1(temp.getEquipe1());
@@ -67,8 +68,13 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 
 			System.out.println(match);
 
-			service.creerMatch(match.getCourt(), match.getJoueur1(), match.getJoueur2(), match.getArbitre(),
-					match.getSousTournoi(), match.getDateMatch(), match.getEquipe1(), match.getEquipe2());
+			try {
+				service.creerMatch(match.getCourt(), match.getJoueur1(), match.getJoueur2(), match.getArbitre(),
+						match.getSousTournoi(), match.getDateMatch(), match.getEquipe1(), match.getEquipe2());
+			} catch (MatchException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			// lstMatchs = service.recupererTousLesMatchs();
 		}
 
@@ -103,12 +109,12 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 		this.lstMatchs = lstMatchs;
 	}
 
-	public Integer getIdMatch() {
-		return idMatch;
+	public Integer getIdMatchDansLst() {
+		return idMatchDansLst;
 	}
 
-	public void setIdMatch(Integer idMatch) {
-		this.idMatch = idMatch;
+	public void setIdMatchDansLst(Integer idMatchDansLst) {
+		this.idMatchDansLst = idMatchDansLst;
 	}
 
 	/**

@@ -11,14 +11,6 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-	$(function() {
-		$("#datepicker").datepicker({
-			dateFormat : "dd/mm/yy"
-		}).val()
-
-	});
-</script>
 <jsp:include page="head.jspf" />
 </head>
 <body>
@@ -29,7 +21,7 @@
 	<div class="central-main-container row">
 		<h3>Planification des matchs</h3>
 		<div class="container-liste background  col-md-offset-1 col-md-7 ">
-			<table class="table table-bordered table-hover">
+			<table id="matchsAffichers" class="table table-bordered table-hover">
 				<tr>
 					<td>Court</td>
 					<td>Joueur 1</td>
@@ -38,13 +30,14 @@
 					<td>SousTournoi</td>
 					<td>Date</td>
 					<td>Durée</td>
-					<td>Equipes 1</td>
-					<td>Equipe 2</td>
-					<td>Score 1</td>
-					<td>Score 2</td>
+<!-- 					<td>Equipes 1</td> -->
+<!-- 					<td>Equipe 2</td> -->
+<!-- 					<td>Score 1</td> -->
+<!-- 					<td>Score 2</td> -->
+					<td></td>
 				</tr>
 				
-				<s:form action="EnregistrerScoreMatch">
+				
 				<s:iterator status="status" value="lstMatchs">
 					<tr>
 						<td>(<s:property value="#status.index" />) <s:property
@@ -55,18 +48,19 @@
 						<td><s:property value="sousTournoi.nomSousTournoi" /></td>
 						<td><s:property value="dateMatch" /></td>
 						<td><s:property value="dureeMatch" /></td>
-						<td><s:property value="equipe1.joueur1.nomJoueur" />-<s:property
-								value="equipe1.joueur2.nomJoueur" /></td>
-						<td><s:property value="equipe2.joueur1.nomJoueur" />-<s:property
-								value="equipe2.joueur2.nomJoueur" /></td>
-						<td><s:property value="score1" /></td>
-						<td><s:property value="score2" /></td>
-							<s:hidden name="idMatch" value="#status.index"></s:hidden>
-					</tr>
-					<s:submit
+<%-- 						<td><s:property value="equipe1.joueur1.nomJoueur" />-<s:property --%>
+<%-- 								value="equipe1.joueur2.nomJoueur" /></td> --%>
+<%-- 						<td><s:property value="equipe2.joueur1.nomJoueur" />-<s:property --%>
+<%-- 								value="equipe2.joueur2.nomJoueur" /></td> --%>
+<%-- 						<td><s:property value="score1" /></td> --%>
+<%-- 						<td><s:property value="score2" /></td> --%>
+							
+					<td><s:form action="EnregistrerScoreMatch">
+					<s:hidden id="idMatchDansLst" name="idMatchDansLst" value="$(\"matchsAffichers\").index($(this))"></s:hidden><s:submit
 								method="recupMatch" value="Modifier" />
+				</s:form></td>
+					</tr>
 				</s:iterator>
-				</s:form>
 			</table>
 
 		</div>
