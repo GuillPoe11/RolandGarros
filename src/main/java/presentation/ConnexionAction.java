@@ -19,6 +19,8 @@ public class ConnexionAction extends ActionSupport {
 
 	@Autowired
 	private OrganisateurService organisateurService;
+	
+	private String url;
 
 	@SuppressWarnings("unchecked")
 	public String seConnecter() {
@@ -37,6 +39,9 @@ public class ConnexionAction extends ActionSupport {
 		for (Organisateur orga : lstOrganisateurs) {
 			if (orga.getLoginOrganisateur().equals(organisateur.getLoginOrganisateur())
 					&& orga.getPasswordOrganisateur().equals(organisateur.getPasswordOrganisateur())) {
+				@SuppressWarnings("unchecked")
+				Map<String, Object> session = (Map<String, Object>) ActionContext.getContext().get("session");
+				url = (String) session.get("url");
 				res = true;
 			}
 		}
@@ -49,6 +54,14 @@ public class ConnexionAction extends ActionSupport {
 
 	public void setOrganisateur(Organisateur organisateur) {
 		this.organisateur = organisateur;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

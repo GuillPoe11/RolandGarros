@@ -93,22 +93,6 @@ fieldset {
 	text-align:left;
 }
 
-.resultat table{
-	width:auto;
-}
-
-.resultat .background{
-	background:rgba(255,255,255,0.5);
-}
-
-.resultat tbody > tr > td{
-	border:none;
-}
-
-.resultat tbody > tr:first-child{
-	font-size:18px;
-	font-weight:700;
-}
 
 .tdLabel{
 	display:none;

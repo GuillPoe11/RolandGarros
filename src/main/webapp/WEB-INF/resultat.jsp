@@ -11,46 +11,35 @@
 </head>
 <body>
 
-	<jsp:include page="menu.jspf" />
+	<%@include file="menu.jspf" %>
 
 	<!-- tableau -->
 	<div class="central-main-container row containresult">
 	
 		<div class="container-liste col-md-12 resultat">
 			<s:iterator status="status" value="lstMatchs">
-				<table class="table table-bordered background table-hover col-md-4 col-md-offset-1">
-					<tr>
-						<td>(<s:property value="#status.index" />)-<s:property value="court.nomCourt" /></td>
-					</tr>
-					<tr>	
-						<td>Type : <s:property value="sousTournoi.typeSousTournoi" /></td>
-					</tr>
-					<tr>	
-						<td><s:property value="dateMatch" /></td>
-					</tr>
-					<tr>
-						<td>Joueur1</td>
-						<td><s:property value="joueur1.nomJoueur" /></td>
-						<td><s:property value="score2"/></td>
-					</tr>
-					<tr>	
-						<td>Joueur2</td>
-						<td><s:property value="joueur2.nomJoueur" /></td>
-						<td><s:property value="score1"/></td>
-					</tr>
-					<tr>	
-						<td>Score1</td>
-						
-					</tr>
-					<tr>	
-						<td>Score2</td>
-						
-					</tr>
-					<tr>
-						<td>Durée</td>
-						<td><s:property value="duree"/></td>		
-					</tr>	
-				</table>
+				
+					<div class="col-md-4">
+						<div id="nom-court">(<s:property value="#status.index" />)-<s:property value="court.nomCourt" /></div>
+						<div id="type"><s:property value="sousTournoi.typeSousTournoi" /></div>
+						<table class="table table-bordered background table-hover col-md-12">
+							<tr>	
+								<td>Match du <s:property value="dateMatch"/></td>
+							</tr>
+							<tr>
+								<td class="nom-joueur"><s:property value="joueur1.nomJoueur"/> <s:property value="joueur1.prenomJoueur"/></td>
+								<td class="set">Sets</td>
+								<td class="score"><s:property value="score2"/></td>
+							</tr>
+							<tr>
+								<td class="nom-joueur"><s:property value="joueur2.nomJoueur" /> <s:property value="joueur2.prenomJoueur" /></td>
+								<td class="set">Sets</td>
+								<td class="score"><s:property value="score1"/></td>
+							</tr>	
+						</table>
+						<div class="duree">Durée : <s:property value="duree"/> mn</div>
+					</div>	
+					
 			</s:iterator>
 		</div>
 		<!-- End tableau -->
