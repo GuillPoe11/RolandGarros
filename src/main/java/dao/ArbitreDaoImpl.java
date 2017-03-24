@@ -63,4 +63,15 @@ public class ArbitreDaoImpl extends DAO implements ArbitreDao {
 		closeAll();
 	}
 
+	@Override
+	public List<Arbitre> recupLesDixDerniersArbitres() {
+		openAll();
+		tx.begin();
+		@SuppressWarnings("unchecked")
+		List<Arbitre> lstDixArbitres = em.createQuery("SELECT a FROM Arbitre a ORDER BY a.nomArbitre DESC").setMaxResults(10).getResultList();
+		tx.commit();
+		closeAll();
+		return lstDixArbitres;
+	}
+
 }

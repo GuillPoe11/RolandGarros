@@ -21,6 +21,11 @@ public class ArbitreServiceImpl implements ArbitreService {
 	public List<Arbitre> recupTousArbitres() {
 		return nDao.recupTousLesArbitres();
 	}
+	
+	@Override
+	public List<Arbitre>  recupLesDixDerniersArbitres() {
+		return nDao.recupLesDixDerniersArbitres();
+	}
 
 	@Override
 	public Arbitre recupArbitreParId(int id) {

@@ -21,6 +21,13 @@ public interface ArbitreDao {
 	 * @return La liste des arbitres
 	 */
 	public List<Arbitre> recupTousLesArbitres();
+	
+	/**
+	 * Récupération de la liste des 10 derniers arbitres enregistrés dans la base de données
+	 * 
+	 * @return La liste des 10 derniers arbitres
+	 */
+	public List<Arbitre> recupLesDixDerniersArbitres();
 
 	/**
 	 * Insertion d'un arbitre en base de données
