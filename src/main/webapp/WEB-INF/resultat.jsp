@@ -61,7 +61,7 @@
 							</tr>
 							</s:else>	
 						</table>
-						<div class="duree">Durée : <s:property value="duree"/> mn</div>
+						<div class="duree">Durée : <s:property value="dureeMatch"/> mn</div>
 					</div>	
 				</s:if>	
 			</s:iterator>
