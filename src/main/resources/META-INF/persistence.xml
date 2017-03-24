@@ -13,7 +13,7 @@
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/rolandGarros?useSSL=false" />
 			<property name="hibernate.connection.username" value="root" />
 			<property name="hibernate.connection.password" value="root" /> 
-			<property name="hibernate.show_sql" value="true" /> 
+			<property name="hibernate.show_sql" value="false" /> 
 			
 			
 			<!-- création automatique du schéma -->

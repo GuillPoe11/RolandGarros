@@ -29,7 +29,7 @@ public class MatchServiceImpl implements MatchService {
 	public void creerMatch(Court court, Joueur joueur1, Joueur joueur2, Arbitre arbitre, SousTournoi sousTournoi,
 			Date dateMatch, Equipe equipe1, Equipe equipe2) throws MatchException {
 		validation(court, joueur1, joueur2, arbitre, sousTournoi, dateMatch, equipe1, equipe2);
-		
+
 		Match match = new Match(court, joueur1, joueur2, arbitre, sousTournoi, dateMatch, equipe1, equipe2);
 		matchDao.insererMatch(match);
 	}
@@ -50,7 +50,7 @@ public class MatchServiceImpl implements MatchService {
 	public List<Match> recupererTousLesMatchs() {
 		return matchDao.recupTousMatchs();
 	}
-	
+
 	@Override
 	public List<Match> recupererLesDixDerniersMatchs() {
 		return matchDao.recupLesDixDerniersMatchs();
@@ -102,12 +102,31 @@ public class MatchServiceImpl implements MatchService {
 				throw new MatchException("Les joueurs doivent être des femmes pour ce type de tournoi");
 			}
 		}
+		// vérif cas : un joueur ne joue pas contre lui-même (simple)
+		if (sousTournoi.getTypeSousTournoi() == 'S') {
+			if (joueur1.equals(joueur2)) {
+				throw new MatchException("Un joueur ne peut jouer contre lui-même");
+			}
+		}
+		// vérif cas : un joueur ne joue pas contre lui-même (équipe)
+		if (sousTournoi.getTypeSousTournoi() == 'E') {
+			if ((equipe1.getJoueur1().equals(equipe2.getJoueur1()) || equipe1.getJoueur1().equals(equipe2.getJoueur2()))
+					||(equipe1.getJoueur2().equals(equipe2.getJoueur1()) || equipe1.getJoueur2().equals(equipe2.getJoueur2()))
+					|| (equipe2.getJoueur1().equals(equipe1.getJoueur1()) || equipe2.getJoueur1().equals(equipe1.getJoueur2()))
+					|| (equipe2.getJoueur2().equals(equipe1.getJoueur1()) || equipe2.getJoueur1().equals(equipe1.getJoueur2()))){
+				throw new MatchException("Un joueur ne peut jouer contre lui-même");
+			}
+		}
+		// vérif cas : unjoueur ne peut jouer avec lui-même
+		if(sousTournoi.getTypeSousTournoi() == 'E'){
+			if(equipe1.getJoueur1().equals(equipe1.getJoueur2()) || equipe2.getJoueur1().equals(equipe2.getJoueur2())){
+				throw new MatchException("Un joueur ne peut jouer avec lui-même");
+			}
+		}
 	}
 
 	private boolean equipeUnisexe(Equipe equipe) {
 		return equipe.getJoueur1().getSexeJoueur().equals(equipe.getJoueur2().getSexeJoueur());
 	}
-
-	
 
 }

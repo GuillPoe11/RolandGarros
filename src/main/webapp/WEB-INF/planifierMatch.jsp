@@ -51,7 +51,7 @@
 					<th>Score 1</th>
 					<th>Score 2</th>
 				</tr>
-				<s:iterator status="status" value="lstMatchs">
+				<s:iterator status="status" value="lstDixDerniersMatchs">
 					<tr>
 						<td><s:property value="court.nomCourt" /></td>
 						<td><s:property value="joueur1.nomJoueur" /></td>

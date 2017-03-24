@@ -33,17 +33,6 @@
 						<td><s:textfield name="arbitre.prenomArbitre"
 								label="Prénom de l'arbitre"></s:textfield></td>
 					</tr>
-					<%-- <tr>
-			<td>
-			<s:select
-			       name="idTypeArbitre"
-			       headerKey="-1" headerValue="Chaise"
-			       list="lstTypeArbitres"
-			       value="Chaise"
-			       label="Type de l'arbitre"
-				/>
-			</td>
-			</tr> --%>
 					<tr>
 						<td colspan="2" class="colspan-center"><s:submit
 								method="submite" value="Valider" /></td>

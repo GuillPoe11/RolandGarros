@@ -4,6 +4,7 @@ import java.util.List;
 
 import entite.Equipe;
 import entite.Joueur;
+import metier.exception.EquipeException;
 
 public interface EquipeService {
 
@@ -12,7 +13,7 @@ public interface EquipeService {
 	 * @param joueur1 Le premier Joueur
 	 * @param joueur2 Le deuxième Joueur
 	 */
-	public void creerEquipe(Joueur joueur1, Joueur joueur2);
+	public void creerEquipe(Joueur joueur1, Joueur joueur2) throws EquipeException;
 	
 	/**
 	 * Renvoie une équipe grâce à son identifiant

@@ -8,10 +8,11 @@ import org.springframework.stereotype.Component;
 import dao.EquipeDao;
 import entite.Equipe;
 import entite.Joueur;
+import metier.exception.EquipeException;
 
 @Component
 public class EquipeServiceImpl implements EquipeService {
-	
+
 	@Autowired
 	private EquipeDao equipeDao;
 
@@ -19,7 +20,8 @@ public class EquipeServiceImpl implements EquipeService {
 	}
 
 	@Override
-	public void creerEquipe(Joueur joueur1, Joueur joueur2) {
+	public void creerEquipe(Joueur joueur1, Joueur joueur2) throws EquipeException {
+		validation(joueur1, joueur2);
 		Equipe equipe = new Equipe(joueur1, joueur2);
 		equipeDao.insererEquipe(equipe);
 	}
@@ -39,4 +41,9 @@ public class EquipeServiceImpl implements EquipeService {
 		return equipeDao.recupLes10DernieresEquipes();
 	}
 
+	private void validation(Joueur joueur1, Joueur joueur2) throws EquipeException {
+		if(joueur1.equals(joueur2)){
+			throw new EquipeException("Un joueur ne peut jouer avec lui-même");
+		}
+	}
 }
