@@ -24,7 +24,7 @@
 				<table id="form-table" class="table">
 					<tr>
 						<td><s:label>Nom de court : </s:label></td>
-						<td><s:textfield key="myText" name="nomCourt" /></td>
+						<td><s:textfield name="nomCourt" label="Nom du court "/></td>
 					</tr>
 					<tr>
 						<td><s:label>Numéro de court : </s:label></td>
