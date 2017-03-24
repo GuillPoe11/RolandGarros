@@ -8,20 +8,23 @@
 <meta name="description" content="">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<style>
-.inline {
-	display: inline-block;
-	width: 50px;
-}
-</style>
+
 <script>
 	$(function() {
-		$("#datepicker").datepicker({
-			dateFormat : "dd/mm/yy"
-		}).val()
+		$("#datepicker").datepicker(
+				{
+					dateFormat : "dd/mm/yy",
+					closeText : 'Fermer',
+					prevText : 'Précédent',
+					nextText : 'Suivant',
+					monthNames : [ 'Janvier', 'Février', 'Mars', 'Avril',
+							'Mai', 'Juin', 'Juillet', 'Août', 'Septembre',
+							'Octobre', 'Novembre', 'Décembre' ],
+					dayNamesMin : [ "Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa" ]
+				})
 	});
 </script>
 <jsp:include page="head.jspf" />
@@ -36,27 +39,26 @@
 		<div class="container-liste background  col-md-offset-1 col-md-7 ">
 			<table class="table table-bordered table-hover">
 				<tr>
-					<td>Court</td>
-					<td>Joueur 1</td>
-					<td>Joueur 2</td>
-					<td>Arbitre</td>
-					<td>SousTournoi</td>
-					<td>Date</td>
-					<td>Durée</td>
-					<td>Equipes 1</td>
-					<td>Equipe 2</td>
-					<td>Score 1</td>
-					<td>Score 2</td>
+					<th>Court</th>
+					<th>Joueur 1</th>
+					<th>Joueur 2</th>
+					<th>Arbitre</th>
+					<th>SousTournoi</th>
+					<th>Date</th>
+					<th>Durée</th>
+					<th>Equipes 1</th>
+					<th>Equipe 2</th>
+					<th>Score 1</th>
+					<th>Score 2</th>
 				</tr>
 				<s:iterator status="status" value="lstDixDerniersMatchs">
 					<tr>
-						<td>(<s:property value="#status.index" />) <s:property
-								value="court.nomCourt" /></td>
+						<td><s:property value="court.nomCourt" /></td>
 						<td><s:property value="joueur1.nomJoueur" /></td>
 						<td><s:property value="joueur2.nomJoueur" /></td>
 						<td><s:property value="arbitre.nomArbitre" /></td>
 						<td><s:property value="sousTournoi.nomSousTournoi" /></td>
-						<td><s:property value="dateMatch" /></td>
+						<td><s:date format="dd/MM/yyyy HH:mm" name="dateMatch" /></td>
 						<td><s:property value="dureeMatch" /></td>
 						<td><s:property value="equipe1.joueur1.nomJoueur" />-<s:property
 								value="equipe1.joueur2.nomJoueur" /></td>
@@ -84,44 +86,44 @@
 
 				<table id="form-table" class="table">
 					<tr>
-						<td>Sous-Tournoi :</td>
+						<td>Sous-Tournoi</td>
 						<td><s:select label="Sélectionnez un Sous-Tournoi"
 								headerKey="-1" headerValue="--------" list="mapSousTournois"
 								listKey="key" listValue="value" name="idSousTournoi" /></td>
 					</tr>
 					<tr>
-						<td>Equipe 1 :</td>
+						<td>Equipe 1</td>
 						<td><s:select label="Sélectionnez une equipe" headerKey="-1"
 								headerValue="--------" list="mapEquipes" listKey="key"
 								listValue="value" name="idEquipe1" /></td>
 					</tr>
 					<tr>
-						<td>Equipe 2 :</td>
+						<td>Equipe 2</td>
 						<td><s:select label="Sélectionnez une equipe" headerKey="-1"
 								headerValue="--------" list="mapEquipes" listKey="key"
 								listValue="value" name="idEquipe2" /></td>
 					</tr>
 					<tr>
-						<td>Arbitre :</td>
+						<td>Arbitre</td>
 						<td><s:select label="Sélectionnez un arbitre" headerKey="-1"
 								headerValue="--------" list="mapArbitres" listKey="key"
 								listValue="value" name="idArbitre" /></td>
 					</tr>
 					<tr>
-						<td>Court :</td>
+						<td>Court</td>
 						<td><s:select label="Sélectionnez un court" headerKey="-1"
 								headerValue="--------" list="mapCourts" listKey="key"
 								listValue="value" name="idCourt" /></td>
 					</tr>
 
 					<tr>
-						<td>Joueur 1 :</td>
+						<td>Joueur 1</td>
 						<td><s:select label="Sélectionnez un joueur" headerKey="-1"
 								headerValue="--------" list="mapJoueurs" listKey="key"
 								listValue="value" name="idJoueur1" /></td>
 					</tr>
 					<tr>
-						<td>Joueur 2 :</td>
+						<td>Joueur 2</td>
 						<td><s:select label="Sélectionnez un joueur" headerKey="-1"
 								headerValue="--------" list="mapJoueurs" listKey="key"
 								listValue="value" name="idJoueur2" /></td>

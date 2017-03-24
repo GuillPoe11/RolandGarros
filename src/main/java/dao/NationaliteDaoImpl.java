@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import entite.Nationalite;
 
-@Component
+@Component(value="NationaliteDao")
 public class NationaliteDaoImpl extends DAO implements NationaliteDao {
 
 	/**

@@ -15,11 +15,11 @@ import entite.Nationalite;
 public class NationaliteServiceImplTest {
 	
 	private static NationaliteService service;
-	
+	static ApplicationContext context;
 	@BeforeClass
 	public static void loadContext()
 	{
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		service = (NationaliteService) context.getBean("NationaliteService");
 	}
