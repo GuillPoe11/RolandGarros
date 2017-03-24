@@ -29,6 +29,7 @@ public class MatchServiceImpl implements MatchService {
 			Date dateMatch, Equipe equipe1, Equipe equipe2) {
 
 		Match match = new Match(court, joueur1, joueur2, arbitre, sousTournoi, dateMatch, equipe1, equipe2);
+		System.out.println("equipe1 dans matchservicecreate"+equipe1);
 		matchDao.insererMatch(match);
 
 	}

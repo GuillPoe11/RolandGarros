@@ -1,6 +1,5 @@
 package presentation;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,13 +47,13 @@ public class PlanifierMatchAction extends ActionSupport {
 	private Map<Integer, String> mapArbitres;
 	private Map<Integer, String> mapSousTournois;
 	private Map<Integer, String> mapCourts;
-	
+
 	private static final long serialVersionUID = 77971771589810L;
-	
+
 	private Match match;
-	
+
 	private List<Match> lstMatchs;
-	
+
 	private Integer idEquipe1;
 	private Integer idEquipe2;
 	private Integer idJoueur1;
@@ -62,14 +61,13 @@ public class PlanifierMatchAction extends ActionSupport {
 	private Integer idSousTournoi;
 	private Integer idArbitre;
 	private Integer idCourt;
-	private String dateMatch;
-	
+
 	public PlanifierMatchAction(@Autowired MatchService service, @Autowired JoueurService joueurService,
 			@Autowired EquipeService equipeService, @Autowired CourtService courtService,
 			@Autowired SousTournoiService sousTournoiService, @Autowired ArbitreService arbitreService) {
-		
+
 		lstMatchs = service.recupererTousLesMatchs();
-		
+
 		mapJoueurs = listToMap(new ArrayList<Object>(joueurService.recupererTousLesJoueurs()));
 		mapEquipes = listToMap(new ArrayList<Object>(equipeService.recupererToutesLesEquipes()));
 		mapArbitres = listToMap(new ArrayList<Object>(arbitreService.recupTousArbitres()));
@@ -88,23 +86,13 @@ public class PlanifierMatchAction extends ActionSupport {
 	 * @return string vers la page match
 	 */
 	public String creerMatch() {
-		System.out.println("créér match appelé");
-		System.out.println(match);
-		
-//		System.out.println("date du match" + match.getDateMatch());
-//		SimpleDateFormat formateurDate = new SimpleDateFormat("yyyy-MM-dd");
-//		String dateFormatSql = formateurDate.format(match.getDateMatch());
-//		System.out.println(dateFormatSql);
-		
-		
+
 		if (verifMatchs()) {
 			System.out.println("créér match appelé et vérifié");
-			System.out.println("ida"+idArbitre);
-			System.out.println("idc"+idCourt);
-			System.out.println("date"+dateMatch);
-			
-			
-			
+			System.out.println("ida" + idArbitre);
+			System.out.println("idc" + idCourt);
+			System.out.println("date" + match.getDateMatch());
+
 			match.setArbitre(arbitreService.recupArbitreParId(idArbitre));
 			match.setCourt(courtService.recupCourtParId(idCourt));
 			match.setEquipe1(equipeService.recupererEquipeParId(idEquipe1));
@@ -114,33 +102,21 @@ public class PlanifierMatchAction extends ActionSupport {
 			match.setSousTournoi(sousTournoiService.recupererSousTournoiParId(idSousTournoi));
 			match.setDateMatch(match.getDateMatch());
 			
+			System.out.println("equipe2"+equipeService.recupererEquipeParId(idEquipe2));
+
 			System.out.println(match);
-			
-			
-			
-					
-			service.creerMatch(match.getCourt(), match.getJoueur1(),
-			 match.getJoueur2(), match.getArbitre(),
-			 match.getSousTournoi(), match.getDateMatch(), match.getEquipe1(),
-			 match.getEquipe2());
-			// lstMatchs = service.recupererTousLesMatchs();
+
+			service.creerMatch(match.getCourt(), match.getJoueur1(), match.getJoueur2(), match.getArbitre(),
+					match.getSousTournoi(), match.getDateMatch(), match.getEquipe1(), match.getEquipe2());
+			//lstMatchs = service.recupererTousLesMatchs();
 		}
-		System.out.println(match);
+
 		return "success";
 	}
 
 	/*
 	 * Getters/Setters
 	 */
-	
-	public String getDateMatch() {
-		return dateMatch;
-	}
-
-	public void setDateMatch(String dateMatch) {
-		this.dateMatch = dateMatch;
-	}
-
 
 	public List<Match> getLstArbitres() {
 		return lstMatchs;
@@ -261,6 +237,8 @@ public class PlanifierMatchAction extends ActionSupport {
 	public void setIdCourt(Integer idCourt) {
 		this.idCourt = idCourt;
 	}
+	
+	
 
 	/**
 	 * Fonction de vérification si un match peut être ajouté

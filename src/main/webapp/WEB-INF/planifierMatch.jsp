@@ -13,14 +13,18 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 	$(function() {
-		$("#datepicker").datepicker();
+		$("#datepicker").datepicker({
+			dateFormat : "dd/mm/yy"
+		}).val()
+
 	});
 </script>
-<%@include file="menu.jspf" %>
+<jsp:include page="head.jspf" />
 </head>
 <body>
 
-	<jsp:include page="menu.jspf" />
+
+	<%@include file="menu.jspf"%>
 
 	<div class="central-main-container row">
 		<h3>Planification des matchs</h3>
@@ -31,7 +35,7 @@
 					<td>Joueur 1</td>
 					<td>Joueur 2</td>
 					<td>Arbitre</td>
-					<td>Tournoi</td>
+					<td>SousTournoi</td>
 					<td>Date</td>
 					<td>Durée</td>
 					<td>Equipes 1</td>
@@ -46,7 +50,7 @@
 						<td><s:property value="joueur1.nomJoueur" /></td>
 						<td><s:property value="joueur2.nomJoueur" /></td>
 						<td><s:property value="arbitre.nomArbitre" /></td>
-						<td><s:property value="sousTournoi.nomTournoi" /></td>
+						<td><s:property value="sousTournoi.nomSousTournoi" /></td>
 						<td><s:property value="dateMatch" /></td>
 						<td><s:property value="dureeMatch" /></td>
 						<td><s:property value="equipe1.joueur1.nomJoueur" />-<s:property
