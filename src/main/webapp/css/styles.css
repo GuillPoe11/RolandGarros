@@ -181,6 +181,16 @@ header .intro-text .intro-heading {
 	margin-bottom: 50px;
 }
 
+.tab{
+	margin-bottom:50px;
+}
+
+.head-tab{
+	background-color:#C76131;
+	color:#FFF;
+	border-radius: 5px 5px 0 0;
+	padding:10px;
+}
 
 .resultat table{
 	width:100%;
@@ -199,6 +209,7 @@ header .intro-text .intro-heading {
 	font-size:18px;
 	font-weight:400;
 	letter-spacing:1px;
+	color:#155040;
 }
 
 #type{
@@ -208,7 +219,7 @@ header .intro-text .intro-heading {
 	color:#FFF;
 }
 
-.nom-joueur{
+.nom-joueur, .nom-equipe{
 	color:#155040;
 	font-size:18px;
 }
