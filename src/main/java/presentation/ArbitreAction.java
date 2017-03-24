@@ -18,6 +18,7 @@ public class ArbitreAction extends ActionSupport {
 
 	private Arbitre arbitre;
 	private List<Arbitre> lstArbitres;
+	private List<Arbitre> lstdixArbitres;
 	private Map<Integer, String> lstTypeArbitres;
 	private String msgForm;
 	private String typeMsgForm; // alert alert-success alert-warning
@@ -25,6 +26,7 @@ public class ArbitreAction extends ActionSupport {
 	public ArbitreAction(@Autowired ArbitreService service) {
 		super();
 		lstArbitres = service.recupTousArbitres();
+		lstdixArbitres = service.recupLesDixDerniersArbitres();
 		lstTypeArbitres = new HashMap<Integer, String>();
 	}
 
@@ -74,7 +76,18 @@ public class ArbitreAction extends ActionSupport {
 	public void setLstTypeArbitres(Map<Integer, String> lstTypeArbitres) {
 		this.lstTypeArbitres = lstTypeArbitres;
 	}
+	
+	public List<Arbitre> getLstdixArbitres() {
+		return lstdixArbitres;
+	}
+
+	public void setLstdixArbitres(List<Arbitre> lstdixArbitres) {
+		this.lstdixArbitres = lstdixArbitres;
+	}
+	
 	// fin getters/setters
+
+	
 
 	/**
 	 * Fonction qui ajoute un arbitre lorsque l'organisateur clique sur le
@@ -105,7 +118,7 @@ public class ArbitreAction extends ActionSupport {
 			service.insererArbitre(arbitre.getNomArbitre(), arbitre.getPrenomArbitre());
 			arbitre.setNomArbitre("");
 			arbitre.setPrenomArbitre("");
-			lstArbitres = service.recupTousArbitres();
+			lstArbitres = service.recupLesDixDerniersArbitres();
 		}
 		return "success";
 	}
