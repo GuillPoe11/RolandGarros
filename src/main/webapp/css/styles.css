@@ -150,6 +150,7 @@ a:hover, a:focus {
 
 .admin {
 	background-color: #C76131;
+	width:150px;
 }
 
 header {
@@ -178,6 +179,58 @@ header .intro-text .intro-heading {
 	font-size: 75px;
 	line-height: 75px;
 	margin-bottom: 50px;
+}
+
+
+.resultat table{
+	width:100%;
+	margin-bottom:0px;
+}
+
+.resultat .background{
+	background:rgba(255,255,255,0.5);
+}
+
+.resultat tbody > tr > td{
+	border:none;
+}
+
+#nom-court{
+	font-size:18px;
+	font-weight:400;
+	letter-spacing:1px;
+}
+
+#type{
+	font-size:18px;
+	font-weight:400;
+	letter-spacing:1px;
+	color:#FFF;
+}
+
+.nom-joueur{
+	color:#155040;
+	font-size:18px;
+}
+
+.set{
+	font-size:16px;
+	color:#FFF;
+}
+.score{
+	font-size:20px;
+	font-weight:700;
+	color:#155040;
+}
+
+.duree{
+	text-align:center;
+	border-top:1px solid #FFF;
+	background-color:#C76131;
+	color:#FFF;
+	line-height:40px;
+	display:block;
+	border-radius: 0 0 5px 5px;
 }
 
 footer {

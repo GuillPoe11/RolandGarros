@@ -1,9 +1,7 @@
 package presentation;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -36,37 +34,12 @@ public class ResultatAction extends ActionSupport {
 	private int score2;
 
 	private List<Match> lstMatchs;
-	private Map<Integer, String> mapMatch;
 
 	/*
 	 * Constructeur
 	 */
 	public ResultatAction(@Autowired MatchService matchService) {
 		lstMatchs = matchService.recupererTousLesMatchs();
-		mapMatch = listToMap(matchService.recupererTousLesMatchs());
-	}
-
-	/**
-	 * Permet de remplir une Map utilisée pour afficher le select sur la jsp à
-	 * partir d'une liste de matchs.
-	 * 
-	 * @param list
-	 *            Une liste de Matchs
-	 * @return La HashMap dont les valeurs sont des chaines de caractères
-	 *         correspondant aux courts, équipes, joueurs, scores, dates, durées
-	 *         et les clés des entiers correspondant à l'indice des matchs dans
-	 *         la liste entrée en paramètre.
-	 */
-	private Map<Integer, String> listToMap(List<Match> list) {
-		Map<Integer, String> map = new HashMap<Integer, String>();
-		Integer i = 0;
-		for (Match match : list) {
-			map.put(i, match.getCourt() + " " + match.getDateMatch()+ " " + match.getSousTournoi()+ " " + match.getJoueur1()
-			+ " " + match.getJoueur2()+ " " + match.getEquipe1()+ " " + match.getEquipe2()+ " " + match.getScore1()
-			+ " " + match.getScore2()+ " " + match.getDureeMatch());
-			i++;
-		}
-		return map;
 	}
 
 	/*
@@ -167,14 +140,6 @@ public class ResultatAction extends ActionSupport {
 
 	public void setLstMatchs(List<Match> lstMatchs) {
 		this.lstMatchs = lstMatchs;
-	}
-
-	public Map<Integer, String> getMapMatch() {
-		return mapMatch;
-	}
-
-	public void setMapMatch(Map<Integer, String> mapMatch) {
-		this.mapMatch = mapMatch;
 	}
 
 	public Match getMatch() {
