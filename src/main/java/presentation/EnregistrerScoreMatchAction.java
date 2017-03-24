@@ -2,6 +2,7 @@ package presentation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,8 +25,13 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 
 	private Integer idMatchDansLst;
 
+	private Map<Integer, String> mapMatchs;
+
 	public EnregistrerScoreMatchAction(@Autowired MatchService service) {
 		lstMatchs = service.recupererTousLesMatchs();
+		Utilitaire util = new Utilitaire();
+		mapMatchs = util.listToMap(new ArrayList<Object>(lstMatchs));
+		System.out.println(mapMatchs);
 	}
 
 	public static long getSerialversionuid() {
@@ -33,22 +39,9 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 	}
 
 	public String recupMatch() {
-
-		System.out.println("HERRE" + idMatchDansLst);
-		for (Match temp : lstMatchs) {
-			if (temp.getIdMatch() == idMatchDansLst) {
-				match.setIdMatch(idMatchDansLst);
-				match.setArbitre(temp.getArbitre());
-				match.setCourt(temp.getCourt());
-				match.setEquipe1(temp.getEquipe1());
-				match.setEquipe2(temp.getEquipe2());
-				match.setJoueur1(temp.getJoueur1());
-				match.setJoueur2(temp.getJoueur2());
-				match.setSousTournoi(temp.getSousTournoi());
-				match.setDateMatch(match.getDateMatch());
-				match.setDureeMatch(temp.getDureeMatch());
-				match.setScore1(temp.getScore1());
-				match.setScore2(temp.getScore2());
+		for (int i = 0; i < lstMatchs.size(); i++) {
+			if (i == idMatchDansLst) {
+				match = lstMatchs.get(i);
 			}
 		}
 		return "success";
@@ -63,19 +56,9 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 	public String modifierMatch() {
 
 		if (verifMatchs()) {
-
-			match.setDateMatch(match.getDateMatch());
-
 			System.out.println(match);
-
-			try {
-				service.creerMatch(match.getCourt(), match.getJoueur1(), match.getJoueur2(), match.getArbitre(),
-						match.getSousTournoi(), match.getDateMatch(), match.getEquipe1(), match.getEquipe2());
-			} catch (MatchException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			// lstMatchs = service.recupererTousLesMatchs();
+			service.modifierMatch(match, match.getDateMatch(), match.getDureeMatch(), match.getScore1(),
+					match.getScore2());
 		}
 
 		return "success";
@@ -87,6 +70,14 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 
 	public List<Match> getLstArbitres() {
 		return lstMatchs;
+	}
+
+	public Map<Integer, String> getMapMatchs() {
+		return mapMatchs;
+	}
+
+	public void setMapMatchs(Map<Integer, String> mapMatchs) {
+		this.mapMatchs = mapMatchs;
 	}
 
 	public void setLstArbitres(List<Match> lstArbitres) {
