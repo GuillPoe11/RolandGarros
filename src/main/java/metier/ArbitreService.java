@@ -7,17 +7,17 @@ import entite.Arbitre;
 public interface ArbitreService {
 
 	/**
-	 * (fonction pour recupérer toutes les AjouterArbitre)
+	 * (fonction pour recupérer tous les arbitres)
 	 * 
-	 * @return List<AjouterArbitre>
+	 * @return List<Arbitre> la liste des arbitres
 	 */
 	public List<Arbitre> recupTousArbitres();
 
 	/**
-	 * (fonction pour recupérer un AjouterArbitre par l'id)
+	 * (fonction pour recupérer un arbitre par l'id)
 	 * 
 	 * @param id
-	 * @return AjouterArbitre
+	 * @return Arbitre l'arbitre
 	 */
 	public Arbitre recupArbitreParId(int id);
 
