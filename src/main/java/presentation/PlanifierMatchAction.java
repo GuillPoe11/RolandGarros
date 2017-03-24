@@ -1,6 +1,9 @@
 package presentation;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,9 +65,29 @@ public class PlanifierMatchAction extends ActionSupport {
 	private Integer idArbitre;
 	private Integer idCourt;
 
+	private List<Integer> lstHeures;
+
+	// pour recup champ formulaire
+	private Integer integerHeure;
+	private Integer integerMinute;
+	private String dateMatch;
+
+	// pour l'affichage des message d'erreur
+	private String msgForm;
+	private String typeMsgForm;
+
+	/*
+	 * Constructeur
+	 */
 	public PlanifierMatchAction(@Autowired MatchService service, @Autowired JoueurService joueurService,
 			@Autowired EquipeService equipeService, @Autowired CourtService courtService,
 			@Autowired SousTournoiService sousTournoiService, @Autowired ArbitreService arbitreService) {
+
+		// remplir liste des heures pour le select
+		lstHeures = new ArrayList<Integer>();
+		for (int i = 0; i < 24; i++) {
+			lstHeures.add(i);
+		}
 
 		lstMatchs = service.recupererTousLesMatchs();
 
@@ -75,48 +98,57 @@ public class PlanifierMatchAction extends ActionSupport {
 		mapCourts = listToMap(new ArrayList<Object>(courtService.recupTousCourts()));
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	/**
-	 * Fonction qui ajoute un match lorsque l'organisateur clique sur le bouton
-	 * refuse l'ajout si les conditions ne sont pas respectées
-	 * 
-	 * @return string vers la page match
-	 */
-	public String creerMatch() {
-
-		if (verifMatchs()) {
-			System.out.println("créér match appelé et vérifié");
-			System.out.println("ida" + idArbitre);
-			System.out.println("idc" + idCourt);
-			System.out.println("date" + match.getDateMatch());
-
-			match.setArbitre(arbitreService.recupArbitreParId(idArbitre));
-			match.setCourt(courtService.recupCourtParId(idCourt));
-			match.setEquipe1(equipeService.recupererEquipeParId(idEquipe1));
-			match.setEquipe2(equipeService.recupererEquipeParId(idEquipe2));
-			match.setJoueur1(joueurService.recupererJoueurParId(idJoueur1));
-			match.setJoueur2(joueurService.recupererJoueurParId(idJoueur2));
-			match.setSousTournoi(sousTournoiService.recupererSousTournoiParId(idSousTournoi));
-			match.setDateMatch(match.getDateMatch());
-			
-			System.out.println("equipe2"+equipeService.recupererEquipeParId(idEquipe2));
-
-			System.out.println(match);
-
-			service.creerMatch(match.getCourt(), match.getJoueur1(), match.getJoueur2(), match.getArbitre(),
-					match.getSousTournoi(), match.getDateMatch(), match.getEquipe1(), match.getEquipe2());
-			//lstMatchs = service.recupererTousLesMatchs();
-		}
-
-		return "success";
-	}
-
 	/*
 	 * Getters/Setters
 	 */
+
+	public String getMsgForm() {
+		return msgForm;
+	}
+
+	public void setMsgForm(String msgForm) {
+		this.msgForm = msgForm;
+	}
+
+	public String getTypeMsgForm() {
+		return typeMsgForm;
+	}
+
+	public void setTypeMsgForm(String typeMsgForm) {
+		this.typeMsgForm = typeMsgForm;
+	}
+
+	public String getDateMatch() {
+		return dateMatch;
+	}
+
+	public void setDateMatch(String dateMatch) {
+		this.dateMatch = dateMatch;
+	}
+
+	public Integer getIntegerHeure() {
+		return integerHeure;
+	}
+
+	public void setIntegerHeure(Integer integerHeure) {
+		this.integerHeure = integerHeure;
+	}
+
+	public Integer getIntegerMinute() {
+		return integerMinute;
+	}
+
+	public void setIntegerMinute(Integer integerMinute) {
+		this.integerMinute = integerMinute;
+	}
+
+	public List<Integer> getLstHeures() {
+		return lstHeures;
+	}
+
+	public void setLstHeures(List<Integer> lstHeures) {
+		this.lstHeures = lstHeures;
+	}
 
 	public List<Match> getLstArbitres() {
 		return lstMatchs;
@@ -237,17 +269,65 @@ public class PlanifierMatchAction extends ActionSupport {
 	public void setIdCourt(Integer idCourt) {
 		this.idCourt = idCourt;
 	}
-	
-	
+	// fin getters setters
 
 	/**
-	 * Fonction de vérification si un match peut être ajouté
+	 * Fonction qui ajoute un match lorsque l'organisateur clique sur le bouton
+	 * refuse l'ajout si les conditions ne sont pas respectées
+	 * 
+	 * @return string vers la page match
+	 */
+	public String creerMatch() {
+
+		Date dateMatchFormat = new Date();
+
+		String strDateHeureMatch = dateMatch + " " + integerHeure + ":" + integerMinute;
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy hh:mm");
+		try {
+			dateMatchFormat = sdf.parse(strDateHeureMatch);
+		} catch (ParseException e) {
+			msgForm = "Attention la date n'a pas le bon format\r\n";
+			typeMsgForm = "alert alert-danger";
+		}
+
+		if (verifMatchs()) {
+			service.creerMatch(courtService.recupCourtParId(idCourt), joueurService.recupererJoueurParId(idJoueur1),
+					joueurService.recupererJoueurParId(idJoueur2), arbitreService.recupArbitreParId(idArbitre),
+					sousTournoiService.recupererSousTournoiParId(idSousTournoi), dateMatchFormat,
+					equipeService.recupererEquipeParId(idEquipe1), equipeService.recupererEquipeParId(idEquipe2));
+
+		}
+
+		return "success";
+	}
+
+	/**
+	 * Fonction de vérification si un match peut être ajouté controle arbitre,
+	 * soustournoi et court choisi
 	 * 
 	 * @return true or false
 	 */
 	public boolean verifMatchs() {
-		// TODO
-		return true;
+		if (idCourt == -1) {
+			msgForm += "Vous n'avez pas choisi le court";
+			typeMsgForm = "alert alert-danger";
+			return false;
+		} else if (idSousTournoi == -1) {
+			msgForm += "Vous n'avez pas choisi le sous-tournoi";
+			typeMsgForm = "alert alert-danger";
+			return false;
+		} else if (idArbitre == -1) {
+			msgForm += "Vous n'avez pas choisi l'arbitre";
+			typeMsgForm = "alert alert-danger";
+			return false;
+		} else {
+			System.out.println("ok");
+			msgForm = "Le match a été créé";
+			typeMsgForm = "alert alert-success";
+			return true;
+		}
+
 	}
 
 	/**
@@ -260,7 +340,6 @@ public class PlanifierMatchAction extends ActionSupport {
 	 *         correspondant aux libellés des objects et les clés des entiers
 	 *         correspondant à l'indice des objects dans la liste entrée en
 	 *         paramètre.
-	 * @author arnaud.poe11
 	 */
 	private Map<Integer, String> listToMap(List<Object> list) {
 		Map<Integer, String> map = new HashMap<Integer, String>();
