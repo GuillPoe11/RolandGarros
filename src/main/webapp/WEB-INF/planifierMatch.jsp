@@ -35,48 +35,12 @@
 	<%@include file="menu.jspf"%>
 
 	<div class="central-main-container row">
-		<h3>Planification des matchs</h3>
-		<div class="container-liste background  col-md-offset-1 col-md-7 ">
-			<table class="table table-bordered table-hover">
-				<tr>
-					<th>Court</th>
-					<th>Joueur 1</th>
-					<th>Joueur 2</th>
-					<th>Arbitre</th>
-					<th>SousTournoi</th>
-					<th>Date</th>
-					<th>Durée</th>
-					<th>Equipes 1</th>
-					<th>Equipe 2</th>
-					<th>Score 1</th>
-					<th>Score 2</th>
-				</tr>
-				<s:iterator status="status" value="lstDixDerniersMatchs">
-					<tr>
-						<td><s:property value="court.nomCourt" /></td>
-						<td><s:property value="joueur1.nomJoueur" /></td>
-						<td><s:property value="joueur2.nomJoueur" /></td>
-						<td><s:property value="arbitre.nomArbitre" /></td>
-						<td><s:property value="sousTournoi.nomSousTournoi" /></td>
-						<td><s:date format="dd/MM/yyyy HH:mm" name="dateMatch" /></td>
-						<td><s:property value="dureeMatch" /></td>
-						<td><s:property value="equipe1.joueur1.nomJoueur" />-<s:property
-								value="equipe1.joueur2.nomJoueur" /></td>
-						<td><s:property value="equipe2.joueur1.nomJoueur" />-<s:property
-								value="equipe2.joueur2.nomJoueur" /></td>
-						<td><s:property value="score1" /></td>
-						<td><s:property value="score2" /></td>
-
-					</tr>
-
-				</s:iterator>
-			</table>
-
-		</div>
-
+	
+		
 
 		<!-- Form -->
-		<div class="container-form background col-md-offset-1 col-md-3">
+		<div class="container-form background col-md-offset-1 col-md-10 clear">
+		<h3>Planification des matchs</h3>
 			<h4 class="<s:property value="typeMsgForm" />">
 				<s:property value="msgForm" />
 			</h4>
@@ -163,6 +127,46 @@
 					</tr>
 				</table>
 			</s:form>
+			
+		</div>
+		<div style="height:20px; clear:both;" ></div>
+		
+		<div class="container-liste background col-md-offset-1 col-md-10 clear">
+			<table class="table table-bordered table-hover">
+				<tr>
+					<th>Court</th>
+					<th>Joueur 1</th>
+					<th>Joueur 2</th>
+					<th>Arbitre</th>
+					<th>SousTournoi</th>
+					<th>Date</th>
+					<th>Durée</th>
+					<th>Equipes 1</th>
+					<th>Equipe 2</th>
+					<th>Score 1</th>
+					<th>Score 2</th>
+				</tr>
+				<s:iterator status="status" value="lstDixDerniersMatchs">
+					<tr>
+						<td><s:property value="court.nomCourt" /></td>
+						<td><s:property value="joueur1.nomJoueur" /></td>
+						<td><s:property value="joueur2.nomJoueur" /></td>
+						<td><s:property value="arbitre.nomArbitre" /></td>
+						<td><s:property value="sousTournoi.nomSousTournoi" /></td>
+						<td><s:date format="dd/MM/yyyy HH:mm" name="dateMatch" /></td>
+						<td><s:property value="dureeMatch" /></td>
+						<td><s:property value="equipe1.joueur1.nomJoueur" />-<s:property
+								value="equipe1.joueur2.nomJoueur" /></td>
+						<td><s:property value="equipe2.joueur1.nomJoueur" />-<s:property
+								value="equipe2.joueur2.nomJoueur" /></td>
+						<td><s:property value="score1" /></td>
+						<td><s:property value="score2" /></td>
+
+					</tr>
+
+				</s:iterator>
+			</table>
+
 		</div>
 		<!--  @end Form -->
 	</div>
