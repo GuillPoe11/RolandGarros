@@ -11,12 +11,17 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+.inline {
+	display: inline-block;
+	width: 50px;
+}
+</style>
 <script>
 	$(function() {
 		$("#datepicker").datepicker({
 			dateFormat : "dd/mm/yy"
 		}).val()
-
 	});
 </script>
 <jsp:include page="head.jspf" />
@@ -70,12 +75,12 @@
 
 		<!-- Form -->
 		<div class="container-form background col-md-offset-1 col-md-3">
-			<h3 class="<s:property value="typeMsgForm" />">
+			<h4 class="<s:property value="typeMsgForm" />">
 				<s:property value="msgForm" />
-			</h3>
+			</h4>
 
 
-			<s:form id="contact" action="PlanifierMatch">
+			<s:form id="contact" action="PlanifierMatch" theme="simple">
 
 				<table id="form-table" class="table">
 					<tr>
@@ -123,10 +128,19 @@
 					</tr>
 					<tr>
 						<td>Date du match</td>
-						<td><s:textfield name="match.dateMatch" label="Date du match"
+						<td><s:textfield name="dateMatch" label="Date du match"
 								id="datepicker"></s:textfield></td>
 					</tr>
 					<tr>
+						<td>Heure du match</td>
+						<td><s:select label="Heure" list="lstHeures"
+								name="integerHeure" cssClass="inline" /> <s:select
+								label="Minute" list="#{'0':'0','15':'15', '30':'30', '45':'45'}"
+								listKey="key" listValue="value" name="integerMinute"
+								cssClass="inline" /></td>
+					</tr>
+
+					<%-- <tr>
 						<td>Durée du match en minutes</td>
 						<td><s:textfield name="match.dureeMatch"
 								label="Durée du match"></s:textfield></td>
@@ -140,7 +154,7 @@
 						<td>Score du deuxieme joueur :</td>
 						<td><s:textfield name="match.score2"
 								label="Score du deuxième joueur"></s:textfield></td>
-					</tr>
+					</tr> --%>
 					<tr>
 						<td colspan="2" class="colspan-center"><s:submit
 								method="creerMatch" value="Valider" /></td>

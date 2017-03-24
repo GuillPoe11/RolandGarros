@@ -74,6 +74,8 @@ public class Match {
 		this.court = court;
 		this.joueur1 = joueur1;
 		this.joueur2 = joueur2;
+		this.equipe1 = equipe1;
+		this.equipe2 = equipe2;
 		this.arbitre = arbitre;
 		this.sousTournoi = sousTournoi;
 		this.dateMatch = dateMatch;
