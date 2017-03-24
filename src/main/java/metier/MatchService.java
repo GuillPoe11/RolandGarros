@@ -9,6 +9,7 @@ import entite.Equipe;
 import entite.Joueur;
 import entite.Match;
 import entite.SousTournoi;
+import metier.exception.MatchException;
 
 public interface MatchService {
 
@@ -29,7 +30,7 @@ public interface MatchService {
 	 *            : la date du match
 	 */
 	public void creerMatch(Court court, Joueur joueur1, Joueur joueur2, Arbitre arbitre, SousTournoi sousTournoi,
-			Date dateMatch, Equipe equipe1, Equipe equipe2);
+			Date dateMatch, Equipe equipe1, Equipe equipe2) throws MatchException;
 
 	/**
 	 * Modifier un match
