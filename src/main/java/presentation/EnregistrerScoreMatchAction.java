@@ -31,7 +31,6 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 		lstMatchs = service.recupererTousLesMatchs();
 		Utilitaire util = new Utilitaire();
 		mapMatchs = util.listToMap(new ArrayList<Object>(lstMatchs));
-		System.out.println(mapMatchs);
 	}
 
 	public static long getSerialversionuid() {
@@ -56,6 +55,8 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 	public String modifierMatch() {
 
 		if (verifMatchs()) {
+			System.out.println(match);
+			recupMatch();
 			System.out.println(match);
 			service.modifierMatch(match, match.getDateMatch(), match.getDureeMatch(), match.getScore1(),
 					match.getScore2());
