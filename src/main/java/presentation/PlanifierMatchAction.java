@@ -298,9 +298,12 @@ public class PlanifierMatchAction extends ActionSupport {
 						joueurService.recupererJoueurParId(idJoueur2), arbitreService.recupArbitreParId(idArbitre),
 						sousTournoiService.recupererSousTournoiParId(idSousTournoi), dateMatchFormat,
 						equipeService.recupererEquipeParId(idEquipe1), equipeService.recupererEquipeParId(idEquipe2));
+				System.out.println("ok");
+				msgForm = "Le match a été créé";
+				typeMsgForm = "alert alert-success";
 			} catch (MatchException e) {
-				msgForm += e.getMessage();
-				
+				msgForm = e.getMessage();
+				typeMsgForm = "alert alert-danger";
 			}
 
 		}
@@ -328,9 +331,6 @@ public class PlanifierMatchAction extends ActionSupport {
 			typeMsgForm = "alert alert-danger";
 			return false;
 		} else {
-			System.out.println("ok");
-			msgForm = "Le match a été créé";
-			typeMsgForm = "alert alert-success";
 			return true;
 		}
 
