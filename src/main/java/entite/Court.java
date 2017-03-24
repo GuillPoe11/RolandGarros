@@ -63,5 +63,13 @@ public class Court {
 	public void setNumeroCourt(String numeroCourt) {
 		this.numeroCourt = numeroCourt;
 	}
+	//fin getters/setters
+
+	@Override
+	public String toString() {
+		return "Court [idCourt=" + idCourt + ", nomCourt=" + nomCourt + ", numeroCourt=" + numeroCourt + "]";
+	}
+	
+	
 
 }

@@ -7,15 +7,15 @@ import entite.Court;
 public interface CourtService {
 
 	/**
-	 * Fonction pour récupérer tout les terrains
-	 * @return List<Court>
+	 * Fonction pour récupérer tous les courts
+	 * @return List<Court> la liste des courts
 	 */
 	public List<Court> recupTousCourts();
 
 	/**
-	 * Fonction de récupération du terrain par id
+	 * Fonction de récupération du court par id
 	 * @param id
-	 * @return Court
+	 * @return Court le court
 	 */
 	public Court recupCourtParId(int id);
 
