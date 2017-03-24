@@ -8,11 +8,11 @@ import entite.Arbitre;
 import entite.Court;
 import entite.Equipe;
 import entite.Joueur;
+import entite.Match;
 import entite.SousTournoi;
 
 public class Utilitaire {
-	
-	
+
 	/**
 	 * Permet de remplir une Map utilisée pour afficher le select sur la jsp à
 	 * partir d'une liste d'object.
@@ -25,7 +25,7 @@ public class Utilitaire {
 	 *         paramètre.
 	 * @author arnaud.poe11
 	 */
-	@SuppressWarnings("unused") Map<Integer, String> listToMap(List<Object> list) {
+	Map<Integer, String> listToMap(List<Object> list) {
 		Map<Integer, String> map = new HashMap<Integer, String>();
 
 		for (Object obj : list) {
@@ -50,6 +50,24 @@ public class Utilitaire {
 			case "entite.Arbitre":
 				map.put(((Arbitre) obj).getIdArbitre(),
 						((Arbitre) obj).getPrenomArbitre() + ((Arbitre) obj).getNomArbitre());
+				break;
+
+			case "entite.Match":
+				String str = ((Match) obj).getCourt().getNomCourt();
+				if (((Match) obj).getDateMatch() != null) {
+					str += ((Match) obj).getDateMatch().toString();
+				}
+				str += ((Match) obj).getSousTournoi().getNomSousTournoi();
+				if (((Match) obj).getScore1() != null) {
+					str += ((Match) obj).getScore1();
+				}
+				if (((Match) obj).getScore2() != null) {
+					str += ((Match) obj).getScore2();
+				}
+				if (((Match) obj).getDureeMatch() != null) {
+					str += ((Match) obj).getDureeMatch();
+				}
+				map.put(((Match) obj).getIdMatch(), str);
 				break;
 
 			default:
