@@ -26,4 +26,10 @@ public interface EquipeService {
 	 */
 	public List<Equipe> recupererToutesLesEquipes();
 	
+	/**
+	 * Récupère la liste des 10 dernières équipes enregistrées en BDD
+	 * @return La liste des 10 dernières équipes
+	 */
+	public List<Equipe> recupererLesDixDernieresEquipes();
+	
 }

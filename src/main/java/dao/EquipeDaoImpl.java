@@ -66,8 +66,13 @@ public class EquipeDaoImpl extends DAO implements EquipeDao {
 
 	@Override
 	public List<Equipe> recupLes10DernieresEquipes() {
-		// TODO Auto-generated method stub
-		return null;
+		openAll();
+		tx.begin();
+		@SuppressWarnings("unchecked")
+		List<Equipe> lstEquipes = em.createQuery("SELECT e FROM Equipe e ORDER BY e.idEquipe DESC").setMaxResults(10).getResultList();
+		tx.commit();
+		closeAll();
+		return lstEquipes;
 	}
 
 }
