@@ -21,6 +21,13 @@ public interface JoueurDao {
 	 * @return La liste des joueurs
 	 */
 	public List<Joueur> recupTousLesJoueurs();
+	
+	/**
+	 * Récupération de la liste des 10 derniers joueurs enregistrés dans la base de données
+	 * 
+	 * @return La liste des 10 derniers joueurs
+	 */
+	public List<Joueur> recupLesDixDerniersJoueurs();
 
 	/**
 	 * Insertion d'un joueur en base de données

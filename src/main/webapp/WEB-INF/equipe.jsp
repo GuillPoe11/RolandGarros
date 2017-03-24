@@ -23,7 +23,7 @@
 					<td>Joueur1</td>
 					<td>Joueur2</td>	
 				</tr>
-				<s:iterator status="status" value="lstEquipes">
+				<s:iterator status="status" value="lstDixDernieresEquipes">
 					<tr>
 						<td><s:property value="idEquipe" /></td>
 						<td>(<s:property value="#status.index" />)-

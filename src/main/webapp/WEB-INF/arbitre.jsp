@@ -58,7 +58,7 @@
 					<th>Prénom de l'arbitre</th>
 					<th>Nom de l'arbitre</th>
 				</tr>
-				<s:iterator status="status" value="lstArbitres">
+				<s:iterator status="status" value="lstdixArbitres">
 					<%-- 	(<s:property value="#status.index" />)- --%>
 					<tr>
 						<td><s:property value="prenomArbitre" /></td>

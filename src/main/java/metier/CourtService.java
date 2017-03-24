@@ -11,6 +11,12 @@ public interface CourtService {
 	 * @return List<Court> la liste des courts
 	 */
 	public List<Court> recupTousCourts();
+	
+	/**
+	 * Fonction pour récupérer les 10 derniers courts rentrés en base
+	 * @return List<Court> la liste des 10 derniers courts
+	 */
+	public List<Court> recupLesDixDerniersCourts();
 
 	/**
 	 * Fonction de récupération du court par id

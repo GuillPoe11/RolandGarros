@@ -51,6 +51,22 @@ public class JoueurDaoImpl extends DAO implements JoueurDao {
 		closeAll();
 		return lstJoueurs;
 	}
+	
+	/**
+	 * Récupération de la liste des 10 derniers joueurs enregistrés dans la base de données
+	 * 
+	 * @return La liste des 10 derniers joueurs
+	 */
+	@Override
+	public List<Joueur> recupLesDixDerniersJoueurs() {
+		openAll();
+		tx.begin();
+		@SuppressWarnings("unchecked")
+		List<Joueur> lstJoueurs = em.createQuery("SELECT j FROM Joueur j ORDER BY j.idJoueur DESC").setMaxResults(10).getResultList();
+		tx.commit();
+		closeAll();
+		return lstJoueurs;
+	}
 
 	/**
 	 * Insertion d'un joueur en base de données
@@ -97,4 +113,5 @@ public class JoueurDaoImpl extends DAO implements JoueurDao {
 		}
 		return result.toString();
 	}
+
 }

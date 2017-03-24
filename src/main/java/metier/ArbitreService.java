@@ -12,6 +12,13 @@ public interface ArbitreService {
 	 * @return List<Arbitre> la liste des arbitres
 	 */
 	public List<Arbitre> recupTousArbitres();
+	
+	/**
+	 * (fonction pour recupérer les 10 derniers arbitres)
+	 * 
+	 * @return List<Arbitre> la liste des 10 derniers arbitres
+	 */
+	public List<Arbitre> recupLesDixDerniersArbitres();
 
 	/**
 	 * (fonction pour recupérer un arbitre par l'id)

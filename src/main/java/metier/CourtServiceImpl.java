@@ -32,4 +32,9 @@ public class CourtServiceImpl implements CourtService {
 		nDao.insererCourt(new Court(nomCourt, numeroCourt));
 	}
 
+	@Override
+	public List<Court> recupLesDixDerniersCourts() {
+		return nDao.recupLesDixDerniersCourts();
+	}
+
 }

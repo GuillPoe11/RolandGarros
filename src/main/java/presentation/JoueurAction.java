@@ -13,6 +13,12 @@ import entite.Nationalite;
 import metier.JoueurService;
 import metier.NationaliteService;
 
+/**
+ * Action qui permet de gérer l'ajout de joueur
+ * 
+ * @author eric.poe11
+ *
+ */
 public class JoueurAction extends ActionSupport {
 
 	private static final long serialVersionUID = -2439182379487460604L;
@@ -27,15 +33,26 @@ public class JoueurAction extends ActionSupport {
 
 	private Integer idNationalite;
 	private List<Joueur> lstJoueurs;
+	private List<Joueur> lstDixDerniersJoueurs;
 	private List<Nationalite> lstNationalites;
 	private Map<Integer, String> mapNationalites;
 
 	private String msgForm;
 	private String typeMsgForm;
 
+	/**
+	 * Constructeur de l'action. Force l'injection des services pour pouvoir
+	 * charger les listes de joueurs et de nationalités
+	 * 
+	 * @param nationaliteService
+	 *            Le service NationaliteService
+	 * @param joueurService
+	 *            Le service JoueurService
+	 */
 	public JoueurAction(@Autowired NationaliteService nationaliteService, @Autowired JoueurService joueurService) {
 		joueur = new Joueur();
 		lstJoueurs = joueurService.recupererTousLesJoueurs();
+		lstDixDerniersJoueurs = joueurService.recupLesDixDerniersJoueurs();
 		lstNationalites = nationaliteService.recupToutesNationalites();
 		mapNationalites = listToMap(nationaliteService.recupToutesNationalites());
 	}
@@ -54,6 +71,11 @@ public class JoueurAction extends ActionSupport {
 		return "success";
 	}
 
+	/**
+	 * Vérifie que les champs du formulaire sont remplis
+	 * 
+	 * @return true si les champs sont remplis, false sinon
+	 */
 	private boolean validation() {
 		boolean valide = true;
 		if (joueur.getNomJoueur() != null && joueur.getNomJoueur().length() == 0) {
@@ -165,5 +187,15 @@ public class JoueurAction extends ActionSupport {
 	public void setTypeMsgForm(String typeMsgForm) {
 		this.typeMsgForm = typeMsgForm;
 	}
+
+	public List<Joueur> getLstDixDerniersJoueurs() {
+		return lstDixDerniersJoueurs;
+	}
+
+	public void setLstDixDerniersJoueurs(List<Joueur> lstDixDerniersJoueurs) {
+		this.lstDixDerniersJoueurs = lstDixDerniersJoueurs;
+	}
+	
+	
 
 }

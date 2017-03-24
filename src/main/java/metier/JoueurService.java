@@ -30,4 +30,10 @@ public interface JoueurService {
 	 * @return La liste des joueurs
 	 */
 	public List<Joueur> recupererTousLesJoueurs();
+	
+	/**
+	 * Récupère la liste des 10 derniers joueurs enregistrés en bdd
+	 * @return La liste des 10 derniers joueurs
+	 */
+	public List<Joueur> recupLesDixDerniersJoueurs();
 }
