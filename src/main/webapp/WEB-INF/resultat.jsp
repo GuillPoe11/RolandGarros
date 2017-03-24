@@ -22,7 +22,7 @@
 				<s:if test="score1!=null && score2!=null">
 					<div class="col-md-4 tab">
 						<div class="head-tab">
-							<div id="nom-court">(<s:property value="#status.index" />)-<s:property value="court.nomCourt" /></div>
+							<div id="nom-court"><s:property value="court.nomCourt" /></div>
 							<s:if test="sousTournoi.typeSousTournoi=='S'">
 							<div id="type">Simple</div>
 							</s:if>
