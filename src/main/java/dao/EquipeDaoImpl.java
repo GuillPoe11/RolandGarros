@@ -64,4 +64,10 @@ public class EquipeDaoImpl extends DAO implements EquipeDao {
 		return lstEquipes;
 	}
 
+	@Override
+	public List<Equipe> recupLes10DernieresEquipes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
