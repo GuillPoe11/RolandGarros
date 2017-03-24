@@ -12,6 +12,7 @@ import entite.Equipe;
 import entite.Joueur;
 import metier.EquipeService;
 import metier.JoueurService;
+import metier.exception.EquipeException;
 
 public class EquipeAction extends ActionSupport {
 
@@ -33,7 +34,6 @@ public class EquipeAction extends ActionSupport {
 
 	private List<Equipe> lstEquipes;
 	private List<Equipe> lstDixDernieresEquipes;
-	
 
 	private String msgForm;
 	private String typeMsgForm; // alert alert-success alert-warning
@@ -54,28 +54,29 @@ public class EquipeAction extends ActionSupport {
 	 * @return success
 	 */
 	public String creerEquipe() {
-		
-		
+
 		if (-1 == idJoueur1) {
-			msgForm = "Choisissez le joueur1";
+			msgForm = "Choisissez le premier joueur";
 			typeMsgForm = "alert alert-danger";
-		}
-		else if (-1 == idJoueur2) {
-			msgForm = "Choisissez le joueur2";
+		} else if (-1 == idJoueur2) {
+			msgForm = "Choisissez le deuxième joueur";
 			typeMsgForm = "alert alert-danger";
-		}
-		else {
+		} else {
 			joueur1 = lstJoueur.get(idJoueur1);
 			joueur2 = lstJoueur.get(idJoueur2);
-			equipeService.creerEquipe(joueur1, joueur2);
-			msgForm = "L'équipe à été ajoutée";
-			typeMsgForm = "alert alert-success";
+			try {
+				equipeService.creerEquipe(joueur1, joueur2);
+				msgForm = "L'équipe à été ajoutée";
+				typeMsgForm = "alert alert-success";
+			} catch (EquipeException e) {
+				msgForm = e.getMessage();
+				typeMsgForm = "alert alert-danger";
+			}
 		}
 
 		return "success";
 	}
-	
-	
+
 	/**
 	 * Permet de remplir une Map utilisée pour afficher le select sur la jsp à
 	 * partir d'une liste de joueurs.
@@ -84,8 +85,8 @@ public class EquipeAction extends ActionSupport {
 	 *            Une liste de Joueurs
 	 * @return La HashMap dont les valeurs sont des chaines de caractères
 	 *         correspondant aux noms et prénoms des joueurs et les clés des
-	 *         entiers correspondant à l'indice des joueurs dans la liste
-	 *         entrée en paramètre.
+	 *         entiers correspondant à l'indice des joueurs dans la liste entrée
+	 *         en paramètre.
 	 */
 	private Map<Integer, String> listToMap(List<Joueur> list) {
 		Map<Integer, String> map = new HashMap<Integer, String>();
@@ -179,7 +180,7 @@ public class EquipeAction extends ActionSupport {
 	public void setLstEquipes(List<Equipe> lstEquipes) {
 		this.lstEquipes = lstEquipes;
 	}
-	
+
 	public String getMsgForm() {
 		return msgForm;
 	}

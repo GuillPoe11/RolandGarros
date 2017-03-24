@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<%@include file="menu.jspf" %>
+	<%@include file="menu.jspf"%>
 
 	<!-- Form -->
 	<div class="central-main-container row">
@@ -66,8 +66,7 @@
 				</tr>
 				<s:iterator status="status" value="lstDixDerniersJoueurs">
 					<tr>
-						<td>(<s:property value="#status.index" />)-<s:property
-								value="prenomJoueur" /></td>
+						<td><s:property value="prenomJoueur" /></td>
 						<td><s:property value="nomJoueur" /></td>
 						<td><s:property value="sexeJoueur" /></td>
 						<td><s:property value="nationalite.libelleNationalite" /></td>

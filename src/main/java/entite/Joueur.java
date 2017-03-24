@@ -96,4 +96,12 @@ public class Joueur {
 				+ ", sexeJoueur=" + sexeJoueur + ", nationalite=" + nationalite + "]";
 	}
 
+	public boolean equals(Joueur joueur) {
+		boolean res = false;
+		if (this.getIdJoueur().equals(joueur.getIdJoueur())) {
+			res = true;
+		}
+		return res;
+	}
+
 }
