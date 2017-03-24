@@ -37,6 +37,12 @@ public interface MatchDao {
 	 */
 	public List<Match> recupTousMatchs();
 	
+	/**
+	 * Retourne le contenu des 10 derniers enregistrements de la tableBdd match
+	 * @return une liste des 10 derniers matchs
+	 */
+	public List<Match> recupLesDixDerniersMatchs();
+	
 	
 	/**
 	 * Retourne le contenu de la tableBdd pour un tournoi

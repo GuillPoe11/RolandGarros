@@ -88,14 +88,28 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 	}
 	
 	/**
-	 * Retourne le contenu de la tableBdd match
+	 * Retourne le contenu des 10 derniers matchs enregistrés dans la tableBdd match
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Match> recupLesDixDerniersMatchs() {
+		openAll();
+		tx.begin();
+		List<Match> lstDixDerniersMatchs = em.createQuery("SELECT m FROM Match m ORDER BY m.dateMatch DESC").setMaxResults(10).getResultList();
+		closeAll();
+		return lstDixDerniersMatchs;
+	}
+
+	/**
+	 * Retourne le contenu de la tableBdd match pour chaque Sous-Tournoi
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Match> recupTousMatchsPourUnSousTournoi(SousTournoi sousTournoi) {
 		openAll();
 		tx.begin();
-		List<Match> lstMatchs = em.createQuery("SELECT m FROM Match m WHERE idTournoi='"+sousTournoi.getIdSousTournoi()+"' ORDER BY m.dateMatch DESC").getResultList();
+		List<Match> lstMatchs = em.createQuery("SELECT m FROM Match m WHERE idTournoi='"
+				+ sousTournoi.getIdSousTournoi() + "' ORDER BY m.dateMatch DESC").getResultList();
 		closeAll();
 		return lstMatchs;
 	}
@@ -115,8 +129,6 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 		closeAll();
 		return m;
 	}
-	
-	
 
 	/**
 	 * Affiche le contenu de la table
@@ -133,4 +145,5 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 		}
 		return result.toString();
 	}
+
 }

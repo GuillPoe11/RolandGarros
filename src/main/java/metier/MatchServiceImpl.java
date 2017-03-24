@@ -50,6 +50,11 @@ public class MatchServiceImpl implements MatchService {
 	public List<Match> recupererTousLesMatchs() {
 		return matchDao.recupTousMatchs();
 	}
+	
+	@Override
+	public List<Match> recupererLesDixDerniersMatchs() {
+		return matchDao.recupLesDixDerniersMatchs();
+	}
 
 	@Override
 	public List<Match> recupererTousLesMatchsPourUnSousTournoi(SousTournoi sousTournoi) {
@@ -102,5 +107,7 @@ public class MatchServiceImpl implements MatchService {
 	private boolean equipeUnisexe(Equipe equipe) {
 		return equipe.getJoueur1().getSexeJoueur().equals(equipe.getJoueur2().getSexeJoueur());
 	}
+
+	
 
 }

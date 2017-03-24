@@ -57,6 +57,7 @@ public class PlanifierMatchAction extends ActionSupport {
 	private Match match;
 
 	private List<Match> lstMatchs;
+	private List<Match> lstDixDerniersMatchs;
 
 	private Integer idEquipe1;
 	private Integer idEquipe2;
@@ -91,6 +92,7 @@ public class PlanifierMatchAction extends ActionSupport {
 		}
 
 		lstMatchs = service.recupererTousLesMatchs();
+		lstDixDerniersMatchs = service.recupererLesDixDerniersMatchs();
 
 		mapJoueurs = listToMap(new ArrayList<Object>(joueurService.recupererTousLesJoueurs()));
 		mapEquipes = listToMap(new ArrayList<Object>(equipeService.recupererToutesLesEquipes()));
@@ -270,6 +272,15 @@ public class PlanifierMatchAction extends ActionSupport {
 	public void setIdCourt(Integer idCourt) {
 		this.idCourt = idCourt;
 	}
+
+	public List<Match> getLstDixDerniersMatchs() {
+		return lstDixDerniersMatchs;
+	}
+
+	public void setLstDixDerniersMatchs(List<Match> lstDixDerniersMatchs) {
+		this.lstDixDerniersMatchs = lstDixDerniersMatchs;
+	}
+	
 	// fin getters setters
 
 	/**
