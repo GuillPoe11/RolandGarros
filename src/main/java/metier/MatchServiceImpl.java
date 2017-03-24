@@ -92,7 +92,7 @@ public class MatchServiceImpl implements MatchService {
 			}
 		}
 		// vérif cas tournoi femme simple
-		if (sousTournoi.getGenreSousTournoi() == 'H' && sousTournoi.getTypeSousTournoi() == 'S') {
+		if (sousTournoi.getGenreSousTournoi() == 'F' && sousTournoi.getTypeSousTournoi() == 'S') {
 			if (joueur1.getSexeJoueur() != 'F' || joueur2.getSexeJoueur() != 'F') {
 				throw new MatchException("Les joueurs doivent être des femmes pour ce type de tournoi");
 			}
