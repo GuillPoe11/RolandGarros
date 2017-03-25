@@ -34,6 +34,11 @@
 				class="btn-home">
 				<span>Ajouter une équipe</span>
 			</button></a>
+			 <br> <a class="lienNav"
+			href=<s:url action="EnregistrerScoreMatchTest"></s:url>><button
+				class="btn-home">
+				<span>Enregistrer un score Test<br>GouiGoui Bossera Samedi Soir</span>
+			</button></a>
 
 	</div>
 	<!--  @end Form -->
