@@ -14,7 +14,7 @@ import metier.MatchService;
 public class EnregistrerScoreMatchActionTest extends ActionSupport {
 
 	@Autowired
-	private MatchService service;
+	private MatchService matchService;
 
 	private static final long serialVersionUID = 77971771589810L;
 
@@ -23,26 +23,23 @@ public class EnregistrerScoreMatchActionTest extends ActionSupport {
 	private List<Match> lstMatchs;
 
 	private Integer idMatchDansLst;
+	private Integer score1;
+	private Integer score2;
+	private Integer duree;
 
 	private Map<Integer, String> mapMatchs;
 
-	public EnregistrerScoreMatchActionTest(@Autowired MatchService service) {
-		lstMatchs = service.recupererTousLesMatchs();
+	public EnregistrerScoreMatchActionTest(@Autowired MatchService matchService) {
+		lstMatchs = matchService.recupererTousLesMatchs();
 		Utilitaire util = new Utilitaire();
 		mapMatchs = util.listToMap(new ArrayList<Object>(lstMatchs));
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	public Match recupMatch(int idMatchDansLst) {
 
-	public String recupMatch() {
-		for (int i = 0; i < lstMatchs.size(); i++) {
-			if (i == idMatchDansLst) {
-				match = lstMatchs.get(i);
-			}
-		}
-		return "success";
+		Match match = lstMatchs.get(idMatchDansLst);
+		return match;
+
 	}
 
 	/**
@@ -52,14 +49,18 @@ public class EnregistrerScoreMatchActionTest extends ActionSupport {
 	 * @return string vers la page match
 	 */
 	public String modifierMatch() {
+		System.out.println("--------------" + idMatchDansLst);
+		System.out.println(match);
 
-		if (verifMatchs()) {
-			System.out.println(match);
-			recupMatch();
-			System.out.println(match);
-			service.modifierMatch(match, match.getDateMatch(), match.getDureeMatch(), match.getScore1(),
-					match.getScore2());
-		}
+		// if (verifMatchs()) {
+		// System.out.println(match);
+		match = recupMatch(idMatchDansLst);
+		System.out.println(match);
+
+		
+		matchService.modifierMatch(match, match.getDateMatch(), duree,score1,
+				score2);
+		// }
 
 		return "success";
 	}
@@ -68,20 +69,22 @@ public class EnregistrerScoreMatchActionTest extends ActionSupport {
 	 * Getters/Setters
 	 */
 
-	public List<Match> getLstArbitres() {
-		return lstMatchs;
+	/**
+	 * Fonction de vérification si un match peut être modifié
+	 * 
+	 * @return true or false
+	 */
+	public boolean verifMatchs() {
+		// TODO
+		return true;
 	}
 
-	public Map<Integer, String> getMapMatchs() {
-		return mapMatchs;
+	public MatchService getMatchService() {
+		return matchService;
 	}
 
-	public void setMapMatchs(Map<Integer, String> mapMatchs) {
-		this.mapMatchs = mapMatchs;
-	}
-
-	public void setLstArbitres(List<Match> lstArbitres) {
-		this.lstMatchs = lstArbitres;
+	public void setMatchService(MatchService matchService) {
+		this.matchService = matchService;
 	}
 
 	public Match getMatch() {
@@ -108,13 +111,35 @@ public class EnregistrerScoreMatchActionTest extends ActionSupport {
 		this.idMatchDansLst = idMatchDansLst;
 	}
 
-	/**
-	 * Fonction de vérification si un match peut être ajouté
-	 * 
-	 * @return true or false
-	 */
-	public boolean verifMatchs() {
-		// TODO
-		return true;
+	public Integer getScore1() {
+		return score1;
+	}
+
+	public void setScore1(Integer score1) {
+		this.score1 = score1;
+	}
+
+	public Integer getScore2() {
+		return score2;
+	}
+
+	public void setScore2(Integer score2) {
+		this.score2 = score2;
+	}
+
+	public Integer getDuree() {
+		return duree;
+	}
+
+	public void setDuree(Integer duree) {
+		this.duree = duree;
+	}
+
+	public Map<Integer, String> getMapMatchs() {
+		return mapMatchs;
+	}
+
+	public void setMapMatchs(Map<Integer, String> mapMatchs) {
+		this.mapMatchs = mapMatchs;
 	}
 }

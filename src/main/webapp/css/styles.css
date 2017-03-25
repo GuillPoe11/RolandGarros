@@ -63,9 +63,11 @@ body {
 	height: 160px;
 	transition: all 0.5s;
 	cursor: pointer;
-	margin: 5px;
+
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
 		rgba(0, 0, 0, 0.19);
+		margin:20px;
+	
 }
 
 .btn-home span {

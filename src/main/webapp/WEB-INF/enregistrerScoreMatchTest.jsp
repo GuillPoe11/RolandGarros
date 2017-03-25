@@ -17,9 +17,13 @@
 	<%@include file="menu.jspf"%>
 
 	<div class="central-main-container row">
-		<h3>Enregistrer un score</h3>
+		
 		<div class="container-liste background  col-md-offset-1 col-md-7 ">
-			<s:form id="Select" action="EnregistrerScoreMatch">
+		<h3 class="<s:property value="typeMsgForm" />">
+				<s:property value="msgForm" />
+			</h3>
+		<h3>Enregistrer un score</h3>
+			<s:form id="Select" action="EnregistrerScoreMatchTest" theme="simple">
 
 				<table id="form-table" class="table">
 					<tr>
@@ -35,18 +39,18 @@
 					 --%>
 					<tr>
 						<td>Durée du match en minutes</td>
-						<td><s:textfield name="match.dureeMatch"
-								label="Durée du match"></s:textfield></td>
+						<td><s:textfield name="duree"
+								label="Durée du match" cssClass="form-control"></s:textfield></td>
 					</tr>
 					<tr>
-						<td>Score du premier joueur :</td>
-						<td><s:textfield name="match.score1"
+						<td>Score du premier joueur</td>
+						<td><s:textfield name="score1"
 								label="Score du premier joueur" cssClass="form-control"></s:textfield></td>
 					</tr>
 					<tr>
-						<td>Score du deuxieme joueur :</td>
-						<td><s:textfield name="match.score2"
-								label="Score du deuxième joueur"></s:textfield></td>
+						<td>Score du deuxieme joueur</td>
+						<td><s:textfield name="score2"
+								label="Score du deuxième joueur" cssClass="form-control"></s:textfield></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="colspan-center"><s:submit
