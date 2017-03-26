@@ -3,14 +3,14 @@ package metier;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import dao.EquipeDao;
 import entite.Equipe;
 import entite.Joueur;
 import metier.exception.EquipeException;
 
-@Component
+@Service
 public class EquipeServiceImpl implements EquipeService {
 
 	@Autowired
