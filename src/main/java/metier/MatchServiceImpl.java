@@ -50,7 +50,7 @@ public class MatchServiceImpl implements MatchService {
 	@Override
 	public void modifierMatch(Match match, Date dateMatch, Integer dureeMatch, Integer score1Match,
 			Integer score2Match) {
-
+		System.out.println(match);
 		match.setDateMatch(dateMatch);
 		match.setDureeMatch(dureeMatch);
 		match.setScore1(score1Match);

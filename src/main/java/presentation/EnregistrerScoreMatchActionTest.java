@@ -78,7 +78,7 @@ public class EnregistrerScoreMatchActionTest extends ActionSupport {
 			System.out.println("Id des matchs de listemartch" + lstMatchs.get(i).getIdMatch());
 			
 			if (lstMatchs.get(i).getIdMatch() == idMatchDansSelect) {
-				Match match = lstMatchs.get(i);
+				match = lstMatchs.get(i);
 				System.out.println("Match Trouvé !"+match);
 			}
 		}
@@ -117,6 +117,7 @@ public class EnregistrerScoreMatchActionTest extends ActionSupport {
 			System.out.println("Lid du match dans select" + idMatchDansSelect);
 			match = recupMatch(idMatchDansSelect);
 
+			System.out.println("Match dans action enregistrer :"+match);
 			// Recup date dans le formulaire
 			// on vérifie que les champs date ne sont pas vides
 			if (!"".equals(dateMatch) && integerHeure != null && integerMinute != null) {
