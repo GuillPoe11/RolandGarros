@@ -133,7 +133,7 @@ public class EnregistrerScoreMatchActionTest extends ActionSupport {
 					// on enregistre
 					// date initiale : match.getDateMatch();
 					System.out.println("datematchFormat"+dateMatchFormat);
-					matchService.modifierMatch(match, match.getDateMatch(), duree, score1, score2);
+					matchService.modifierMatch(match, dateMatchFormat, duree, score1, score2);
 
 					msgForm = "Score enregistré";
 					typeMsgForm = "alert alert-success";

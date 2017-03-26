@@ -24,11 +24,20 @@
 
 	<!-- Form -->
 	<div class="central-main-container row btn-group-home">
+	<div style="background-color:white;">
+	
+		Liste erreurs à corriger : <br>
+			
+Planifier match : Enregistrer match fonctionne avec 2 joueurs, mais pas avec 2 equipes<br>
+ : possibilité d'entrer 2 joueurs et 2 equipes en même temps<br>
+ 
+Enregistrer score : nullPointer incompréhensible<br>
+Enregistrer score, les controles de form ne marche pas (ex vérif score = chiffre)
+	</div>
 	<br> <a class="lienNav" 
 			href=<s:url action="EnregistrerScoreMatchTest"></s:url>><button
 				class="btn-home effet-nav-home" style="width:600px;">
-				<span style="width:600px;">Enregistrer un score v2<br>GouiGoui Bossera
-					Samedi Soir<br>J'ai avancé, continuerais dimanche
+				<span style="width:600px;">Enregistrer un score v2, à corriger<br>
 				</span>
 			</button></a><br>
 		<a class="lienNav" href=<s:url action="AjouterJoueur"></s:url>><button
@@ -51,7 +60,8 @@
 				class="btn-home effet-nav-home">
 				<span>Ajouter une équipe</span>
 			</button></a> 
-
+			
+		
 	</div>
 	<!--  @end Form -->
 
