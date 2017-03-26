@@ -8,9 +8,25 @@
 <meta name="description" content="">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
+<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+	$(function() {
+		$("#datepicker").datepicker(
+				{
+					dateFormat : "dd/mm/yy",
+					closeText : 'Fermer',
+					prevText : 'Précédent',
+					nextText : 'Suivant',
+					monthNames : [ 'Janvier', 'Février', 'Mars', 'Avril',
+							'Mai', 'Juin', 'Juillet', 'Août', 'Septembre',
+							'Octobre', 'Novembre', 'Décembre' ],
+					dayNamesMin : [ "Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa" ]
+				})
+	});
+</script>
 <jsp:include page="head.jspf" />
 </head>
 <body>
@@ -30,7 +46,7 @@
 						<td id="select-match">Sélection du match</td>
 						<td><s:select label="Sélectionnez un match" headerKey="-1"
 								headerValue="--------" list="mapMatchs" listKey="key"
-								listValue="value" name="idMatchDansLst"
+								listValue="value" name="idMatchDansSelect"
 								cssClass="selectpicker show-tick form-control" /></td>
 					</tr>
 					<%-- <tr>
@@ -43,14 +59,27 @@
 								label="Durée du match" cssClass="form-control"></s:textfield></td>
 					</tr>
 					<tr>
-						<td>Score du premier joueur</td>
+						<td>Score du premier joueur/equipe</td>
 						<td><s:textfield name="score1"
 								label="Score du premier joueur" cssClass="form-control"></s:textfield></td>
 					</tr>
 					<tr>
-						<td>Score du deuxieme joueur</td>
+						<td>Score du deuxieme joueur/equipe</td>
 						<td><s:textfield name="score2"
 								label="Score du deuxième joueur" cssClass="form-control"></s:textfield></td>
+					</tr>
+					<tr>
+						<td>Date du match</td>
+						<td><s:textfield name="dateMatch" label="Date du match"
+								id="datepicker"></s:textfield></td>
+					</tr>
+					<tr>
+						<td>Heure du match</td>
+						<td><s:select label="Heure" list="lstHeures"
+								name="integerHeure" cssClass="inline" /> <s:select
+								label="Minute" list="#{'0':'0','15':'15', '30':'30', '45':'45'}"
+								listKey="key" listValue="value" name="integerMinute"
+								cssClass="inline" /></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="colspan-center"><s:submit

@@ -72,10 +72,10 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 
 		openAll();
 		tx.begin();
-		String hqlUpdate = "UPDATE Match m SET m.score1 = :newScore1, m.score2 = :newScore2, m.dureeMatch = :duree WHERE m.idMatch = :idMatch";
+		String hqlUpdate = "UPDATE Match m SET m.score1 = :newScore1, m.score2 = :newScore2, m.dureeMatch = :duree,m.dateMatch = :date WHERE m.idMatch = :idMatch";
 
 		em.createQuery(hqlUpdate).setParameter("newScore1", m.getScore1()).setParameter("newScore2", m.getScore2())
-				.setParameter("idMatch", m.getIdMatch()).setParameter("duree", m.getDureeMatch()).executeUpdate();
+				.setParameter("idMatch", m.getIdMatch()).setParameter("duree", m.getDureeMatch()).setParameter("date", m.getDateMatch()).executeUpdate();
 
 		System.out.println(m.getScore1());
 		System.out.println(m.getScore2());
