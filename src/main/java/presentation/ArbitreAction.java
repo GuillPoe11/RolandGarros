@@ -26,7 +26,8 @@ public class ArbitreAction extends ActionSupport {
 	public ArbitreAction(@Autowired ArbitreService service) {
 		super();
 		lstArbitres = service.recupTousArbitres();
-		lstdixArbitres = service.recupLesDixDerniersArbitres();
+		//lstdixArbitres = service.recupLesDixDerniersArbitres();
+		lstdixArbitres = service.recupTousArbitres();
 		lstTypeArbitres = new HashMap<Integer, String>();
 	}
 
@@ -118,7 +119,7 @@ public class ArbitreAction extends ActionSupport {
 			service.insererArbitre(arbitre.getNomArbitre(), arbitre.getPrenomArbitre());
 			arbitre.setNomArbitre("");
 			arbitre.setPrenomArbitre("");
-			lstArbitres = service.recupLesDixDerniersArbitres();
+			lstdixArbitres = service.recupTousArbitres();
 		}
 		return "success";
 	}
