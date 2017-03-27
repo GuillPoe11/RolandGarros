@@ -24,10 +24,11 @@
 			<result name="connecte" type="redirectAction">${url}</result>
 		</action>
 		<action name="Deconnexion" class="presentation.DeconnexionAction">
-			<result name="success">index.jsp</result>
+			<result name="success" type="redirectAction">ConsulterResultat</result>
 		</action>
-		<action name="Accueil" class="presentation.AccueilAction">
-			<result name="success">index.jsp</result>
+		<action name="Admin" class="presentation.AdminAction">
+			<interceptor-ref name="pileDeConnexion" />
+			<result name="success">/WEB-INF/admin.jsp</result>
 		</action>
 		<action name="AjouterJoueur" class="presentation.JoueurAction">
 			<interceptor-ref name="pileDeConnexion" />
@@ -39,19 +40,21 @@
 		</action>
 		<action name="PlanifierMatch" class="presentation.PlanifierMatchAction">
 			<interceptor-ref name="pileDeConnexion" />
-			<result name="success">/WEB-INF/planifierMatch/choixTypeMatch.jsp</result>
-			<result name="simple">/WEB-INF/planifierMatch/planifierMatchSimple.jsp</result>
-			<result name="equipe">/WEB-INF/planifierMatch/planifierMatchEquipe.jsp</result>
+			<result name="success">/WEB-INF/planifierMatch/choixTypeMatch.jsp
+			</result>
+			<result name="simple">/WEB-INF/planifierMatch/planifierMatchSimple.jsp
+			</result>
+			<result name="equipe">/WEB-INF/planifierMatch/planifierMatchEquipe.jsp
+			</result>
 		</action>
 		<action name="EnregistrerScoreMatch" class="presentation.EnregistrerScoreMatchAction">
 			<interceptor-ref name="pileDeConnexion" />
 			<result name="success">/WEB-INF/enregistrerScoreMatch.jsp</result>
-			<result name="modif" >/WEB-INF/enregistrerScoreMatch.jsp?idMatchDansLst={idMatchDansLst}</result>
-			
+			<result name="modif">/WEB-INF/enregistrerScoreMatch.jsp?idMatchDansLst={idMatchDansLst}
+			</result>
 		</action>
-		
 		<action name="ConsulterResultat" class="presentation.ResultatAction">
-			<result name="success">/WEB-INF/resultat.jsp</result>
+			<result name="success">WEB-INF/resultat.jsp</result>
 		</action>
 		<action name="AjouterArbitre" class="presentation.ArbitreAction">
 			<interceptor-ref name="pileDeConnexion" />

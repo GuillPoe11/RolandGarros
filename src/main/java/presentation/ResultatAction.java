@@ -41,6 +41,10 @@ public class ResultatAction extends ActionSupport {
 	public ResultatAction(@Autowired MatchService matchService) {
 		lstMatchs = matchService.recupererTousLesMatchs();
 	}
+	
+	public String execute(){
+		return "success";
+	}
 
 	/*
 	 * Getters/Setters
