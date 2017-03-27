@@ -68,6 +68,8 @@ public class EquipeAction extends ActionSupport {
 				equipeService.creerEquipe(joueur1, joueur2);
 				msgForm = "L'équipe à été ajoutée";
 				typeMsgForm = "alert alert-success";
+
+				lstEquipes = equipeService.recupererToutesLesEquipes();
 			} catch (EquipeException e) {
 				msgForm = e.getMessage();
 				typeMsgForm = "alert alert-danger";

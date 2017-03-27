@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<%@include file="menu.jspf" %>
+	<%@include file="menu.jspf"%>
 
 	<div class="central-main-container row">
 		<!-- Form -->
@@ -24,12 +24,13 @@
 				<table id="form-table" class="table">
 					<tr>
 						<td><s:label>Nom de court : </s:label></td>
-						<td><s:textfield name="nomCourt" label="Nom du court "/></td>
+						<td><s:textfield name="nomCourt" label="Nom du court "
+								cssClass="form-control" /></td>
 					</tr>
 					<tr>
 						<td><s:label>Numéro de court : </s:label></td>
-						<td><s:textfield name="numeroCourt" label="Numero du court " />
-						</td>
+						<td><s:textfield name="numeroCourt" label="Numero du court "
+								cssClass="form-control" /></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="colspan-center"><s:submit

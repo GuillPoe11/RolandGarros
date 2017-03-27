@@ -26,24 +26,24 @@
 					<tr>
 						<td><s:label>Nom du joueur : </s:label></td>
 						<td><s:textfield name="joueur.nomJoueur"
-								label="Nom du joueur" /></td>
+								label="Nom du joueur" cssClass="form-control" /></td>
 					</tr>
 					<tr>
 						<td><s:label>Prénom du joueur : </s:label></td>
-						<td><s:textfield name="joueur.prenomJoueur"
+						<td><s:textfield name="joueur.prenomJoueur" cssClass="form-control"
 								label="Prénom du joueur" /></td>
 					</tr>
 					<tr>
 						<td><s:label>Genre du joueur : </s:label></td>
 						<td><s:select label="Genre du joueur"
 								list="#{'M':'Homme', 'F':'Femme'}" listKey="key"
-								listValue="value" name="joueur.sexeJoueur" /></td>
+								listValue="value" name="joueur.sexeJoueur" cssClass="form-control" /></td>
 					</tr>
 					<tr>
 						<td><s:label>Nationalité du joueur : </s:label></td>
 						<td><s:select label="Sélectionnez une nationalité"
 								headerKey="-1" headerValue="--------" list="mapNationalites"
-								listKey="key" listValue="value" name="idNationalite" /></td>
+								listKey="key" listValue="value" name="idNationalite" cssClass="form-control"/></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="colspan-center"><s:submit
