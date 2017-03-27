@@ -57,7 +57,7 @@
 				<s:property value="msgForm" />
 			</h3>
 			<h3>Enregistrer un score</h3>
-			<s:form id="Select" action="EnregistrerScoreMatchTest" theme="simple">
+			<s:form id="Select" action="EnregistrerScoreMatch" theme="simple">
 
 				<table id="form-table" class="table">
 					<tr>

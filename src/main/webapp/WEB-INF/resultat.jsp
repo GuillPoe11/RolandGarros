@@ -20,7 +20,7 @@
 			
 			<s:iterator status="status" value="lstMatchs">
 				<s:if test="score1!=null && score2!=null">
-					<div class="col-md-4 tab">
+					<div class="col-md-4 tab ">
 						<div class="head-tab">
 							<div id="nom-court"><s:property value="court.nomCourt" /></div>
 							<s:if test="sousTournoi.typeSousTournoi=='S'">
@@ -32,7 +32,7 @@
 						</div>
 						<table class="table table-bordered background table-hover col-md-12">
 							<tr>	
-								<td>Match du <s:date name="dateMatch" format="dd/MM/yyyy HH:mm" /></td>
+								<td colspan="4">Match du <s:date name="dateMatch" format="dd/MM/yyyy HH:mm" /></td>
 							</tr>
 							<s:if test="equipe1.joueur1.nomJoueur != '' && equipe1.joueur2.nomJoueur != ''">
 							<tr>
