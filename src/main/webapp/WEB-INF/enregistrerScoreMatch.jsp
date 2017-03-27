@@ -29,27 +29,20 @@
 						<td><s:select label="Sélectionnez un match" headerKey="-1"
 								headerValue="--------" list="mapMatchs" listKey="key"
 								listValue="value" name="idMatchDansLst" /></td>
-						<td>
-								<s:select
-								label="Sélectionnez un match"
-								headerKey="-1"
-								headerValue="--------"
-								list="mapMatchs"
-								listKey="key"
-								listValue="value"
-								name="idMatchDansLst"
-								cssClass="selectpicker show-tick form-control"/>
-						</td>
+						<td><s:select label="Sélectionnez un match" headerKey="-1"
+								headerValue="--------" list="mapMatchs" listKey="key"
+								listValue="value" name="idMatchDansLst"
+								cssClass="selectpicker show-tick form-control" /></td>
 					</tr>
 					<tr>
 						<td><s:submit cssClass="btn btn-primary" method="recupMatch"
 								value="Valider" /></td>
-					<td><s:submit method="recupMatch" value="Valider" cssClass="btn btn-primary"/></td>
+						<td><s:submit method="recupMatch" value="Valider"
+								cssClass="btn btn-primary" /></td>
 					</tr>
 				</table>
 			</s:form>
-				</table>
-					</s:form>
+			</table>
 
 		</div>
 
@@ -82,8 +75,9 @@
 					<tr>
 						<td colspan="2" class="colspan-center"><s:submit
 								cssClass="btn btn-primary" method="modifierMatch"
-								value="Valider" /></td>
-								method="modifierMatch" value="Valider" cssClass="btn btn-primary"/></td>
+								value="Valider" /></td> method="modifierMatch" value="Valider"
+						cssClass="btn btn-primary"/>
+						</td>
 					</tr>
 				</table>
 			</s:form>
