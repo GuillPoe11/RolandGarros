@@ -26,6 +26,24 @@
 					dayNamesMin : [ "Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa" ]
 				})
 	});
+	function verif(evt,str) {
+        var keyCode = evt.which ? evt.which : evt.keyCode;
+        var accept = '0123456789';
+        if (accept.indexOf(String.fromCharCode(keyCode)) >= 0) {
+            return true;
+        } else {
+            if(str == "duree"){
+            	document.getElementById('errorDuree').style.visibility = 'visible';
+            }
+            if(str == "score1"){
+            	document.getElementById('errorScore1').style.visibility = 'visible';
+            }
+            if(str == "score2"){
+            	document.getElementById('errorScore2').style.visibility = 'visible';
+            }
+            return false;
+        }
+    }
 </script>
 <jsp:include page="head.jspf" />
 </head>
@@ -55,18 +73,21 @@
 					 --%>
 					<tr>
 						<td>Durée du match en minutes</td>
-						<td><s:textfield name="duree"
-								label="Durée du match" cssClass="form-control"></s:textfield></td>
+						<td><s:textfield id="duree" name="duree" onkeypress="verif(event,'duree')"
+								label="Durée du match" cssClass="form-control"></s:textfield>
+								<span id="errorDuree" style="visibility : hidden; color :red;">Seuls les chiffres sont autorisés</span></td>
 					</tr>
 					<tr>
 						<td>Score du premier joueur/equipe</td>
-						<td><s:textfield name="score1"
-								label="Score du premier joueur" cssClass="form-control"></s:textfield></td>
+						<td><s:textfield name="score1" onkeypress="verif(event,'score1')"
+								label="Score du premier joueur" cssClass="form-control"></s:textfield>
+								<span id="errorScore1" style="visibility : hidden; color :red;">Seuls les chiffres de 0 à 5 sont autorisés</span></td>
 					</tr>
 					<tr>
 						<td>Score du deuxieme joueur/equipe</td>
-						<td><s:textfield name="score2"
-								label="Score du deuxième joueur" cssClass="form-control"></s:textfield></td>
+						<td><s:textfield name="score2" onkeypress="verif(event,'score2')"
+								label="Score du deuxième joueur" cssClass="form-control"></s:textfield>
+								<span id="errorScore2" style="visibility : hidden; color :red;">Seuls les chiffres de 0 à 5 sont autorisés</span></td>
 					</tr>
 					<tr>
 						<td>Date du match</td>
