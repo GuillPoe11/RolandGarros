@@ -46,15 +46,27 @@
 		<div class="container-liste background col-md-4 col-md-offset-1">
 			<table class="table table-bordered table-hover">
 				<tr>
-					<th>Numéro de l'équipe</th>
-					<th>Joueur1</th>
-					<th>Joueur2</th>
+					<td class="bold">Numéro de l'équipe</td>
+					<td class="bold" colspan="2">Joueur1</td>
+					<td class="bold" colspan="2">Joueur2</td>
 				</tr>
 				<s:iterator status="status" value="lstEquipes">
 					<tr>
-						<td><s:property value="idEquipe" /></td>
-						<td><s:property value="joueur1.nomJoueur" /></td>
-						<td><s:property value="joueur2.nomJoueur" /></td>
+						<td>
+							<s:property value="sousTournoi.nomSousTournoi" />
+							<s:property value="idEquipe" /></td>
+						<td><s:if test="joueur1.sexeJoueur=='M'">
+								<img src="img/men.png">&nbsp;</s:if> <s:elseif
+								test="joueur1.sexeJoueur=='F'">
+								<img src="img/women.png">&nbsp;
+</s:elseif>
+							</td><td><s:property value="joueur1.prenomJoueur" />&nbsp;<s:property value="joueur1.nomJoueur" /></td>
+						<td><s:if test="joueur2.sexeJoueur=='M'">
+								<img src="img/men.png">&nbsp;</s:if> <s:elseif
+								test="joueur2.sexeJoueur=='F'">
+								<img src="img/women.png">&nbsp;
+</s:elseif>
+							</td><td><s:property value="joueur2.prenomJoueur" />&nbsp;<s:property value="joueur2.nomJoueur" /></td>
 					</tr>
 				</s:iterator>
 			</table>

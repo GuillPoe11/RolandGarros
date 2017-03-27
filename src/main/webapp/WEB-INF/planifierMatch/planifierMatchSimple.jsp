@@ -117,12 +117,7 @@
 					<th>Date</th>
 				</tr>
 				<s:iterator status="status" value="lstDixDerniersMatchsSimple">
-					<tr
-						<s:if test="sousTournoi.genreSousTournoi=='H'">
-class="bleuJoueur"</s:if>
-						<s:elseif test="sousTournoi.genreSousTournoi=='F'">
-	class="roseJoueur"
-</s:elseif>>
+					<tr>
 						<td><s:property value="court.nomCourt" /></td>
 						<td><s:property
 								value="joueur1.prenomJoueur + ' ' + joueur1.nomJoueur" /></td>
@@ -130,8 +125,11 @@ class="bleuJoueur"</s:if>
 								value="joueur2.prenomJoueur + ' ' + joueur2.nomJoueur" /></td>
 						<td><s:property
 								value="arbitre.prenomArbitre + ' ' + arbitre.nomArbitre" /></td>
-						<td><s:property value="sousTournoi.nomSousTournoi" /></td>
-						<td><s:property value="sousTournoi.genreSousTournoi" /></td>
+						<td><s:if test="sousTournoi.genreSousTournoi=='H'">
+<img src="img/men.png">&nbsp;</s:if>
+						<s:elseif test="sousTournoi.genreSousTournoi=='F'">
+	<img src="img/women.png">&nbsp;
+</s:elseif><s:property value="sousTournoi.nomSousTournoi" /></td>
 						<td><s:date format="dd/MM/yyyy HH:mm" name="dateMatch" /></td>
 
 					</tr>

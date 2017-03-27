@@ -5,13 +5,9 @@
 }
 
 #liste-table th, #liste-table td {
-	text-align: center;
+	text-align: center; !important
 }
-
-.roseJoueur {
-	background-color: #fed3e0;
-}
-
-.bleuJoueur {
-	background-color: #b1d3fe;
+.bold
+{
+	font-weight:bold;
 }

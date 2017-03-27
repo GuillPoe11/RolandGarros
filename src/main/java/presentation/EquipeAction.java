@@ -94,7 +94,7 @@ public class EquipeAction extends ActionSupport {
 		Map<Integer, String> map = new HashMap<Integer, String>();
 		Integer i = 0;
 		for (Joueur joueur : list) {
-			map.put(i, joueur.getNomJoueur() + " " + joueur.getPrenomJoueur());
+			map.put(i, joueur.getPrenomJoueur() + " " + joueur.getNomJoueur() + " (" + joueur.getSexeJoueur() + ")");
 			i++;
 		}
 		return map;

@@ -88,10 +88,9 @@ body {
 .effet-nav-home:hover {
 	transform: scale(1.08);
 	background-color: #222;
-	border: 1px outset #000;
-	-webkit-transition: all 1s linear;
-	-ms-transition: all 1s linear;
-	transition: all 1s linear;
+	-webkit-transition: all 0.5s linear;
+	-ms-transition: all 0.5s linear;
+	transition: all 0.5s linear;
 }
 
 #header-logo {
