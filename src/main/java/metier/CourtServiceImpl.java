@@ -3,12 +3,12 @@ package metier;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import dao.CourtDao;
 import entite.Court;
 
-@Component
+@Service
 public class CourtServiceImpl implements CourtService {
 
 	@Autowired

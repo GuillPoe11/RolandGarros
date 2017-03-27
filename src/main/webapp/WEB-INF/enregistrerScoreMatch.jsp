@@ -40,17 +40,6 @@
 								name="idMatchDansLst"
 								cssClass="selectpicker show-tick form-control"/>
 						</td>
-						<td>
-								<s:select
-								label="Sélectionnez un match"
-								headerKey="-1"
-								headerValue="--------"
-								list="mapMatchs"
-								listKey="key"
-								listValue="value"
-								name="idMatchDansLst"
-								cssClass="selectpicker show-tick form-control"/>
-						</td>
 					</tr>
 					<tr>
 						<td><s:submit cssClass="btn btn-primary" method="recupMatch"

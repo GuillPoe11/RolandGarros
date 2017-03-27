@@ -3,13 +3,12 @@ package metier;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import dao.SousTournoiDao;
-import entite.Nationalite;
 import entite.SousTournoi;
 
-@Component
+@Service
 public class SousTournoiServiceImpl implements SousTournoiService {
 
 	@Autowired

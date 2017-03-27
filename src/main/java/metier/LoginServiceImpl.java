@@ -1,11 +1,11 @@
 package metier;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import dao.OrganisateurDao;
 
-@Component
+@Service
 public class LoginServiceImpl implements LoginService {
 
 	@Autowired

@@ -55,9 +55,9 @@ public class Utilitaire {
 			case "entite.Match":
 				String str = ((Match) obj).getCourt().getNomCourt();
 				if (((Match) obj).getDateMatch() != null) {
-					str += ((Match) obj).getDateMatch().toString();
+					str +=" "+((Match) obj).getDateMatch().toString();
 				}
-				str += ((Match) obj).getSousTournoi().getNomSousTournoi();
+				str +=" "+((Match) obj).getSousTournoi().getNomSousTournoi();
 				if (((Match) obj).getScore1() != null) {
 					str += ((Match) obj).getScore1();
 				}
