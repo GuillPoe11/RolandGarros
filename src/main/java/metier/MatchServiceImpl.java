@@ -66,7 +66,7 @@ public class MatchServiceImpl implements MatchService {
 	
 	@Override
 	public List<Match> recupererTousLesMatchsAModifier() {
-		return matchDao.recupTousMatchsAModifie();
+		return matchDao.recupTousMatchsAModifier();
 	}
 
 	@Override

@@ -44,7 +44,7 @@ public interface MatchDao {
 	 * 
 	 * @return une liste de match
 	 */
-	public List<Match> recupTousMatchsAModifie();
+	public List<Match> recupTousMatchsAModifier();
 
 
 	/**

@@ -1,10 +1,17 @@
 .container-liste {
-  color:#000;
-  float:left;
-  font-size:12px;
-} 
-#liste-table th,#liste-table td
-{
-	text-align:center;
-	
+	color: #000;
+	float: left;
+	font-size: 12px;
+}
+
+#liste-table th, #liste-table td {
+	text-align: center;
+}
+
+.roseJoueur {
+	background-color: #fed3e0;
+}
+
+.bleuJoueur {
+	background-color: #b1d3fe;
 }
