@@ -2,13 +2,11 @@ package presentation;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import metier.LoginService;
-
-public class AccueilAction  extends ActionSupport{
+public class AdminAction  extends ActionSupport{
 	
 	private static final long serialVersionUID = 1L;
 	
-	public AccueilAction() {
+	public AdminAction() {
 		super();
 	}
 	
@@ -17,7 +15,7 @@ public class AccueilAction  extends ActionSupport{
 	}
 
 
-	public String AccueilAction() {
+	public String execute() {
 		return "success";
 	}
 

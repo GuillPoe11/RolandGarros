@@ -12,15 +12,17 @@
 
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav navbar-left">
-			<li><a class="lien-nav" href="Accueil.action">Home</a></li>
 			<li><a class="lien-nav" href="ConsulterResultat.action">R&eacute;sultats</a></li>
+			<s:if test="%{#session.estConnecte}">
+				<li><a class="lien-nav" href="Admin.action">Admin</a></li>
+			</s:if>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<s:if test="%{#session.estConnecte}">
 				<li><a class="lien-nav admin" href="Deconnexion.action">D&eacute;connexion</a></li>
 			</s:if>
 			<s:else>
-				<li><a class="lien-nav admin" href="Connexion.action">Admin</a></li>
+				<li><a class="lien-nav admin" href="Connexion.action">Se connecter</a></li>
 			</s:else>
 		</ul>
 	</div>

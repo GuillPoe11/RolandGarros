@@ -69,6 +69,10 @@ public class ConnexionAction extends ActionSupport {
 				@SuppressWarnings("unchecked")
 				Map<String, Object> session = (Map<String, Object>) ActionContext.getContext().get("session");
 				url = (String) session.get("url");
+				session.remove("url");
+				if(url == null){
+					url = "Admin.action";
+				}
 				res = true;
 			}
 		}

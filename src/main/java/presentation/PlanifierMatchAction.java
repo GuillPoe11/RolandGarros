@@ -307,7 +307,7 @@ public class PlanifierMatchAction extends ActionSupport {
 		for (Object obj : list) {
 			switch (obj.getClass().getName()) {
 			case "entite.Joueur":
-				map.put(((Joueur) obj).getIdJoueur(), ((Joueur) obj).getPrenomJoueur() + ((Joueur) obj).getNomJoueur());
+				map.put(((Joueur) obj).getIdJoueur(), ((Joueur) obj).getPrenomJoueur() + " " + ((Joueur) obj).getNomJoueur());
 				break;
 
 			case "entite.Equipe":
@@ -325,7 +325,7 @@ public class PlanifierMatchAction extends ActionSupport {
 
 			case "entite.Arbitre":
 				map.put(((Arbitre) obj).getIdArbitre(),
-						((Arbitre) obj).getPrenomArbitre() + ((Arbitre) obj).getNomArbitre());
+						((Arbitre) obj).getPrenomArbitre() + " " + ((Arbitre) obj).getNomArbitre());
 				break;
 
 			default:
