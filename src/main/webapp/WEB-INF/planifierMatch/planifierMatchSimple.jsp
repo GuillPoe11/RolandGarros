@@ -27,20 +27,20 @@
 				})
 	});
 </script>
-<jsp:include page="head.jspf" />
+<jsp:include page="../head.jspf" />
 </head>
 <body>
 
 
-	<%@include file="menu.jspf"%>
+	<%@include file="../menu.jspf"%>
 
 	<div class="central-main-container row">
-	
-		
+
+
 
 		<!-- Form -->
 		<div class="container-form background col-md-offset-1 col-md-10 clear">
-		<h3>Planification des matchs</h3>
+			<h3>Planification des matchs en simple</h3>
 			<h4 class="<s:property value="typeMsgForm" />">
 				<s:property value="msgForm" />
 			</h4>
@@ -52,20 +52,9 @@
 					<tr>
 						<td>Sous-Tournoi</td>
 						<td><s:select label="Sélectionnez un Sous-Tournoi"
-								headerKey="-1" headerValue="--------" list="mapSousTournois"
-								listKey="key" listValue="value" name="idSousTournoi" /></td>
-					</tr>
-					<tr>
-						<td>Equipe 1</td>
-						<td><s:select label="Sélectionnez une equipe" headerKey="-1"
-								headerValue="--------" list="mapEquipes" listKey="key"
-								listValue="value" name="idEquipe1" /></td>
-					</tr>
-					<tr>
-						<td>Equipe 2</td>
-						<td><s:select label="Sélectionnez une equipe" headerKey="-1"
-								headerValue="--------" list="mapEquipes" listKey="key"
-								listValue="value" name="idEquipe2" /></td>
+								headerKey="-1" headerValue="--------"
+								list="mapSousTournoisSimple" listKey="key" listValue="value"
+								name="idSousTournoi" /></td>
 					</tr>
 					<tr>
 						<td>Arbitre</td>
@@ -105,33 +94,19 @@
 								listKey="key" listValue="value" name="integerMinute"
 								cssClass="inline" /></td>
 					</tr>
-
-					<%-- <tr>
-						<td>Durée du match en minutes</td>
-						<td><s:textfield name="match.dureeMatch"
-								label="Durée du match"></s:textfield></td>
-					</tr>
-					<tr>
-						<td>Score du premier joueur :</td>
-						<td><s:textfield name="match.score1"
-								label="Score du premier joueur"></s:textfield></td>
-					</tr>
-					<tr>
-						<td>Score du deuxieme joueur :</td>
-						<td><s:textfield name="match.score2"
-								label="Score du deuxième joueur"></s:textfield></td>
-					</tr> --%>
 					<tr>
 						<td colspan="2" class="colspan-center"><s:submit
-								method="creerMatch" value="Valider" /></td>
+								cssClass="btn btn-primary" method="creerMatchSimple"
+								value="Valider" /></td>
 					</tr>
 				</table>
 			</s:form>
-			
+
 		</div>
-		<div style="height:20px; clear:both;" ></div>
-		
-		<div class="container-liste background col-md-offset-1 col-md-10 clear">
+		<div style="height: 20px; clear: both;"></div>
+
+		<div
+			class="container-liste background col-md-offset-1 col-md-10 clear">
 			<table class="table table-bordered table-hover">
 				<tr>
 					<th>Court</th>
@@ -140,13 +115,8 @@
 					<th>Arbitre</th>
 					<th>SousTournoi</th>
 					<th>Date</th>
-					<th>Durée</th>
-					<th>Equipes 1</th>
-					<th>Equipe 2</th>
-					<th>Score 1</th>
-					<th>Score 2</th>
 				</tr>
-				<s:iterator status="status" value="lstDixDerniersMatchs">
+				<s:iterator status="status" value="lstDixDerniersMatchsSimple">
 					<tr>
 						<td><s:property value="court.nomCourt" /></td>
 						<td><s:property value="joueur1.nomJoueur" /></td>
@@ -154,23 +124,14 @@
 						<td><s:property value="arbitre.nomArbitre" /></td>
 						<td><s:property value="sousTournoi.nomSousTournoi" /></td>
 						<td><s:date format="dd/MM/yyyy HH:mm" name="dateMatch" /></td>
-						<td><s:property value="dureeMatch" /></td>
-						<td><s:property value="equipe1.joueur1.nomJoueur" />-<s:property
-								value="equipe1.joueur2.nomJoueur" /></td>
-						<td><s:property value="equipe2.joueur1.nomJoueur" />-<s:property
-								value="equipe2.joueur2.nomJoueur" /></td>
-						<td><s:property value="score1" /></td>
-						<td><s:property value="score2" /></td>
-
 					</tr>
-
 				</s:iterator>
 			</table>
 
 		</div>
 		<!--  @end Form -->
 	</div>
-	<jsp:include page="footer.jspf" />
+	<jsp:include page="../footer.jspf" />
 
 </body>
 </html>

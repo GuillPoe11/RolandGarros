@@ -32,11 +32,20 @@ public class SousTournoiServiceImpl implements SousTournoiService {
 	public List<SousTournoi> recupererTousLesSousTournois() {
 		return dao.recupTousLesSousTournois();
 	}
-	
-	
+
 	@Override
 	public SousTournoi recupererSousTournoiParId(int id) {
 		return dao.recupSousTournoiParId(id);
+	}
+
+	@Override
+	public List<SousTournoi> recupererTousLesSousTournoisEquipe() {
+		return dao.recupTousLesSousTournoisEquipe();
+	}
+
+	@Override
+	public List<SousTournoi> recupererTousLesSousTournoisSimple() {
+		return dao.recupTousLesSousTournoisSimple();
 	}
 
 }

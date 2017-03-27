@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import entite.SousTournoi;
 
 @Component
-public class SousTournoiDaoImpl extends DAO implements SousTournoiDao{
+public class SousTournoiDaoImpl extends DAO implements SousTournoiDao {
 
 	/**
 	 * Constructeur
@@ -58,6 +58,34 @@ public class SousTournoiDaoImpl extends DAO implements SousTournoiDao{
 		@SuppressWarnings("unchecked")
 		List<SousTournoi> lstSousTournois = em
 				.createQuery("SELECT st FROM SousTournoi st ORDER BY st.idSousTournoi ASC").getResultList();
+		tx.commit();
+		closeAll();
+		return lstSousTournois;
+	}
+
+	@Override
+	public List<SousTournoi> recupTousLesSousTournoisEquipe() {
+		openAll();
+		tx.begin();
+		@SuppressWarnings("unchecked")
+		List<SousTournoi> lstSousTournois = em
+				.createQuery(
+						"SELECT st FROM SousTournoi st WHERE st.typeSousTournoi = 'E' ORDER BY st.idSousTournoi ASC")
+				.getResultList();
+		tx.commit();
+		closeAll();
+		return lstSousTournois;
+	}
+
+	@Override
+	public List<SousTournoi> recupTousLesSousTournoisSimple() {
+		openAll();
+		tx.begin();
+		@SuppressWarnings("unchecked")
+		List<SousTournoi> lstSousTournois = em
+				.createQuery(
+						"SELECT st FROM SousTournoi st WHERE st.typeSousTournoi = 'S' ORDER BY st.idSousTournoi ASC")
+				.getResultList();
 		tx.commit();
 		closeAll();
 		return lstSousTournois;

@@ -63,6 +63,20 @@ public interface MatchService {
 	 * @return liste des 10 derniers matchs
 	 */
 	public List<Match> recupererLesDixDerniersMatchs();
+	
+	/**
+	 * Récupérer la liste des 10 derniers matchs simples
+	 * 
+	 * @return liste des 10 derniers matchs
+	 */
+	public List<Match> recupererLesDixDerniersMatchsSimples();
+	
+	/**
+	 * Récupérer la liste des 10 derniers matchs en équipe
+	 * 
+	 * @return liste des 10 derniers matchs
+	 */
+	public List<Match> recupererLesDixDerniersMatchsEnEquipe();
 
 	/**
 	 * Récupérer la liste de tous les matchs pour un soustournoi

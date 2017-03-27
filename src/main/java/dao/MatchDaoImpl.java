@@ -72,10 +72,12 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 
 		openAll();
 		tx.begin();
-		String hqlUpdate = "UPDATE Match m SET m.score1 = :newScore1, m.score2 = :newScore2, m.dureeMatch = :duree,m.dateMatch = :date WHERE m.idMatch = :idMatch";
+		String hqlUpdate = "UPDATE Match m SET m.score1 = :newScore1, m.score2 = :newScore2, m.dureeMatch = :duree,"
+				+ " m.dateMatch = :date WHERE m.idMatch = :idMatch";
 
 		em.createQuery(hqlUpdate).setParameter("newScore1", m.getScore1()).setParameter("newScore2", m.getScore2())
-				.setParameter("idMatch", m.getIdMatch()).setParameter("duree", m.getDureeMatch()).setParameter("date", m.getDateMatch()).executeUpdate();
+				.setParameter("idMatch", m.getIdMatch()).setParameter("duree", m.getDureeMatch())
+				.setParameter("date", m.getDateMatch()).executeUpdate();
 
 		System.out.println(m.getScore1());
 		System.out.println(m.getScore2());
@@ -109,6 +111,30 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 		openAll();
 		tx.begin();
 		List<Match> lstDixDerniersMatchs = em.createQuery("SELECT m FROM Match m ORDER BY m.dateMatch DESC")
+				.setMaxResults(10).getResultList();
+		closeAll();
+		return lstDixDerniersMatchs;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Match> recupLesDixDerniersMatchsSimples() {
+		openAll();
+		tx.begin();
+		List<Match> lstDixDerniersMatchs = em
+				.createQuery("SELECT m FROM Match m WHERE m.sousTournoi.typeSousTournoi = 'S' ORDER BY m.dateMatch DESC")
+				.setMaxResults(10).getResultList();
+		closeAll();
+		return lstDixDerniersMatchs;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Match> recupLesDixDerniersMatchsEnEquipe() {
+		openAll();
+		tx.begin();
+		List<Match> lstDixDerniersMatchs = em
+				.createQuery("SELECT m FROM Match m WHERE m.sousTournoi.typeSousTournoi = 'E' ORDER BY m.dateMatch DESC")
 				.setMaxResults(10).getResultList();
 		closeAll();
 		return lstDixDerniersMatchs;

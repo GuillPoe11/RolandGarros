@@ -29,4 +29,18 @@ public interface SousTournoiService {
 	 * 
 	 */
 	public SousTournoi recupererSousTournoiParId(int id);
+	
+	/**
+	 * Récupère la liste des sous-tournois en équipe
+	 * 
+	 * @return La liste des sous-tournois en équipe
+	 */
+	public List<SousTournoi> recupererTousLesSousTournoisEquipe();
+	
+	/**
+	 * Récupère la liste des sous-tournois simples
+	 * 
+	 * @return La liste des sous-tournois simples
+	 */
+	public List<SousTournoi> recupererTousLesSousTournoisSimple();
 }

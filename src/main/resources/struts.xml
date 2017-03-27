@@ -39,8 +39,9 @@
 		</action>
 		<action name="PlanifierMatch" class="presentation.PlanifierMatchAction">
 			<interceptor-ref name="pileDeConnexion" />
-			<result name="success">/WEB-INF/planifierMatch.jsp</result>
-			<result name="input">/WEB-INF/planifierMatch.jsp</result>
+			<result name="success">/WEB-INF/planifierMatch/choixTypeMatch.jsp</result>
+			<result name="simple">/WEB-INF/planifierMatch/planifierMatchSimple.jsp</result>
+			<result name="equipe">/WEB-INF/planifierMatch/planifierMatchEquipe.jsp</result>
 		</action>
 		<action name="EnregistrerScoreMatch" class="presentation.EnregistrerScoreMatchAction">
 			<interceptor-ref name="pileDeConnexion" />

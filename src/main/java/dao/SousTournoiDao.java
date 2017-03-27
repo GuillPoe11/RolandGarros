@@ -29,4 +29,16 @@ public interface SousTournoiDao {
 	 * Retourne le contenu de la tableBdd SousTournoi
 	 */
 	public List<SousTournoi> recupTousLesSousTournois();
+	
+	/**
+	 * Récupère la liste des sous-tournoi en équipe
+	 * @return La liste des sous-tournoi en équipe
+	 */
+	public List<SousTournoi> recupTousLesSousTournoisEquipe();
+	
+	/**
+	 * Récupère la liste des sous-tournoi simples
+	 * @return La liste des sous-tournoi simples
+	 */
+	public List<SousTournoi> recupTousLesSousTournoisSimple();
 }

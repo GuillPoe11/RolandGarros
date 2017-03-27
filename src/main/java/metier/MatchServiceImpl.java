@@ -70,6 +70,16 @@ public class MatchServiceImpl implements MatchService {
 	}
 
 	@Override
+	public List<Match> recupererLesDixDerniersMatchsSimples() {
+		return matchDao.recupLesDixDerniersMatchsSimples();
+	}
+
+	@Override
+	public List<Match> recupererLesDixDerniersMatchsEnEquipe() {
+		return matchDao.recupLesDixDerniersMatchsEnEquipe();
+	}
+	
+	@Override
 	public List<Match> recupererTousLesMatchsPourUnSousTournoi(SousTournoi sousTournoi) {
 
 		return matchDao.recupTousMatchsPourUnSousTournoi(sousTournoi);
