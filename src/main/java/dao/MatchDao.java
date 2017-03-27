@@ -37,6 +37,15 @@ public interface MatchDao {
 	 * @return une liste de match
 	 */
 	public List<Match> recupTousMatchs();
+	
+	/**
+	 * Retourne le contenu de la tableBdd match
+	 * dont les matchs sont encore à modifiés
+	 * 
+	 * @return une liste de match
+	 */
+	public List<Match> recupTousMatchsAModifie();
+
 
 	/**
 	 * Retourne le contenu des 10 derniers enregistrements de la tableBdd match

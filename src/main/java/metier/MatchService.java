@@ -56,6 +56,14 @@ public interface MatchService {
 	 * @return liste de matchs
 	 */
 	public List<Match> recupererTousLesMatchs();
+	
+	/**
+	 * Récupérer la liste de tous les matchs
+	 * 
+	 * @return liste de matchs
+	 */
+	public List<Match> recupererTousLesMatchsAModifier();
+
 
 	/**
 	 * Récupérer la liste des 10 derniers matchs

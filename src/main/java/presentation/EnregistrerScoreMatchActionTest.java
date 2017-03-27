@@ -57,7 +57,7 @@ public class EnregistrerScoreMatchActionTest extends ActionSupport {
 	 * @param matchService
 	 */
 	public EnregistrerScoreMatchActionTest(@Autowired MatchService matchService) {
-		lstMatchs = matchService.recupererTousLesMatchs();
+		lstMatchs = matchService.recupererTousLesMatchsAModifier();
 		
 
 		Utilitaire util = new Utilitaire();
@@ -154,7 +154,7 @@ public class EnregistrerScoreMatchActionTest extends ActionSupport {
 				msgForm = "Score enregistré";
 				typeMsgForm = "alert alert-success";
 			}
-
+			lstMatchs = matchService.recupererTousLesMatchsAModifier();
 			return "success";
 		}
 
