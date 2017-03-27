@@ -90,7 +90,7 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 	 */
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Match> recupTousMatchsAModifie() {
+	public List<Match> recupTousMatchsAModifier() {
 		openAll();
 		tx.begin();
 		List<Match> lstMatchs = em.createQuery("SELECT m FROM Match m WHERE m.dureeMatch=null ORDER BY m.dateMatch DESC")

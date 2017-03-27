@@ -54,37 +54,37 @@
 						<td><s:select label="Sélectionnez un Sous-Tournoi"
 								headerKey="-1" headerValue="--------"
 								list="mapSousTournoisSimple" listKey="key" listValue="value"
-								name="idSousTournoi" cssClass="form-control"/></td>
+								name="idSousTournoi" cssClass="form-control" /></td>
 					</tr>
 					<tr>
 						<td>Arbitre</td>
 						<td><s:select label="Sélectionnez un arbitre" headerKey="-1"
 								headerValue="--------" list="mapArbitres" listKey="key"
-								listValue="value" name="idArbitre" cssClass="form-control"/></td>
+								listValue="value" name="idArbitre" cssClass="form-control" /></td>
 					</tr>
 					<tr>
 						<td>Court</td>
 						<td><s:select label="Sélectionnez un court" headerKey="-1"
 								headerValue="--------" list="mapCourts" listKey="key"
-								listValue="value" name="idCourt" cssClass="form-control"/></td>
+								listValue="value" name="idCourt" cssClass="form-control" /></td>
 					</tr>
 
 					<tr>
 						<td>Joueur 1</td>
 						<td><s:select label="Sélectionnez un joueur" headerKey="-1"
 								headerValue="--------" list="mapJoueurs" listKey="key"
-								listValue="value" name="idJoueur1" cssClass="form-control"/></td>
+								listValue="value" name="idJoueur1" cssClass="form-control" /></td>
 					</tr>
 					<tr>
 						<td>Joueur 2</td>
 						<td><s:select label="Sélectionnez un joueur" headerKey="-1"
 								headerValue="--------" list="mapJoueurs" listKey="key"
-								listValue="value" name="idJoueur2" cssClass="form-control"/></td>
+								listValue="value" name="idJoueur2" cssClass="form-control" /></td>
 					</tr>
 					<tr>
 						<td>Date du match</td>
 						<td><s:textfield name="dateMatch" label="Date du match"
-								id="datepicker" ></s:textfield></td>
+								id="datepicker"></s:textfield></td>
 					</tr>
 					<tr>
 						<td>Heure du match</td>
@@ -92,7 +92,7 @@
 								name="integerHeure" cssClass="inline" /> H <s:select
 								label="Minute" list="#{'0':'0','15':'15', '30':'30', '45':'45'}"
 								listKey="key" listValue="value" name="integerMinute"
-								cssClass="inline"/></td>
+								cssClass="inline" /></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="colspan-center"><s:submit
@@ -117,13 +117,23 @@
 					<th>Date</th>
 				</tr>
 				<s:iterator status="status" value="lstDixDerniersMatchsSimple">
-					<tr>
+					<tr
+						<s:if test="sousTournoi.genreSousTournoi=='H'">
+class="bleuJoueur"</s:if>
+						<s:elseif test="sousTournoi.genreSousTournoi=='F'">
+	class="roseJoueur"
+</s:elseif>>
 						<td><s:property value="court.nomCourt" /></td>
-						<td><s:property value="joueur1.prenomJoueur + ' ' + joueur1.nomJoueur" /></td>
-						<td><s:property value="joueur2.prenomJoueur + ' ' + joueur2.nomJoueur" /></td>
-						<td><s:property value="arbitre.prenomArbitre + ' ' + arbitre.nomArbitre" /></td>
+						<td><s:property
+								value="joueur1.prenomJoueur + ' ' + joueur1.nomJoueur" /></td>
+						<td><s:property
+								value="joueur2.prenomJoueur + ' ' + joueur2.nomJoueur" /></td>
+						<td><s:property
+								value="arbitre.prenomArbitre + ' ' + arbitre.nomArbitre" /></td>
 						<td><s:property value="sousTournoi.nomSousTournoi" /></td>
+						<td><s:property value="sousTournoi.genreSousTournoi" /></td>
 						<td><s:date format="dd/MM/yyyy HH:mm" name="dateMatch" /></td>
+
 					</tr>
 				</s:iterator>
 			</table>

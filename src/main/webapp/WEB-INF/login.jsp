@@ -16,7 +16,7 @@
 	<!-- Form -->
 	<div class="central-main-container row">
 		<div
-			class="container-form background col-md-2 col-md-offset-5">
+			class="container-form background col-md-4 col-md-offset-4">
 			<h3 class="<s:property value="typeMsgForm" />">
 				<s:property value="msgForm" />
 			</h3>
