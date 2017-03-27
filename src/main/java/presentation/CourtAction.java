@@ -30,7 +30,8 @@ public class CourtAction extends ActionSupport {
 	 */
 	public CourtAction(@Autowired CourtService cService) {
 		 lstCourts = cService.recupTousCourts();
-		 lstDixCourts = cService.recupLesDixDerniersCourts();
+		 //lstDixCourts = cService.recupLesDixDerniersCourts();
+		 lstDixCourts = cService.recupTousCourts();
 	}
 
 	/*
@@ -115,7 +116,7 @@ public class CourtAction extends ActionSupport {
 			cService.insererCourt(nomCourt, numeroCourt);
 			msgForm = "Le court à été ajouté";
 			typeMsgForm = "alert alert-success";
-			System.out.println("Ajout court ok");
+			 lstDixCourts = cService.recupTousCourts();
 		}
 		return "success";
 	}

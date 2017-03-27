@@ -93,7 +93,6 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 	public List<Match> recupTousMatchsAModifie() {
 		openAll();
 		tx.begin();
-		System.out.println("here");
 		List<Match> lstMatchs = em.createQuery("SELECT m FROM Match m WHERE m.dureeMatch=null ORDER BY m.dateMatch DESC")
 				.getResultList();
 		closeAll();
