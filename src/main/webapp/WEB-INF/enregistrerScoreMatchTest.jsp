@@ -33,13 +33,13 @@
             return true;
         } else {
             if(str == "duree"){
-            	document.getElementById('errorDuree').style.visibility = 'visible';
+            	$('#errorDuree').css('visibility','visible');
             }
             if(str == "score1"){
-            	document.getElementById('errorScore1').style.visibility = 'visible';
+            	$('#errorScore1').css('visibility','visible');
             }
             if(str == "score2"){
-            	document.getElementById('errorScore2').style.visibility = 'visible';
+            	$('#errorScore2').css('visibility','visible');
             }
             return false;
         }
@@ -75,19 +75,19 @@
 						<td>Durée du match en minutes</td>
 						<td><s:textfield id="duree" name="duree" onkeypress="verif(event,'duree')"
 								label="Durée du match" cssClass="form-control"></s:textfield>
-								<span id="errorDuree" style="visibility : hidden; color :red;">Seuls les chiffres sont autorisés</span></td>
+								<span id="errorDuree" class="msgErrorJs">Seuls les chiffres sont autorisés</span></td>
 					</tr>
 					<tr>
 						<td>Score du premier joueur/equipe</td>
 						<td><s:textfield name="score1" onkeypress="verif(event,'score1')"
 								label="Score du premier joueur" cssClass="form-control"></s:textfield>
-								<span id="errorScore1" style="visibility : hidden; color :red;">Seuls les chiffres de 0 à 5 sont autorisés</span></td>
+								<span id="errorScore1" class="msgErrorJs">Seuls les chiffres de 0 à 5 sont autorisés</span></td>
 					</tr>
 					<tr>
 						<td>Score du deuxieme joueur/equipe</td>
 						<td><s:textfield name="score2" onkeypress="verif(event,'score2')"
 								label="Score du deuxième joueur" cssClass="form-control"></s:textfield>
-								<span id="errorScore2" style="visibility : hidden; color :red;">Seuls les chiffres de 0 à 5 sont autorisés</span></td>
+								<span id="errorScore2" class="msgErrorJs">Seuls les chiffres de 0 à 5 sont autorisés</span></td>
 					</tr>
 					<tr>
 						<td>Date du match</td>
@@ -102,6 +102,14 @@
 								listKey="key" listValue="value" name="integerMinute"
 								cssClass="inline" /></td>
 					</tr>
+				<%-- <tr><td>
+								<s:select
+								label="Minute" list="#{'0':'0','1':'1', '2':'2', '3':'3'}"
+								listKey="key" listValue="value" name="integerMinute"
+								cssClass="inline" />
+								</td>
+								</tr> --%>
+								
 					<tr>
 						<td colspan="2" class="colspan-center"><s:submit
 								method="modifierMatch" value="Valider"
