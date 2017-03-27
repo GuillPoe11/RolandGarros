@@ -25,20 +25,41 @@
 
 				<table id="form-table" class="table">
 					<tr>
-						<td>Sélection du match</td>
+						<td id="select-match">Sélection du match</td>
+						<td><s:select label="Sélectionnez un match" headerKey="-1"
+								headerValue="--------" list="mapMatchs" listKey="key"
+								listValue="value" name="idMatchDansLst" /></td>
 						<td>
-								<s:select label="Sélectionnez un match"
-								headerKey="-1" headerValue="--------" list="mapMatchs"
-								listKey="key" listValue="value" name="idMatchDansLst" />
-								</td>
+								<s:select
+								label="Sélectionnez un match"
+								headerKey="-1"
+								headerValue="--------"
+								list="mapMatchs"
+								listKey="key"
+								listValue="value"
+								name="idMatchDansLst"
+								cssClass="selectpicker show-tick form-control"/>
+						</td>
+						<td>
+								<s:select
+								label="Sélectionnez un match"
+								headerKey="-1"
+								headerValue="--------"
+								list="mapMatchs"
+								listKey="key"
+								listValue="value"
+								name="idMatchDansLst"
+								cssClass="selectpicker show-tick form-control"/>
+						</td>
 					</tr>
 					<tr>
-					<td>
-					<s:submit
-								method="recupMatch" value="Valider" />
-					</td>
+						<td><s:submit cssClass="btn btn-primary" method="recupMatch"
+								value="Valider" /></td>
+					<td><s:submit method="recupMatch" value="Valider" cssClass="btn btn-primary"/></td>
 					</tr>
-					</table>
+				</table>
+			</s:form>
+				</table>
 					</s:form>
 
 		</div>
@@ -62,7 +83,7 @@
 					<tr>
 						<td>Score du premier joueur :</td>
 						<td><s:textfield name="match.score1"
-								label="Score du premier joueur"></s:textfield></td>
+								label="Score du premier joueur" cssClass="form-control"></s:textfield></td>
 					</tr>
 					<tr>
 						<td>Score du deuxieme joueur :</td>
@@ -71,7 +92,9 @@
 					</tr>
 					<tr>
 						<td colspan="2" class="colspan-center"><s:submit
-								method="modifierMatch" value="Valider" /></td>
+								cssClass="btn btn-primary" method="modifierMatch"
+								value="Valider" /></td>
+								method="modifierMatch" value="Valider" cssClass="btn btn-primary"/></td>
 					</tr>
 				</table>
 			</s:form>
