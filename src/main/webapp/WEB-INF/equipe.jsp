@@ -15,15 +15,42 @@
 
 	<!-- tableau -->
 	<div class="central-main-container row">
-
+		<div class="container-form background col-md-5 col-md-offset-1">
+			<h3 class="<s:property value="typeMsgForm" />">
+				<s:property value="msgForm" />
+			</h3>
+			<s:form id="contact" action="AjouterEquipe">
+				<h3>Ajouter une Nouvelle équipe</h3>
+				<table id="form-table" class="table">
+					<tr>
+						<td><s:select name="idJoueur1" headerKey="-1"
+								headerValue="Selectionner Joueur1" list="mapJoueur"
+								value="joueur1" required="true"
+								cssClass="selectpicker show-tick form-control" /></td>
+					</tr>
+					<tr>
+						<td><s:select name="idJoueur2" headerKey="-1"
+								headerValue="Selectionner Joueur2" list="mapJoueur"
+								value="joueur2" required="true"
+								cssClass="selectpicker show-tick form-control" /></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="colspan-center"><s:submit
+								method="creerEquipe" value="Enregistrer" id="contact-submit"
+								cssClass="btn btn-primary"></s:submit></td>
+					</tr>
+				</table>
+			</s:form>
+		</div>
+		<div class="clear"></div>
 		<div class="container-liste background col-md-4 col-md-offset-1">
 			<table class="table table-bordered table-hover">
 				<tr>
-					<td>Numéro de l'équipe</td>
-					<td>Joueur1</td>
-					<td>Joueur2</td>
+					<th>Numéro de l'équipe</th>
+					<th>Joueur1</th>
+					<th>Joueur2</th>
 				</tr>
-				<s:iterator status="status" value="lstDixDernieresEquipes">
+				<s:iterator status="status" value="lstEquipes">
 					<tr>
 						<td><s:property value="idEquipe" /></td>
 						<td><s:property value="joueur1.nomJoueur" /></td>
@@ -35,30 +62,7 @@
 		<!-- End tableau -->
 
 		<!-- Form -->
-		<div class="container-form background col-md-5 col-md-offset-1">
-			<h3 class="<s:property value="typeMsgForm" />">
-				<s:property value="msgForm" />
-			</h3>
-			<s:form id="contact" action="AjouterEquipe">
-				<h3>Ajouter une Nouvelle équipe</h3>
-				<fieldset>
-					<s:select name="idJoueur1" headerKey="-1"
-						headerValue="Selectionner Joueur1" list="mapJoueur"
-						value="joueur1" required="true"
-						cssClass="selectpicker show-tick form-control" />
-				</fieldset>
-				<fieldset>
-					<s:select name="idJoueur2" headerKey="-1"
-						headerValue="Selectionner Joueur2" list="mapJoueur"
-						value="joueur2" required="true"
-						cssClass="selectpicker show-tick form-control" />
-				</fieldset>
-				<fieldset>
-					<s:submit method="creerEquipe" value="Enregistrer"
-						id="contact-submit" cssClass="btn btn-success"></s:submit>
-				</fieldset>
-			</s:form>
-		</div>
+
 		<!--  @end Form -->
 	</div>
 	<br class="clear" />

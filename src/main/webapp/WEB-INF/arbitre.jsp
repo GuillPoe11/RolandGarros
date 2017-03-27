@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<%@include file="menu.jspf" %>
+	<%@include file="menu.jspf"%>
 
 	<div class="central-main-container row">
 		<!-- Form -->
@@ -26,16 +26,16 @@
 					<tr>
 						<td><s:label>Nom de l'arbitre : </s:label></td>
 						<td><s:textfield name="arbitre.nomArbitre"
-								label="Nom de l'arbitre"></s:textfield></td>
+								label="Nom de l'arbitre" cssClass="form-control"></s:textfield></td>
 					</tr>
 					<tr>
 						<td><s:label>Prénom de l'arbitre : </s:label></td>
 						<td><s:textfield name="arbitre.prenomArbitre"
-								label="Prénom de l'arbitre"></s:textfield></td>
+								label="Prénom de l'arbitre" cssClass="form-control"></s:textfield></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="colspan-center"><s:submit
-								method="submite" value="Valider" /></td>
+								method="submite" value="Valider" cssClass="" /></td>
 					</tr>
 				</table>
 			</s:form>

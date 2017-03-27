@@ -49,11 +49,7 @@
 			<result name="modif" >/WEB-INF/enregistrerScoreMatch.jsp?idMatchDansLst={idMatchDansLst}</result>
 			
 		</action>
-		<action name="EnregistrerScoreMatchTest" class="presentation.EnregistrerScoreMatchActionTest">
-			<interceptor-ref name="pileDeConnexion" />
-			<result name="success">/WEB-INF/enregistrerScoreMatchTest.jsp</result>
-			<result name="input">/WEB-INF/enregistrerScoreMatchTest.jsp</result>
-		</action>
+		
 		<action name="ConsulterResultat" class="presentation.ResultatAction">
 			<result name="success">/WEB-INF/resultat.jsp</result>
 		</action>

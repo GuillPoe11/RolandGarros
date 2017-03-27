@@ -1,5 +1,7 @@
 package presentation;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,43 +14,75 @@ import com.opensymphony.xwork2.ActionSupport;
 import entite.Match;
 import metier.MatchService;
 
+/**
+ * Action qui gére la modification d'un match : pour l'enregistrement du score1,
+ * score2 et durée
+ * 
+ * @author Guillaume
+ *
+ */
 public class EnregistrerScoreMatchAction extends ActionSupport {
 
 	@Autowired
-	private MatchService service;
+	private MatchService matchService;
 
 	private static final long serialVersionUID = 77971771589810L;
 
 	private Match match;
-	private String dureeMatch;
-	private String score1;
-	private String score2;
-	private Date dateMatch;
 
 	private List<Match> lstMatchs;
 
-	private Integer idMatchDansLst;
+	// Variables du formulaire
+	private Integer idMatchDansSelect;
+	private Integer score1;
+	private Integer score2;
+	private Integer duree;
 
+	private List<Integer> lstHeures;
+
+	private Integer integerHeure;
+	private Integer integerMinute;
+	private String dateMatch;
+
+	// Variables msg d'erreur
+	private String msgForm;
+	private String typeMsgForm;
+
+	// map des match pour construire le select
 	private Map<Integer, String> mapMatchs;
 
-	public EnregistrerScoreMatchAction(@Autowired MatchService service) {
-		lstMatchs = service.recupererTousLesMatchs();
+	/**
+	 * Constructeur
+	 * 
+	 * @param matchService
+	 */
+	public EnregistrerScoreMatchAction(@Autowired MatchService matchService) {
+		lstMatchs = matchService.recupererTousLesMatchsAModifier();
+
 		Utilitaire util = new Utilitaire();
 		mapMatchs = util.listToMap(new ArrayList<Object>(lstMatchs));
+
+		// remplir liste des heures pour le select
+		lstHeures = new ArrayList<Integer>();
+		for (int i = 0; i < 24; i++) {
+			lstHeures.add(i);
+		}
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	public Match recupMatch(int idMatchDansSelect) {
 
-	public String recupMatch() {
+		System.out.println("Id à trouver dans recupMatch" + idMatchDansSelect);
 		for (int i = 0; i < lstMatchs.size(); i++) {
-			if (i == idMatchDansLst) {
+			System.out.println("Id des matchs de listemartch" + lstMatchs.get(i).getIdMatch());
+
+			if (lstMatchs.get(i).getIdMatch() == idMatchDansSelect) {
 				match = lstMatchs.get(i);
-				dateMatch = match.getDateMatch();
+				System.out.println("Match Trouvé !" + match);
 			}
 		}
-		return "modif";
+
+		return match;
+
 	}
 
 	/**
@@ -59,36 +93,128 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 	 */
 	public String modifierMatch() {
 
-		if (verifMatchs()) {
-			System.out.println(dureeMatch);
-			System.out.println(idMatchDansLst);
-			recupMatch();
-			System.out.println(match);
-			service.modifierMatch(match, match.getDateMatch(), match.getDureeMatch(), match.getScore1(),
-					match.getScore2());
+		if (!(score1 instanceof Integer)) {
+			msgForm = "Le score joueur1 doit être un nombre";
+			typeMsgForm = "alert alert-danger";
+			System.out.println("V-1");
+			return "input";
+			// TODO
+			// ########### le controle d'erreur marche pas bordel !
+		}
+		// } else if (!(score2 instanceof Integer)) {
+		// msgForm = "Le score joueur2 doit être un nombre";
+		// typeMsgForm = "alert alert-danger";
+		// return "input";
+		// } else if (!(duree instanceof Integer)) {
+		// msgForm = "Le score joueur1 doit être un nombre";
+		// typeMsgForm = "alert alert-danger";
+		// return "input";
+		// } else {
+
+		else {
+			System.out.println("Lid du match dans select" + idMatchDansSelect);
+			match = recupMatch(idMatchDansSelect);
+
+			System.out.println("Match dans action enregistrer :" + match);
+			// Recup date dans le formulaire
+			// on vérifie que les champs date ne sont pas vides
+			if (!"".equals(dateMatch) && integerHeure != null && integerMinute != null) {
+
+				Date dateMatchFormat = new Date();
+				String strDateHeureMatch = dateMatch + " " + integerHeure + ":" + integerMinute;
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm");
+				// on vérifie que le format de date et bon
+				try {
+
+					dateMatchFormat = sdf.parse(strDateHeureMatch);
+
+					// tout est bon
+					// on enregistre
+					// date initiale : match.getDateMatch();
+					System.out.println("datematchFormat" + dateMatchFormat);
+					matchService.modifierMatch(match, dateMatchFormat, duree, score1, score2);
+
+					msgForm = "Score enregistré";
+					typeMsgForm = "alert alert-success";
+
+				} catch (ParseException e) {
+
+					msgForm = "Attention la date n'a pas le bon format\r\n";
+					typeMsgForm = "alert alert-danger";
+				}
+			} else {
+				// la date est vide
+				// on enregistre
+
+				matchService.modifierMatch(match, match.getDateMatch(), duree, score1, score2);
+
+				msgForm = "Score enregistré";
+				typeMsgForm = "alert alert-success";
+			}
+			lstMatchs = matchService.recupererTousLesMatchsAModifier();
+			return "success";
 		}
 
-		return "success";
 	}
 
 	/*
 	 * Getters/Setters
 	 */
 
-	public List<Match> getLstArbitres() {
-		return lstMatchs;
+	public String getMsgForm() {
+		return msgForm;
 	}
 
-	public Map<Integer, String> getMapMatchs() {
-		return mapMatchs;
+	public void setMsgForm(String msgForm) {
+		this.msgForm = msgForm;
 	}
 
-	public void setMapMatchs(Map<Integer, String> mapMatchs) {
-		this.mapMatchs = mapMatchs;
+	public String getTypeMsgForm() {
+		return typeMsgForm;
 	}
 
-	public void setLstArbitres(List<Match> lstArbitres) {
-		this.lstMatchs = lstArbitres;
+	public void setTypeMsgForm(String typeMsgForm) {
+		this.typeMsgForm = typeMsgForm;
+	}
+
+	public Integer getIntegerHeure() {
+		return integerHeure;
+	}
+
+	public void setIntegerHeure(Integer integerHeure) {
+		this.integerHeure = integerHeure;
+	}
+
+	public Integer getIntegerMinute() {
+		return integerMinute;
+	}
+
+	public void setIntegerMinute(Integer integerMinute) {
+		this.integerMinute = integerMinute;
+	}
+
+	public String getDateMatch() {
+		return dateMatch;
+	}
+
+	public void setDateMatch(String dateMatch) {
+		this.dateMatch = dateMatch;
+	}
+
+	public List<Integer> getLstHeures() {
+		return lstHeures;
+	}
+
+	public void setLstHeures(List<Integer> lstHeures) {
+		this.lstHeures = lstHeures;
+	}
+
+	public MatchService getMatchService() {
+		return matchService;
+	}
+
+	public void setMatchService(MatchService matchService) {
+		this.matchService = matchService;
 	}
 
 	public Match getMatch() {
@@ -107,54 +233,43 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 		this.lstMatchs = lstMatchs;
 	}
 
-	public Integer getIdMatchDansLst() {
-		return idMatchDansLst;
+	public Integer getIdMatchDansSelect() {
+		return idMatchDansSelect;
 	}
 
-	public void setIdMatchDansLst(Integer idMatchDansLst) {
-		this.idMatchDansLst = idMatchDansLst;
+	public void setIdMatchDansSelect(Integer idMatchDansSelect) {
+		this.idMatchDansSelect = idMatchDansSelect;
 	}
 
-	/**
-	 * Fonction de vérification si un match peut être ajouté
-	 * 
-	 * @return true or false
-	 */
-	public boolean verifMatchs() {
-		// TODO
-		return true;
-	}
-
-	public String getDureeMatch() {
-		return dureeMatch;
-	}
-
-	public void setDureeMatch(String dureeMatch) {
-		this.dureeMatch = dureeMatch;
-	}
-
-	public String getScore1() {
+	public Integer getScore1() {
 		return score1;
 	}
 
-	public void setScore1(String score1) {
+	public void setScore1(Integer score1) {
 		this.score1 = score1;
 	}
 
-	public String getScore2() {
+	public Integer getScore2() {
 		return score2;
 	}
 
-	public void setScore2(String score2) {
+	public void setScore2(Integer score2) {
 		this.score2 = score2;
 	}
 
-	public Date getDateMatch() {
-		return dateMatch;
+	public Integer getDuree() {
+		return duree;
 	}
 
-	public void setDateMatch(Date dateMatch) {
-		this.dateMatch = dateMatch;
+	public void setDuree(Integer duree) {
+		this.duree = duree;
 	}
 
+	public Map<Integer, String> getMapMatchs() {
+		return mapMatchs;
+	}
+
+	public void setMapMatchs(Map<Integer, String> mapMatchs) {
+		this.mapMatchs = mapMatchs;
+	}
 }
