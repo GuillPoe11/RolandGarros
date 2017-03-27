@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import dao.NationaliteDao;
 import entite.Nationalite;
 
-@Service(value="NationaliteService")
+@Service(value = "NationaliteService")
 public class NationaliteServiceImpl implements NationaliteService {
 
 	@Autowired
@@ -22,6 +22,7 @@ public class NationaliteServiceImpl implements NationaliteService {
 
 	/**
 	 * (fonction pour recupérer toutes les nationalités)
+	 * 
 	 * @return liste de nationalites
 	 * 
 	 */
@@ -32,6 +33,7 @@ public class NationaliteServiceImpl implements NationaliteService {
 
 	/**
 	 * (fonction pour recupérer une nationalité par l'id)
+	 * 
 	 * @return une nationalite
 	 * 
 	 */
