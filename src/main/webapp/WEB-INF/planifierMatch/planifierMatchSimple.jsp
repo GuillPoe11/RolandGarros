@@ -119,9 +119,9 @@
 				<s:iterator status="status" value="lstDixDerniersMatchsSimple">
 					<tr>
 						<td><s:property value="court.nomCourt" /></td>
-						<td><s:property value="joueur1.nomJoueur" /></td>
-						<td><s:property value="joueur2.nomJoueur" /></td>
-						<td><s:property value="arbitre.nomArbitre" /></td>
+						<td><s:property value="joueur1.prenomJoueur + ' ' + joueur1.nomJoueur" /></td>
+						<td><s:property value="joueur2.prenomJoueur + ' ' + joueur2.nomJoueur" /></td>
+						<td><s:property value="arbitre.prenomArbitre + ' ' + arbitre.nomArbitre" /></td>
 						<td><s:property value="sousTournoi.nomSousTournoi" /></td>
 						<td><s:date format="dd/MM/yyyy HH:mm" name="dateMatch" /></td>
 					</tr>

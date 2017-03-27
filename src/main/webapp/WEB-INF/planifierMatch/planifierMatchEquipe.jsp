@@ -122,7 +122,7 @@
 								value="equipe1.joueur2.nomJoueur" /></td>
 						<td><s:property value="equipe2.joueur1.nomJoueur" />-<s:property
 								value="equipe2.joueur2.nomJoueur" /></td>
-						<td><s:property value="arbitre.nomArbitre" /></td>
+						<td><s:property value="arbitre.prenomArbitre + ' ' + arbitre.nomArbitre" /></td>
 						<td><s:property value="sousTournoi.nomSousTournoi" /></td>
 						<td><s:date format="dd/MM/yyyy HH:mm" name="dateMatch" /></td>
 					</tr>
