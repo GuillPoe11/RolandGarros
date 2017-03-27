@@ -52,7 +52,7 @@ public class JoueurAction extends ActionSupport {
 	public JoueurAction(@Autowired NationaliteService nationaliteService, @Autowired JoueurService joueurService) {
 		joueur = new Joueur();
 		lstJoueurs = joueurService.recupererTousLesJoueurs();
-		lstDixDerniersJoueurs = joueurService.recupLesDixDerniersJoueurs();
+		//lstDixDerniersJoueurs = joueurService.recupLesDixDerniersJoueurs();
 		lstNationalites = nationaliteService.recupToutesNationalites();
 		mapNationalites = listToMap(nationaliteService.recupToutesNationalites());
 	}
@@ -67,6 +67,8 @@ public class JoueurAction extends ActionSupport {
 			Nationalite nationalite = lstNationalites.get(idNationalite);
 			joueurService.creerJoueur(joueur.getNomJoueur(), joueur.getPrenomJoueur(), joueur.getSexeJoueur(),
 					nationalite);
+			//pour mise à jour de la liste des joueurs
+			lstJoueurs = joueurService.recupererTousLesJoueurs();
 		}
 		return "success";
 	}

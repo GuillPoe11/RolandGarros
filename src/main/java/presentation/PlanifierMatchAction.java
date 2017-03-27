@@ -93,7 +93,7 @@ public class PlanifierMatchAction extends ActionSupport {
 			lstHeures.add(i);
 		}
 
-		lstMatchs = service.recupererTousLesMatchs();
+		//lstMatchs = service.recupererTousLesMatchs();
 		lstDixDerniersMatchsSimple = service.recupererLesDixDerniersMatchsSimples();
 		lstDixDerniersMatchsEquipe = service.recupererLesDixDerniersMatchsEnEquipe();
 
@@ -150,6 +150,7 @@ public class PlanifierMatchAction extends ActionSupport {
 				service.creerMatch(courtService.recupCourtParId(idCourt), joueurService.recupererJoueurParId(idJoueur1),
 						joueurService.recupererJoueurParId(idJoueur2), arbitreService.recupArbitreParId(idArbitre),
 						sousTournoiService.recupererSousTournoiParId(idSousTournoi), dateMatchFormat, null, null);
+				lstDixDerniersMatchsSimple = service.recupererLesDixDerniersMatchsSimples();
 			} catch (MatchException e) {
 				msgForm = e.getMessage();
 				typeMsgForm = "alert alert-danger";
@@ -185,6 +186,7 @@ public class PlanifierMatchAction extends ActionSupport {
 						arbitreService.recupArbitreParId(idArbitre),
 						sousTournoiService.recupererSousTournoiParId(idSousTournoi), dateMatchFormat,
 						equipeService.recupererEquipeParId(idEquipe1), equipeService.recupererEquipeParId(idEquipe2));
+				lstDixDerniersMatchsEquipe = service.recupererLesDixDerniersMatchsEnEquipe();
 			} catch (MatchException e) {
 				msgForm = e.getMessage();
 				typeMsgForm = "alert alert-danger";
