@@ -55,21 +55,6 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 	 */
 	@Override
 	public void modifier(Match m) {
-
-		// gnééé ?? pourquoi recréér un truc qu'on a déjà ??
-		// Match matchModifier = recupMatchParId(m.getIdMatch());
-		// matchModifier.setArbitre(m.getArbitre());
-		// matchModifier.setCourt(m.getCourt());
-		// matchModifier.setDateMatch(m.getDateMatch());
-		// matchModifier.setDureeMatch(m.getDureeMatch());
-		// matchModifier.setEquipe1(m.getEquipe1());
-		// matchModifier.setEquipe2(m.getEquipe2());
-		// matchModifier.setJoueur1(m.getJoueur1());
-		// matchModifier.setJoueur2(m.getJoueur2());
-		// matchModifier.setScore1(m.getScore1());
-		// matchModifier.setScore2(m.getScore2());
-		// matchModifier.setSousTournoi(m.getSousTournoi());
-
 		openAll();
 		tx.begin();
 		String hqlUpdate = "UPDATE Match m SET m.score1 = :newScore1, m.score2 = :newScore2, m.dureeMatch = :duree,"
@@ -81,8 +66,6 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 
 		System.out.println(m.getScore1());
 		System.out.println(m.getScore2());
-
-		// em.merge(matchModifier);
 
 		tx.commit();
 		closeAll();
@@ -97,6 +80,21 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 		openAll();
 		tx.begin();
 		List<Match> lstMatchs = em.createQuery("SELECT m FROM Match m ORDER BY m.dateMatch DESC").getResultList();
+		closeAll();
+		return lstMatchs;
+	}
+
+	/**
+	 * Retourne le contenu de la tableBdd match dont les matchs ne sont pas
+	 * entièrement rempli
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Match> recupTousMatchsAModifie() {
+		openAll();
+		tx.begin();
+		List<Match> lstMatchs = em.createQuery("SELECT m FROM Match m WHERE m.dureeMatch=null ORDER BY m.dateMatch DESC")
+				.getResultList();
 		closeAll();
 		return lstMatchs;
 	}
@@ -122,7 +120,8 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 		openAll();
 		tx.begin();
 		List<Match> lstDixDerniersMatchs = em
-				.createQuery("SELECT m FROM Match m WHERE m.sousTournoi.typeSousTournoi = 'S' ORDER BY m.dateMatch DESC")
+				.createQuery(
+						"SELECT m FROM Match m WHERE m.sousTournoi.typeSousTournoi = 'S' ORDER BY m.dateMatch DESC")
 				.setMaxResults(10).getResultList();
 		closeAll();
 		return lstDixDerniersMatchs;
@@ -134,7 +133,8 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 		openAll();
 		tx.begin();
 		List<Match> lstDixDerniersMatchs = em
-				.createQuery("SELECT m FROM Match m WHERE m.sousTournoi.typeSousTournoi = 'E' ORDER BY m.dateMatch DESC")
+				.createQuery(
+						"SELECT m FROM Match m WHERE m.sousTournoi.typeSousTournoi = 'E' ORDER BY m.dateMatch DESC")
 				.setMaxResults(10).getResultList();
 		closeAll();
 		return lstDixDerniersMatchs;
