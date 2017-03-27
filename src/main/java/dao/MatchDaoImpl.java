@@ -64,9 +64,6 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 				.setParameter("idMatch", m.getIdMatch()).setParameter("duree", m.getDureeMatch())
 				.setParameter("date", m.getDateMatch()).executeUpdate();
 
-		System.out.println(m.getScore1());
-		System.out.println(m.getScore2());
-
 		tx.commit();
 		closeAll();
 	}
@@ -93,8 +90,8 @@ public class MatchDaoImpl extends DAO implements MatchDao {
 	public List<Match> recupTousMatchsAModifier() {
 		openAll();
 		tx.begin();
-		List<Match> lstMatchs = em.createQuery("SELECT m FROM Match m WHERE m.dureeMatch=null ORDER BY m.dateMatch DESC")
-				.getResultList();
+		List<Match> lstMatchs = em
+				.createQuery("SELECT m FROM Match m WHERE m.dureeMatch=null ORDER BY m.dateMatch DESC").getResultList();
 		closeAll();
 		return lstMatchs;
 	}

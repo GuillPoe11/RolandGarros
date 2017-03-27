@@ -14,7 +14,7 @@
 		<ul class="nav navbar-nav navbar-left">
 			<li><a class="lien-nav" href="ConsulterResultat.action">R&eacute;sultats</a></li>
 			<s:if test="%{#session.estConnecte}">
-				<li><a class="lien-nav" href="Admin.action">Admin</a></li>
+				<li><a class="lien-nav" href="Admin.action">Menu Admin</a></li>
 			</s:if>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
