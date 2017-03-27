@@ -19,13 +19,16 @@
 	<%@include file="menu.jspf"%>
 
 	<div class="central-main-container row">
-		<h3>Enregistrer un score</h3>
+		<h3>Planification des matchs</h3>
 		<div class="container-liste background  col-md-offset-1 col-md-7 ">
 			<s:form id="Select" action="EnregistrerScoreMatch">
 
 				<table id="form-table" class="table">
 					<tr>
 						<td id="select-match">Sélection du match</td>
+						<td><s:select label="Sélectionnez un match" headerKey="-1"
+								headerValue="--------" list="mapMatchs" listKey="key"
+								listValue="value" name="idMatchDansLst" /></td>
 						<td>
 								<s:select
 								label="Sélectionnez un match"
@@ -39,8 +42,12 @@
 						</td>
 					</tr>
 					<tr>
+						<td><s:submit cssClass="btn btn-primary" method="recupMatch"
+								value="Valider" /></td>
 					<td><s:submit method="recupMatch" value="Valider" cssClass="btn btn-primary"/></td>
 					</tr>
+				</table>
+			</s:form>
 				</table>
 					</s:form>
 
@@ -74,6 +81,8 @@
 					</tr>
 					<tr>
 						<td colspan="2" class="colspan-center"><s:submit
+								cssClass="btn btn-primary" method="modifierMatch"
+								value="Valider" /></td>
 								method="modifierMatch" value="Valider" cssClass="btn btn-primary"/></td>
 					</tr>
 				</table>

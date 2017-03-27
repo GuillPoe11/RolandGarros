@@ -45,6 +45,7 @@
 		<action name="EnregistrerScoreMatch" class="presentation.EnregistrerScoreMatchAction">
 			<interceptor-ref name="pileDeConnexion" />
 			<result name="success">/WEB-INF/enregistrerScoreMatch.jsp</result>
+			<result name="modif" >/WEB-INF/enregistrerScoreMatch.jsp?idMatchDansLst={idMatchDansLst}</result>
 			
 		</action>
 		<action name="EnregistrerScoreMatchTest" class="presentation.EnregistrerScoreMatchActionTest">
