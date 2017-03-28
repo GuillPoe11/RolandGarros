@@ -71,13 +71,12 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 
 	public Match recupMatch(int idMatchDansSelect) {
 
-		System.out.println("Id à trouver dans recupMatch" + idMatchDansSelect);
 		for (int i = 0; i < lstMatchs.size(); i++) {
-			System.out.println("Id des matchs de listemartch" + lstMatchs.get(i).getIdMatch());
+			
 
 			if (lstMatchs.get(i).getIdMatch() == idMatchDansSelect) {
 				match = lstMatchs.get(i);
-				System.out.println("Match Trouvé !" + match);
+				
 			}
 		}
 
@@ -96,26 +95,18 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 		if (!(score1 instanceof Integer)) {
 			msgForm = "Le score joueur1 doit être un nombre";
 			typeMsgForm = "alert alert-danger";
-			System.out.println("V-1");
+			
 			return "input";
 			// TODO
 			// ########### le controle d'erreur marche pas bordel !
 		}
-		// } else if (!(score2 instanceof Integer)) {
-		// msgForm = "Le score joueur2 doit être un nombre";
-		// typeMsgForm = "alert alert-danger";
-		// return "input";
-		// } else if (!(duree instanceof Integer)) {
-		// msgForm = "Le score joueur1 doit être un nombre";
-		// typeMsgForm = "alert alert-danger";
-		// return "input";
-		// } else {
+		
 
 		else {
-			System.out.println("Lid du match dans select" + idMatchDansSelect);
+			
 			match = recupMatch(idMatchDansSelect);
 
-			System.out.println("Match dans action enregistrer :" + match);
+			
 			// Recup date dans le formulaire
 			// on vérifie que les champs date ne sont pas vides
 			if (!"".equals(dateMatch) && integerHeure != null && integerMinute != null) {
@@ -131,7 +122,7 @@ public class EnregistrerScoreMatchAction extends ActionSupport {
 					// tout est bon
 					// on enregistre
 					// date initiale : match.getDateMatch();
-					System.out.println("datematchFormat" + dateMatchFormat);
+					
 					matchService.modifierMatch(match, dateMatchFormat, duree, score1, score2);
 
 					msgForm = "Score enregistré";
