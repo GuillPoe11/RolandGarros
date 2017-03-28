@@ -71,7 +71,7 @@ public class Utilitaire {
 				//recup nom des joueurs dans les équipes
 				if ((((Match) obj).getEquipe1() != null) && (((Match) obj).getEquipe2() != null))  {
 					str += " [ " + ((Match) obj).getEquipe1().getJoueur1().getNomJoueur()+"-"+((Match) obj).getEquipe1().getJoueur2().getNomJoueur();
-					str += " " + ((Match) obj).getEquipe2().getJoueur1().getNomJoueur()+"-"+((Match) obj).getEquipe1().getJoueur2().getNomJoueur()+" ]";
+					str += " " + ((Match) obj).getEquipe2().getJoueur1().getNomJoueur()+"-"+((Match) obj).getEquipe2().getJoueur2().getNomJoueur()+" ]";
 				}
 				
 				if (((Match) obj).getScore2() != null) {
