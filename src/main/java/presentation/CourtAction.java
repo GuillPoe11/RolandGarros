@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 
 import entite.Court;
-import metier.CourtService;
+import metier.interfaces.CourtService;
 
 public class CourtAction extends ActionSupport {
 
@@ -29,9 +29,9 @@ public class CourtAction extends ActionSupport {
 	 * Constructeur
 	 */
 	public CourtAction(@Autowired CourtService cService) {
-		 lstCourts = cService.recupTousCourts();
-		 //lstDixCourts = cService.recupLesDixDerniersCourts();
-		 lstDixCourts = cService.recupTousCourts();
+		lstCourts = cService.recupTousCourts();
+		// lstDixCourts = cService.recupLesDixDerniersCourts();
+		lstDixCourts = cService.recupTousCourts();
 	}
 
 	/*
@@ -84,7 +84,7 @@ public class CourtAction extends ActionSupport {
 	public void setLstCourts(List<Court> lstCourts) {
 		this.lstCourts = lstCourts;
 	}
-	
+
 	public List<Court> getLstDixCourts() {
 		return lstDixCourts;
 	}
@@ -92,17 +92,15 @@ public class CourtAction extends ActionSupport {
 	public void setLstDixCourts(List<Court> lstDixCourts) {
 		this.lstDixCourts = lstDixCourts;
 	}
-	
-	//fin getters/setters
-	
+
+	// fin getters/setters
 
 	/**
-	 * ajouter un court
-	 * vérif nom et numero non vide
+	 * ajouter un court vérif nom et numero non vide
 	 * 
 	 * @return success
 	 */
-	//TODO vérif numero court pas déjà existant
+	// TODO vérif numero court pas déjà existant
 	public String ajouterCourt() {
 
 		System.out.println("Essai ajout d'un court");
@@ -116,7 +114,7 @@ public class CourtAction extends ActionSupport {
 			cService.insererCourt(nomCourt, numeroCourt);
 			msgForm = "Le court à été ajouté";
 			typeMsgForm = "alert alert-success";
-			 lstDixCourts = cService.recupTousCourts();
+			lstDixCourts = cService.recupTousCourts();
 		}
 		return "success";
 	}

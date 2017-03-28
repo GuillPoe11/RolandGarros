@@ -18,13 +18,13 @@ import entite.Equipe;
 import entite.Joueur;
 import entite.Match;
 import entite.SousTournoi;
-import metier.ArbitreService;
-import metier.CourtService;
-import metier.EquipeService;
-import metier.JoueurService;
-import metier.MatchService;
-import metier.SousTournoiService;
 import metier.exception.MatchException;
+import metier.interfaces.ArbitreService;
+import metier.interfaces.CourtService;
+import metier.interfaces.EquipeService;
+import metier.interfaces.JoueurService;
+import metier.interfaces.MatchService;
+import metier.interfaces.SousTournoiService;
 
 public class PlanifierMatchAction extends ActionSupport {
 
@@ -93,7 +93,7 @@ public class PlanifierMatchAction extends ActionSupport {
 			lstHeures.add(i);
 		}
 
-		//lstMatchs = service.recupererTousLesMatchs();
+		// lstMatchs = service.recupererTousLesMatchs();
 		lstDixDerniersMatchsSimple = service.recupererLesDixDerniersMatchsSimples();
 		lstDixDerniersMatchsEquipe = service.recupererLesDixDerniersMatchsEnEquipe();
 
@@ -196,41 +196,47 @@ public class PlanifierMatchAction extends ActionSupport {
 		return "equipe";
 	}
 
-//	/**
-//	 * Fonction qui ajoute un match lorsque l'organisateur clique sur le bouton
-//	 * refuse l'ajout si les conditions ne sont pas respectées
-//	 * 
-//	 * @return string vers la page match
-//	 */
-//	public String creerMatch() {
-//
-//		Date dateMatchFormat = new Date();
-//
-//		String strDateHeureMatch = dateMatch + " " + integerHeure + ":" + integerMinute;
-//
-//		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy hh:mm");
-//		try {
-//			dateMatchFormat = sdf.parse(strDateHeureMatch);
-//		} catch (ParseException e) {
-//			msgForm = "Attention la date n'a pas le bon format\r\n";
-//			typeMsgForm = "alert alert-danger";
-//		}
-//
-//		if (verifMatchEquipe()) {
-//			try {
-//				service.creerMatch(courtService.recupCourtParId(idCourt), joueurService.recupererJoueurParId(idJoueur1),
-//						joueurService.recupererJoueurParId(idJoueur2), arbitreService.recupArbitreParId(idArbitre),
-//						sousTournoiService.recupererSousTournoiParId(idSousTournoi), dateMatchFormat,
-//						equipeService.recupererEquipeParId(idEquipe1), equipeService.recupererEquipeParId(idEquipe2));
-//
-//			} catch (MatchException e) {
-//				msgForm = e.getMessage();
-//				typeMsgForm = "alert alert-danger";
-//			}
-//
-//		}
-//		return "success";
-//	}
+	// /**
+	// * Fonction qui ajoute un match lorsque l'organisateur clique sur le
+	// bouton
+	// * refuse l'ajout si les conditions ne sont pas respectées
+	// *
+	// * @return string vers la page match
+	// */
+	// public String creerMatch() {
+	//
+	// Date dateMatchFormat = new Date();
+	//
+	// String strDateHeureMatch = dateMatch + " " + integerHeure + ":" +
+	// integerMinute;
+	//
+	// SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy hh:mm");
+	// try {
+	// dateMatchFormat = sdf.parse(strDateHeureMatch);
+	// } catch (ParseException e) {
+	// msgForm = "Attention la date n'a pas le bon format\r\n";
+	// typeMsgForm = "alert alert-danger";
+	// }
+	//
+	// if (verifMatchEquipe()) {
+	// try {
+	// service.creerMatch(courtService.recupCourtParId(idCourt),
+	// joueurService.recupererJoueurParId(idJoueur1),
+	// joueurService.recupererJoueurParId(idJoueur2),
+	// arbitreService.recupArbitreParId(idArbitre),
+	// sousTournoiService.recupererSousTournoiParId(idSousTournoi),
+	// dateMatchFormat,
+	// equipeService.recupererEquipeParId(idEquipe1),
+	// equipeService.recupererEquipeParId(idEquipe2));
+	//
+	// } catch (MatchException e) {
+	// msgForm = e.getMessage();
+	// typeMsgForm = "alert alert-danger";
+	// }
+	//
+	// }
+	// return "success";
+	// }
 
 	/**
 	 * Fonction de vérification si un match en simple peut être ajouté. Controle
@@ -307,7 +313,8 @@ public class PlanifierMatchAction extends ActionSupport {
 		for (Object obj : list) {
 			switch (obj.getClass().getName()) {
 			case "entite.Joueur":
-				map.put(((Joueur) obj).getIdJoueur(), ((Joueur) obj).getPrenomJoueur() + " " + ((Joueur) obj).getNomJoueur());
+				map.put(((Joueur) obj).getIdJoueur(),
+						((Joueur) obj).getPrenomJoueur() + " " + ((Joueur) obj).getNomJoueur());
 				break;
 
 			case "entite.Equipe":
@@ -336,7 +343,7 @@ public class PlanifierMatchAction extends ActionSupport {
 		}
 		return map;
 	}
-	
+
 	/*
 	 * Getters/Setters
 	 */

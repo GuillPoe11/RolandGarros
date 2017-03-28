@@ -12,7 +12,7 @@ import entite.Equipe;
 import entite.Joueur;
 import entite.Match;
 import entite.SousTournoi;
-import metier.MatchService;
+import metier.interfaces.MatchService;
 
 public class ResultatAction extends ActionSupport {
 
@@ -41,8 +41,8 @@ public class ResultatAction extends ActionSupport {
 	public ResultatAction(@Autowired MatchService matchService) {
 		lstMatchs = matchService.recupererTousLesMatchs();
 	}
-	
-	public String execute(){
+
+	public String execute() {
 		return "success";
 	}
 

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 
 import entite.Arbitre;
-import metier.ArbitreService;
+import metier.interfaces.ArbitreService;
 
 public class ArbitreAction extends ActionSupport {
 	@Autowired
@@ -26,7 +26,7 @@ public class ArbitreAction extends ActionSupport {
 	public ArbitreAction(@Autowired ArbitreService service) {
 		super();
 		lstArbitres = service.recupTousArbitres();
-		//lstdixArbitres = service.recupLesDixDerniersArbitres();
+		// lstdixArbitres = service.recupLesDixDerniersArbitres();
 		lstdixArbitres = service.recupTousArbitres();
 		lstTypeArbitres = new HashMap<Integer, String>();
 	}
@@ -77,7 +77,7 @@ public class ArbitreAction extends ActionSupport {
 	public void setLstTypeArbitres(Map<Integer, String> lstTypeArbitres) {
 		this.lstTypeArbitres = lstTypeArbitres;
 	}
-	
+
 	public List<Arbitre> getLstdixArbitres() {
 		return lstdixArbitres;
 	}
@@ -85,10 +85,8 @@ public class ArbitreAction extends ActionSupport {
 	public void setLstdixArbitres(List<Arbitre> lstdixArbitres) {
 		this.lstdixArbitres = lstdixArbitres;
 	}
-	
-	// fin getters/setters
 
-	
+	// fin getters/setters
 
 	/**
 	 * Fonction qui ajoute un arbitre lorsque l'organisateur clique sur le
@@ -97,25 +95,18 @@ public class ArbitreAction extends ActionSupport {
 	 * return string vers la page arbitre
 	 */
 	public String submite() {
-		if (arbitre.getNomArbitre() == null || "".equals(arbitre.getNomArbitre())
-				) {
+		if (arbitre.getNomArbitre() == null || "".equals(arbitre.getNomArbitre())) {
 			msgForm = "nom incorrect";
 			typeMsgForm = "alert alert-danger";
-			
-		} 
-		else if(verifArbitreExistants(arbitre.getNomArbitre(), arbitre.getPrenomArbitre())){
-		}
-		else if(arbitre.getPrenomArbitre() == null
-				|| "".equals(arbitre.getPrenomArbitre())){
+
+		} else if (verifArbitreExistants(arbitre.getNomArbitre(), arbitre.getPrenomArbitre())) {
+		} else if (arbitre.getPrenomArbitre() == null || "".equals(arbitre.getPrenomArbitre())) {
 			msgForm = "prénom incorrect";
 			typeMsgForm = "alert alert-danger";
-		}
-		else if(arbitre.getNomArbitre().length() < 3
-				&& arbitre.getPrenomArbitre().length() < 3){
+		} else if (arbitre.getNomArbitre().length() < 3 && arbitre.getPrenomArbitre().length() < 3) {
 			msgForm = "Minimum 3 caractères";
 			typeMsgForm = "alert alert-danger";
-		}
-		else{
+		} else {
 			service.insererArbitre(arbitre.getNomArbitre(), arbitre.getPrenomArbitre());
 			arbitre.setNomArbitre("");
 			arbitre.setPrenomArbitre("");

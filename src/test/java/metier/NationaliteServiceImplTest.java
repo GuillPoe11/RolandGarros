@@ -11,6 +11,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import entite.Nationalite;
+import metier.implementations.NationaliteServiceImpl;
+import metier.interfaces.NationaliteService;
 
 public class NationaliteServiceImplTest {
 	

@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 
 import entite.Match;
-import metier.MatchService;
+import metier.interfaces.MatchService;
 
 /**
  * Action qui gére la modification d'un match : pour l'enregistrement du score1,

@@ -126,10 +126,11 @@
 						<td><s:property
 								value="arbitre.prenomArbitre + ' ' + arbitre.nomArbitre" /></td>
 						<td><s:if test="sousTournoi.genreSousTournoi=='H'">
-<img src="img/men.png">&nbsp;</s:if>
-						<s:elseif test="sousTournoi.genreSousTournoi=='F'">
-	<img src="img/women.png">&nbsp;
-</s:elseif><s:property value="sousTournoi.nomSousTournoi" /></td>
+								<img src="img/men.png">&nbsp;</s:if> <s:elseif
+								test="sousTournoi.genreSousTournoi=='F'">
+								<img src="img/women.png">&nbsp;
+</s:elseif>
+							<s:property value="sousTournoi.nomSousTournoi" /></td>
 						<td><s:date format="dd/MM/yyyy HH:mm" name="dateMatch" /></td>
 
 					</tr>

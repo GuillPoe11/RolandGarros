@@ -54,31 +54,31 @@
 						<td><s:select label="Sélectionnez un Sous-Tournoi"
 								headerKey="-1" headerValue="--------"
 								list="mapSousTournoisEquipe" listKey="key" listValue="value"
-								name="idSousTournoi" /></td>
+								name="idSousTournoi" cssClass="form-control" /></td>
 					</tr>
 					<tr>
 						<td>Equipe 1</td>
 						<td><s:select label="Sélectionnez une equipe" headerKey="-1"
 								headerValue="--------" list="mapEquipes" listKey="key"
-								listValue="value" name="idEquipe1" cssClass="form-control"/></td>
+								listValue="value" name="idEquipe1" cssClass="form-control" /></td>
 					</tr>
 					<tr>
 						<td>Equipe 2</td>
 						<td><s:select label="Sélectionnez une equipe" headerKey="-1"
 								headerValue="--------" list="mapEquipes" listKey="key"
-								listValue="value" name="idEquipe2" cssClass="form-control"/></td>
+								listValue="value" name="idEquipe2" cssClass="form-control" /></td>
 					</tr>
 					<tr>
 						<td>Arbitre</td>
 						<td><s:select label="Sélectionnez un arbitre" headerKey="-1"
 								headerValue="--------" list="mapArbitres" listKey="key"
-								listValue="value" name="idArbitre" cssClass="form-control"/></td>
+								listValue="value" name="idArbitre" cssClass="form-control" /></td>
 					</tr>
 					<tr>
 						<td>Court</td>
 						<td><s:select label="Sélectionnez un court" headerKey="-1"
 								headerValue="--------" list="mapCourts" listKey="key"
-								listValue="value" name="idCourt" cssClass="form-control"/></td>
+								listValue="value" name="idCourt" cssClass="form-control" /></td>
 					</tr>
 					<tr>
 						<td>Date du match</td>
@@ -122,7 +122,8 @@
 								value="equipe1.joueur2.nomJoueur" /></td>
 						<td><s:property value="equipe2.joueur1.nomJoueur" />-<s:property
 								value="equipe2.joueur2.nomJoueur" /></td>
-						<td><s:property value="arbitre.prenomArbitre + ' ' + arbitre.nomArbitre" /></td>
+						<td><s:property
+								value="arbitre.prenomArbitre + ' ' + arbitre.nomArbitre" /></td>
 						<td><s:property value="sousTournoi.nomSousTournoi" /></td>
 						<td><s:date format="dd/MM/yyyy HH:mm" name="dateMatch" /></td>
 					</tr>

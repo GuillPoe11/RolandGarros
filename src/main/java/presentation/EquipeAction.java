@@ -10,9 +10,9 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import entite.Equipe;
 import entite.Joueur;
-import metier.EquipeService;
-import metier.JoueurService;
 import metier.exception.EquipeException;
+import metier.interfaces.EquipeService;
+import metier.interfaces.JoueurService;
 
 public class EquipeAction extends ActionSupport {
 

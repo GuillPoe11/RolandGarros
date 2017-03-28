@@ -52,7 +52,6 @@ public class Nationalite {
 	}
 	// fin getters/setters
 
-	
 	@Override
 	public String toString() {
 		return "Nationalite [idNationalite=" + idNationalite + ", libelleNationalite=" + libelleNationalite + "]";

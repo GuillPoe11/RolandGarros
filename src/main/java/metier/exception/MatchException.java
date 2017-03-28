@@ -1,7 +1,9 @@
 package metier.exception;
 
 /**
- * Exception lancée lorsque qu'un problème survient lors de la création d'un match
+ * Exception lancée lorsque qu'un problème survient lors de la création d'un
+ * match
+ * 
  * @author eric.poe11
  *
  */

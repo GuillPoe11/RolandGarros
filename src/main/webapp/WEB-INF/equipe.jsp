@@ -52,21 +52,22 @@
 				</tr>
 				<s:iterator status="status" value="lstEquipes">
 					<tr>
-						<td>
-							<s:property value="sousTournoi.nomSousTournoi" />
-							<s:property value="idEquipe" /></td>
+						<td><s:property value="sousTournoi.nomSousTournoi" /> <s:property
+								value="idEquipe" /></td>
 						<td><s:if test="joueur1.sexeJoueur=='M'">
 								<img src="img/men.png">&nbsp;</s:if> <s:elseif
 								test="joueur1.sexeJoueur=='F'">
 								<img src="img/women.png">&nbsp;
-</s:elseif>
-							</td><td><s:property value="joueur1.prenomJoueur" />&nbsp;<s:property value="joueur1.nomJoueur" /></td>
+</s:elseif></td>
+						<td><s:property value="joueur1.prenomJoueur" />&nbsp;<s:property
+								value="joueur1.nomJoueur" /></td>
 						<td><s:if test="joueur2.sexeJoueur=='M'">
 								<img src="img/men.png">&nbsp;</s:if> <s:elseif
 								test="joueur2.sexeJoueur=='F'">
 								<img src="img/women.png">&nbsp;
-</s:elseif>
-							</td><td><s:property value="joueur2.prenomJoueur" />&nbsp;<s:property value="joueur2.nomJoueur" /></td>
+</s:elseif></td>
+						<td><s:property value="joueur2.prenomJoueur" />&nbsp;<s:property
+								value="joueur2.nomJoueur" /></td>
 					</tr>
 				</s:iterator>
 			</table>

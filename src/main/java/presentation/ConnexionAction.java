@@ -9,7 +9,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import entite.Organisateur;
-import metier.OrganisateurService;
+import metier.interfaces.OrganisateurService;
 
 /**
  * Action qui permet de gérer la connexion au site.
@@ -70,7 +70,7 @@ public class ConnexionAction extends ActionSupport {
 				Map<String, Object> session = (Map<String, Object>) ActionContext.getContext().get("session");
 				url = (String) session.get("url");
 				session.remove("url");
-				if(url == null){
+				if (url == null) {
 					url = "Admin.action";
 				}
 				res = true;
@@ -81,6 +81,7 @@ public class ConnexionAction extends ActionSupport {
 
 	/**
 	 * Vérifie que les champs du formulaire sont remplis
+	 * 
 	 * @return true si les champs sont remplis, false sinon
 	 */
 	private boolean validation() {

@@ -22,7 +22,8 @@
 				<li><a class="lien-nav admin" href="Deconnexion.action">D&eacute;connexion</a></li>
 			</s:if>
 			<s:else>
-				<li><a class="lien-nav admin" href="Connexion.action">Se connecter</a></li>
+				<li><a class="lien-nav admin" href="Connexion.action">Se
+						connecter</a></li>
 			</s:else>
 		</ul>
 	</div>

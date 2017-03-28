@@ -10,8 +10,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import entite.Joueur;
 import entite.Nationalite;
-import metier.JoueurService;
-import metier.NationaliteService;
+import metier.interfaces.JoueurService;
+import metier.interfaces.NationaliteService;
 
 /**
  * Action qui permet de gérer l'ajout de joueur
@@ -52,7 +52,7 @@ public class JoueurAction extends ActionSupport {
 	public JoueurAction(@Autowired NationaliteService nationaliteService, @Autowired JoueurService joueurService) {
 		joueur = new Joueur();
 		lstJoueurs = joueurService.recupererTousLesJoueurs();
-		//lstDixDerniersJoueurs = joueurService.recupLesDixDerniersJoueurs();
+		// lstDixDerniersJoueurs = joueurService.recupLesDixDerniersJoueurs();
 		lstNationalites = nationaliteService.recupToutesNationalites();
 		mapNationalites = listToMap(nationaliteService.recupToutesNationalites());
 	}
@@ -67,7 +67,7 @@ public class JoueurAction extends ActionSupport {
 			Nationalite nationalite = lstNationalites.get(idNationalite);
 			joueurService.creerJoueur(joueur.getNomJoueur(), joueur.getPrenomJoueur(), joueur.getSexeJoueur(),
 					nationalite);
-			//pour mise à jour de la liste des joueurs
+			// pour mise à jour de la liste des joueurs
 			lstJoueurs = joueurService.recupererTousLesJoueurs();
 		}
 		return "success";
@@ -197,7 +197,5 @@ public class JoueurAction extends ActionSupport {
 	public void setLstDixDerniersJoueurs(List<Joueur> lstDixDerniersJoueurs) {
 		this.lstDixDerniersJoueurs = lstDixDerniersJoueurs;
 	}
-	
-	
 
 }

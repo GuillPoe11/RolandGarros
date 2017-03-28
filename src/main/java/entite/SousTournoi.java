@@ -24,7 +24,7 @@ public class SousTournoi {
 
 	@Column(name = "genreSousTournoi", nullable = false, unique = true)
 	private Character genreSousTournoi;
-	
+
 	@Column(name = "typeSousTournoi", nullable = false, unique = true)
 	private Character typeSousTournoi;
 
@@ -79,7 +79,7 @@ public class SousTournoi {
 	public void setGenreSousTournoi(Character genreSousTournoi) {
 		this.genreSousTournoi = genreSousTournoi;
 	}
-	
+
 	public Character getTypeSousTournoi() {
 		return typeSousTournoi;
 	}
@@ -87,17 +87,13 @@ public class SousTournoi {
 	public void setTypeSousTournoi(Character typeSousTournoi) {
 		this.typeSousTournoi = typeSousTournoi;
 	}
-	
-	//fin getters/Setters
 
-	
+	// fin getters/Setters
 
 	@Override
 	public String toString() {
 		return "SousTournoi [idSousTournoi=" + idSousTournoi + ", nomSousTournoi=" + nomSousTournoi
 				+ ", nbJoueursSousTournoi=" + nbJoueursSousTournoi + ", genreSousTournoi=" + genreSousTournoi + "]";
 	}
-	
-	
 
 }

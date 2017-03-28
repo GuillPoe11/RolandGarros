@@ -62,14 +62,12 @@ public class Organisateur {
 	public void setPasswordOrganisateur(String passwordOrganisateur) {
 		this.passwordOrganisateur = passwordOrganisateur;
 	}
-	//fin getters/Setters
+	// fin getters/Setters
 
 	@Override
 	public String toString() {
 		return "Organisateur [idOrganisateur=" + idOrganisateur + ", loginOrganisateur=" + loginOrganisateur
 				+ ", passwordOrganisateur=" + passwordOrganisateur + "]";
 	}
-	
-	
 
 }
