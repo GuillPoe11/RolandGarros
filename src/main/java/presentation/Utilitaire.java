@@ -57,13 +57,27 @@ public class Utilitaire {
 				if (((Match) obj).getDateMatch() != null) {
 					str += " " + ((Match) obj).getDateMatch().toString();
 				}
+
 				str += " " + ((Match) obj).getSousTournoi().getNomSousTournoi();
+
 				if (((Match) obj).getScore1() != null) {
 					str += ((Match) obj).getScore1();
 				}
+				//recup nom des joueurs
+				if (((Match) obj).getJoueur1() != null && ((Match) obj).getJoueur2() != null) {
+					str += " [ " + ((Match) obj).getJoueur1().getNomJoueur();
+					str += " " + ((Match) obj).getJoueur2().getNomJoueur()+" ]";
+				}
+				//recup nom des joueurs dans les équipes
+				if ((((Match) obj).getEquipe1() != null) && (((Match) obj).getEquipe2() != null))  {
+					str += " [ " + ((Match) obj).getEquipe1().getJoueur1().getNomJoueur()+"-"+((Match) obj).getEquipe1().getJoueur2().getNomJoueur();
+					str += " " + ((Match) obj).getEquipe2().getJoueur1().getNomJoueur()+"-"+((Match) obj).getEquipe1().getJoueur2().getNomJoueur()+" ]";
+				}
+				
 				if (((Match) obj).getScore2() != null) {
 					str += ((Match) obj).getScore2();
 				}
+
 				if (((Match) obj).getDureeMatch() != null) {
 					str += ((Match) obj).getDureeMatch();
 				}
